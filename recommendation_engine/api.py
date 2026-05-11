@@ -12,6 +12,13 @@ from .feedback import FeedbackManager
 from .outfit_generator import OutfitGenerator
 from .wardrobe_manager import WardrobeManager
 
+# Vision model is optional — only imported when used so TF is not mandatory
+try:
+    from vision import VisionModel as _VisionModel
+    _VISION_AVAILABLE = True
+except ImportError:
+    _VISION_AVAILABLE = False
+
 class RecommendationAPI:
     def __init__(self, wardrobe_path: str, feedback_path: Optional[str] = None):
         self.wardrobe_path = wardrobe_path
@@ -25,8 +32,103 @@ class RecommendationAPI:
         self._filter = ContextFilter()
         self._feedback = FeedbackManager(feedback_path, self._scorer)
         self._clusterer = ClothingClusterer()
+        self._vision = None  # lazy – only initialised when vision methods are called
         if self._wardrobe.size > 0:
             self._clusterer.fit(self._wardrobe.get_all_items())
+
+    # ------------------------------------------------------------------
+    # Vision model helpers
+    # ------------------------------------------------------------------
+
+    def _get_vision(self):
+        """Return a cached VisionModel instance (lazy init)."""
+        if self._vision is None:
+            if not _VISION_AVAILABLE:
+                raise RuntimeError(
+                    "The 'vision' package is not available. "
+                    "Make sure vision/vision_model.py is on the Python path."
+                )
+            self._vision = _VisionModel()
+        return self._vision
+
+    def analyze_image(self, img_path: str) -> Dict:
+        """Run the vision model on an image and return analysis results.
+
+        Parameters
+        ----------
+        img_path : str
+            Path to the garment image file.
+
+        Returns
+        -------
+        dict with keys:
+            ``category``       – ClothingCategory value (e.g. "shirt")
+            ``kaggle_label``   – Fine-grained Kaggle label (e.g. "Tshirts")
+            ``confidence``     – Classifier probability (float)
+            ``image_features`` – 2048-D ResNet50 feature vector (list[float])
+
+        Example
+        -------
+        >>> api = RecommendationAPI("data/sample_wardrobe.json")
+        >>> result = api.analyze_image("images/12345.jpg")
+        >>> print(result["category"], result["confidence"])
+        shirt 0.9231
+        """
+        return self._get_vision().analyze(img_path)
+
+    def add_item_from_image(self, img_path: str, item_dict: dict) -> str:
+        """Add a wardrobe item, auto-filling category and image features from vision.
+
+        The vision model analyses the image and:
+          - Sets ``item_dict["category"]`` if not already provided.
+          - Sets ``item_dict["image_features"]`` to the ResNet50 embedding.
+          - Sets ``item_dict["image_path"]`` to ``img_path``.
+
+        All other fields (name, color_rgb, color_name, pattern, style,
+        occasions, seasons, warmth_level, formality_level) must be supplied
+        by the caller.
+
+        Parameters
+        ----------
+        img_path : str
+            Path to the garment image.
+        item_dict : dict
+            Partial ClothingItem dict. ``category`` and ``image_features``
+            will be overwritten by the vision model results.
+
+        Returns
+        -------
+        str
+            The new item's id.
+
+        Example
+        -------
+        >>> item_id = api.add_item_from_image(
+        ...     "images/12345.jpg",
+        ...     {
+        ...         "name": "Blue Oxford",
+        ...         "color_rgb": [70, 130, 180],
+        ...         "color_name": "steel blue",
+        ...         "pattern": "solid",
+        ...         "style": "classic",
+        ...         "occasions": ["casual", "business"],
+        ...         "seasons": ["spring", "autumn"],
+        ...         "warmth_level": 2,
+        ...         "formality_level": 3,
+        ...     }
+        ... )
+        """
+        vision_result = self._get_vision().analyze(img_path)
+
+        # Only overwrite category if caller did not provide one
+        if "category" not in item_dict:
+            item_dict["category"] = vision_result["category"]
+
+        # Always attach the ResNet50 embedding and image path
+        item_dict["image_features"] = vision_result["image_features"]
+        item_dict["image_path"] = img_path
+
+        return self.add_item(item_dict)
 
     def add_item(self, item_dict: dict) -> str:
         item_id = self._wardrobe.add_item_from_dict(item_dict)
