@@ -1,0 +1,8 @@
+{
+  "vocab_size": 524,
+  "embed_dim": 64,
+  "hidden_dim": 128,
+  "num_occasions": 6,
+  "num_weather": 3,
+  "num_styles": 6
+}
