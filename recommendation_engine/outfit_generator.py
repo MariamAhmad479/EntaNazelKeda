@@ -160,31 +160,38 @@ class OutfitGenerator:
         jackets: List[ClothingItem],
         accessories: List[ClothingItem],
     ) -> List[Outfit]:
-        """Try adding a jacket or accessory if it improves the score."""
+        """Try adding a jacket and/or an accessory if it improves the score.
+        Adds at most ONE jacket and ONE accessory.
+        """
         enhanced: List[Outfit] = []
 
         for outfit in outfits:
-            best = outfit
+            best_outfit = outfit
 
-            # Try each jacket
+            # Find the single best jacket
+            best_jacket_outfit = best_outfit
             for jacket in jackets:
-                if jacket in outfit.items:
+                if jacket in best_outfit.items:
                     continue
-                candidate_items = outfit.items + [jacket]
+                candidate_items = best_outfit.items + [jacket]
                 candidate = self._score_outfit(candidate_items)
-                if candidate.score > best.score:
-                    best = candidate
+                if candidate.score > best_jacket_outfit.score:
+                    best_jacket_outfit = candidate
+            
+            best_outfit = best_jacket_outfit
 
-            # Try each accessory on the current best
+            # Find the single best accessory
+            best_acc_outfit = best_outfit
             for acc in accessories:
-                if acc in best.items:
+                if acc in best_outfit.items:
                     continue
-                candidate_items = best.items + [acc]
+                candidate_items = best_outfit.items + [acc]
                 candidate = self._score_outfit(candidate_items)
-                if candidate.score > best.score:
-                    best = candidate
-
-            enhanced.append(best)
+                if candidate.score > best_acc_outfit.score:
+                    best_acc_outfit = candidate
+            
+            best_outfit = best_acc_outfit
+            enhanced.append(best_outfit)
 
         return enhanced
 

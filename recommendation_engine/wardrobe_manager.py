@@ -136,5 +136,44 @@ class WardrobeManager:
             counts[key] = counts.get(key, 0) + 1
         return {"total_items": self.size, "by_category": counts}
 
+    # ------------------------------------------------------------------
+    # Vision integration
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def from_vision_data(
+        cls,
+        vision_dir: str,
+        wardrobe_path: str = "data/vision_wardrobe.json",
+    ) -> "WardrobeManager":
+        """Create a WardrobeManager populated from Person 1's vision artifacts.
+
+        Parameters
+        ----------
+        vision_dir : str
+            Path to the ``vision/saved/`` directory containing
+            ``clothing_metadata.csv`` and ``clothing_features.npy``.
+        wardrobe_path : str
+            Path where the converted wardrobe JSON will be saved.
+
+        Returns
+        -------
+        WardrobeManager
+            A fully loaded manager with all vision items.
+        """
+        from .vision_bridge import load_vision_items
+
+        items = load_vision_items(vision_dir)
+
+        manager = cls.__new__(cls)
+        manager.wardrobe_path = wardrobe_path
+        manager._items = {}
+        for item in items:
+            manager._items[item.id] = item
+
+        # Persist as JSON so it can be reloaded without vision deps
+        manager.save()
+        return manager
+
     def __repr__(self) -> str:
         return f"WardrobeManager(path={self.wardrobe_path!r}, items={self.size})"

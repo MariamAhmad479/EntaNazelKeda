@@ -37,6 +37,54 @@ class RecommendationAPI:
             self._clusterer.fit(self._wardrobe.get_all_items())
 
     # ------------------------------------------------------------------
+    # Alternative constructor — build from Person 1's vision data
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def from_vision_data(
+        cls,
+        vision_dir: str,
+        wardrobe_path: str = "data/vision_wardrobe.json",
+        feedback_path: Optional[str] = None,
+    ) -> "RecommendationAPI":
+        """Create a RecommendationAPI from Person 1's vision artifacts.
+
+        Parameters
+        ----------
+        vision_dir : str
+            Path to ``vision/saved/`` containing the CSV and NPY files.
+        wardrobe_path : str
+            Path where the converted wardrobe JSON will be saved.
+        feedback_path : str or None
+            Path to the feedback log file.
+
+        Returns
+        -------
+        RecommendationAPI
+            Fully initialised API backed by real vision data.
+        """
+        # Build the wardrobe from vision data (also saves as JSON)
+        wardrobe = WardrobeManager.from_vision_data(vision_dir, wardrobe_path)
+
+        # Now create the API using the saved JSON path
+        instance = cls.__new__(cls)
+        instance.wardrobe_path = wardrobe_path
+        if feedback_path is None:
+            base_dir = os.path.dirname(wardrobe_path) or "."
+            feedback_path = os.path.join(base_dir, "feedback_log.json")
+        instance.feedback_path = feedback_path
+        instance._wardrobe = wardrobe
+        instance._scorer = CompatibilityScorer()
+        instance._generator = OutfitGenerator(scorer=instance._scorer)
+        instance._filter = ContextFilter()
+        instance._feedback = FeedbackManager(feedback_path, instance._scorer)
+        instance._clusterer = ClothingClusterer()
+        instance._vision = None
+        if instance._wardrobe.size > 0:
+            instance._clusterer.fit(instance._wardrobe.get_all_items())
+        return instance
+
+    # ------------------------------------------------------------------
     # Vision model helpers
     # ------------------------------------------------------------------
 
