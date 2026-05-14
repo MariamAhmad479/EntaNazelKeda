@@ -1,3 +1,1 @@
-from .vision_model import VisionModel
-
-__all__ = ["VisionModel"]
+from .predict import predict_item
