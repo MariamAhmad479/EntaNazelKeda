@@ -77,6 +77,11 @@ def predict_item(image):
         encoders["usage"].inverse_transform(
             [np.argmax(predictions[3])]
         )[0],
+         
+        "baseColour":
+        encoders["baseColour"].inverse_transform(
+            [np.argmax(predictions[4])]
+        )[0],
     }
 
     return result

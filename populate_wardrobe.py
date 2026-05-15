@@ -1,25 +1,13 @@
 import os
-import streamlit as st
-from PIL import Image
 import sys
+from PIL import Image
 
-# Add the project root to sys.path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from vision import predict_item
 from recommendation_engine.api import RecommendationAPI
 
-st.title("Upload Outfit")
-
-# Setup wardrobe path
-wardrobe_path = os.path.join("data", "my_wardrobe.json")
-# Ensure directory exists
-os.makedirs("data", exist_ok=True)
-os.makedirs("outfits", exist_ok=True)
-
-api = RecommendationAPI(wardrobe_path)
-
-def map_prediction_to_item(pred, image):
+def map_prediction_to_item(pred, filename, image):
     # Expect the CNN to return 'baseColour' now
     color_name = pred.get("baseColour", "black").lower()
     rgb = [0, 0, 0] # Default, can be mapped from color_name if needed
@@ -27,7 +15,6 @@ def map_prediction_to_item(pred, image):
     cat_str = pred.get("subCategory", "").lower()
     art_str = pred.get("articleType", "").lower()
     
-    # Default values
     item_dict = {
         "name": f"{color_name.capitalize()} {art_str.capitalize()}",
         "color_rgb": rgb,
@@ -40,7 +27,6 @@ def map_prediction_to_item(pred, image):
         "formality_level": 3
     }
     
-    # Map Category
     if "top" in cat_str or "shirt" in art_str or "tshirt" in art_str:
         item_dict["category"] = "shirt"
     elif "bottom" in cat_str or "pant" in art_str or "jeans" in art_str:
@@ -58,14 +44,12 @@ def map_prediction_to_item(pred, image):
     else:
         item_dict["category"] = "accessory"
         
-    # Map Season
     season_str = pred.get("season", "").lower()
     if season_str in ["spring", "summer", "autumn", "winter"]:
         item_dict["seasons"] = [season_str]
     elif season_str == "fall":
         item_dict["seasons"] = ["autumn"]
             
-    # Map Usage
     usage_str = pred.get("usage", "").lower()
     if usage_str in ["casual", "formal", "sport", "party"]:
         item_dict["occasions"] = [usage_str]
@@ -76,34 +60,35 @@ def map_prediction_to_item(pred, image):
         
     return item_dict
 
-uploaded_file = st.file_uploader(
-    "Upload clothing image",
-    type=["jpg", "jpeg", "png"]
-)
-
-if uploaded_file is not None:
-    image = Image.open(uploaded_file)
-    st.image(image, width=300)
-
-    if st.button("Predict & Add to Wardrobe"):
-        with st.spinner("Analyzing outfit..."):
-            prediction = predict_item(image)
+def main():
+    wardrobe_path = os.path.join("data", "my_wardrobe.json")
+    os.makedirs("data", exist_ok=True)
+    
+    if os.path.exists(wardrobe_path):
+        os.remove(wardrobe_path)
         
-        st.success("Prediction Complete!")
-        st.json(prediction)
-        
-        # Save image
-        img_path = os.path.join("outfits", uploaded_file.name)
-        image.save(img_path)
-        
-        # Add to Wardrobe
-        item_dict = map_prediction_to_item(prediction, image)
-        item_dict["image_path"] = img_path
-        
+    api = RecommendationAPI(wardrobe_path)
+    outfits_dir = "outfits"
+    
+    count = 0
+    for filename in os.listdir(outfits_dir):
+        if not filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+            continue
+            
+        img_path = os.path.join(outfits_dir, filename)
         try:
-            item_id = api.add_item(item_dict)
-            st.success(f"Added to Wardrobe successfully! (ID: {item_id})")
+            image = Image.open(img_path)
+            prediction = predict_item(image)
+            item_dict = map_prediction_to_item(prediction, filename, image)
+            item_dict["image_path"] = img_path
+            
+            api.add_item(item_dict)
+            print(f"Added {filename}: {item_dict['name']} ({prediction})")
+            count += 1
         except Exception as e:
-            st.error(f"Failed to add to wardrobe: {e}")
-else:
-    st.info("Please upload an image.")
+            print(f"Error processing {filename}: {e}")
+            
+    print(f"Successfully added {count} items to the wardrobe.")
+
+if __name__ == "__main__":
+    main()

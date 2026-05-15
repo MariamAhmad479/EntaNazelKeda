@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from recommendation_engine.api import RecommendationAPI
 
 # Load the vision-based wardrobe
-wardrobe_path = os.path.join("data", "vision_wardrobe.json")
+wardrobe_path = os.path.join("data", "my_wardrobe.json")
 api = RecommendationAPI(wardrobe_path)
 
 summary = api.get_wardrobe_summary()
@@ -29,7 +29,7 @@ outfits = api.get_outfits(
 for i, o in enumerate(outfits, 1):
     print(f"\n  Outfit #{i} (Score: {o['score']:.3f})")
     for item in o["items"]:
-        print(f"    - {item['name']} ({item['color_name']} {item['category']})")
+        print(f"    - {item['name']} [Source: {item.get('image_path', 'No Image')}]")
 
 # ---------------------------------------------------------------
 # Test 2: Cold winter evening - formal event
@@ -45,7 +45,7 @@ outfits = api.get_outfits(
 for i, o in enumerate(outfits, 1):
     print(f"\n  Outfit #{i} (Score: {o['score']:.3f})")
     for item in o["items"]:
-        print(f"    - {item['name']} ({item['color_name']} {item['category']})")
+        print(f"    - {item['name']} [Source: {item.get('image_path', 'No Image')}]")
 
 # ---------------------------------------------------------------
 # Test 3: Mild spring morning - sports
@@ -61,7 +61,7 @@ outfits = api.get_outfits(
 for i, o in enumerate(outfits, 1):
     print(f"\n  Outfit #{i} (Score: {o['score']:.3f})")
     for item in o["items"]:
-        print(f"    - {item['name']} ({item['color_name']} {item['category']})")
+        print(f"    - {item['name']} [Source: {item.get('image_path', 'No Image')}]")
 
 # ---------------------------------------------------------------
 # Test 4: Rainy autumn day - party
@@ -77,7 +77,7 @@ outfits = api.get_outfits(
 for i, o in enumerate(outfits, 1):
     print(f"\n  Outfit #{i} (Score: {o['score']:.3f})")
     for item in o["items"]:
-        print(f"    - {item['name']} ({item['color_name']} {item['category']})")
+        print(f"    - {item['name']} [Source: {item.get('image_path', 'No Image')}]")
 
 # ---------------------------------------------------------------
 # Test 5: No weather filter - just occasion
@@ -89,7 +89,7 @@ outfits = api.get_outfits(occasion="business", top_n=3)
 for i, o in enumerate(outfits, 1):
     print(f"\n  Outfit #{i} (Score: {o['score']:.3f})")
     for item in o["items"]:
-        print(f"    - {item['name']} ({item['color_name']} {item['category']})")
+        print(f"    - {item['name']} [Source: {item.get('image_path', 'No Image')}]")
 
 print("\n" + "=" * 60)
 print("All scenarios completed!")
