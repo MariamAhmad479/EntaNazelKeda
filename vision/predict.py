@@ -68,18 +68,18 @@ def predict_item(image):
             [np.argmax(predictions[1])]
         )[0],
 
+        "baseColour":
+        encoders["baseColour"].inverse_transform(
+            [np.argmax(predictions[2])]
+        )[0],
+
         "season":
         encoders["season"].inverse_transform(
-            [np.argmax(predictions[2])]
+            [np.argmax(predictions[3])]
         )[0],
 
         "usage":
         encoders["usage"].inverse_transform(
-            [np.argmax(predictions[3])]
-        )[0],
-         
-        "baseColour":
-        encoders["baseColour"].inverse_transform(
             [np.argmax(predictions[4])]
         )[0],
     }

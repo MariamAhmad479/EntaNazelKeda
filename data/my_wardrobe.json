@@ -551,6 +551,52 @@
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223801.png"
+    },
+    {
+      "id": "a7b85c56",
+      "name": "White Track pants",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\WhatsApp Image 2026-05-15 at 11.54.51 PM.jpeg"
+    },
+    {
+      "id": "6450ac49",
+      "name": "White Tops",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\WhatsApp Image 2026-05-15 at 11.55.22 PM.jpeg"
     }
   ]
 }
