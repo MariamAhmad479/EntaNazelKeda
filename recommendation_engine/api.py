@@ -99,6 +99,16 @@ class RecommendationAPI:
             self._vision = _VisionModel()
         return self._vision
 
+    def reload_wardrobe(self, wardrobe_path: str):
+        """Switch the API to a new wardrobe JSON file and re-index items."""
+        self.wardrobe_path = wardrobe_path
+        self._wardrobe = WardrobeManager(wardrobe_path)
+        if self._wardrobe.size > 0:
+            self._clusterer.fit(self._wardrobe.get_all_items())
+        else:
+            self._clusterer = ClothingClusterer()  # reset if empty
+        print(f"[API] Switched wardrobe to: {os.path.basename(wardrobe_path)}")
+
     def analyze_image(self, img_path: str) -> Dict:
         """Run the vision model on an image and return analysis results.
 
