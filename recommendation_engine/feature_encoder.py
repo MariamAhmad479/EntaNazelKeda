@@ -58,8 +58,14 @@ class FeatureEncoder:
         + 1                # formality
     )  # = 35
 
+    def __init__(self):
+        self._cache = {}
+
     def encode(self, item: ClothingItem) -> np.ndarray:
         """Encode a single ClothingItem to a 1-D NumPy float array."""
+        if item.id in self._cache:
+            return self._cache[item.id]
+
         parts: List[np.ndarray] = []
 
         # 1. Category — one-hot
@@ -103,7 +109,9 @@ class FeatureEncoder:
         if item.image_features is not None:
             parts.append(np.array(item.image_features, dtype=np.float32))
 
-        return np.concatenate(parts)
+        vec = np.concatenate(parts)
+        self._cache[item.id] = vec
+        return vec
 
     def encode_many(self, items: List[ClothingItem]) -> np.ndarray:
         """Encode a list of items into a 2-D array (N × D).

@@ -12,6 +12,7 @@ from nlp.inference import NLPInference
 # ---------------------------------------------------------------------------
 AWAITING_QUERY      = "AWAITING_QUERY"
 CLARIFICATION_NEEDED = "CLARIFICATION_NEEDED"
+AWAITING_OCCASION   = "AWAITING_OCCASION"
 SHOWING_RESULTS     = "SHOWING_RESULTS"
 
 
@@ -30,6 +31,22 @@ class WardrobeChatbot:
             "style":        None,
         }
         self.last_recommendations = []
+        self.shop_mode = False
+        self.retry_count = 0  # Track how many times the user rejected outfits
+        self.wardrobe_paths = {
+            "personal": api.wardrobe_path,
+            "hm": os.path.join(os.path.dirname(api.wardrobe_path), "hm_catalog.json")
+        }
+
+    def toggle_shop_mode(self) -> str:
+        """Switch between personal wardrobe and H&M global catalog."""
+        self.shop_mode = not self.shop_mode
+        self.retry_count = 0 
+        path = self.wardrobe_paths["hm"] if self.shop_mode else self.wardrobe_paths["personal"]
+        self.api.reload_wardrobe(path)
+        
+        mode_name = "H&M GLOBAL STORE" if self.shop_mode else "PERSONAL WARDROBE"
+        return f"Successfully switched to **{mode_name}** mode!"
 
     # ------------------------------------------------------------------
     def _reset_context(self):
@@ -40,6 +57,7 @@ class WardrobeChatbot:
             "style":         None,
         }
         self.last_recommendations = []
+        self.retry_count = 0
         self.state = AWAITING_QUERY
 
     # ── Rejection / feedback keyword pre-filter ──────────────────────
@@ -83,12 +101,45 @@ class WardrobeChatbot:
     def handle_input(self, user_input: str) -> str:
         import random
         raw_text = user_input.strip()
+        lower_text = raw_text.lower()
 
-        # ── 0. Rule-based pre-filter (runs BEFORE NLP) ───────────────
+        # ── 0. Shop/Wardrobe Intent Detection ──
+        shop_keywords = ["shop", "store", "buy", "h&m", "hm", "global catalog", "retail"]
+        wardrobe_keywords = ["my wardrobe", "personal wardrobe", "my clothes", "stop shopping", "exit shop", "leave store"]
+        
+        explicit_shop = any(kw in lower_text for kw in shop_keywords)
+        explicit_wardrobe = any(kw in lower_text for kw in wardrobe_keywords)
+
+        just_switched_to_shop = False
+        if explicit_shop and not explicit_wardrobe:
+            if not self.shop_mode:
+                print("\n[Assistant] Entering Shopping Mode: Browsing H&M Global Store...")
+                self.api.reload_wardrobe(self.wardrobe_paths["hm"])
+                self.shop_mode = True
+                self._reset_context() 
+                self.state = AWAITING_OCCASION
+                just_switched_to_shop = True
+        elif explicit_wardrobe:
+            # ...
+            if self.shop_mode:
+                print("\n[Assistant] Returning to Personal Wardrobe...")
+                self.api.reload_wardrobe(self.wardrobe_paths["personal"])
+                self.shop_mode = False
+                self._reset_context()
+                return "Sure! We're back in your **Personal Wardrobe**. What would you like to wear from your own collection?"
+
+        # ── 0.5 AWAITING_OCCASION State Handling ──
+        if self.state == AWAITING_OCCASION and not explicit_shop:
+            # Assume the input is the occasion if it's short or matches known occasions
+            self.context["occasion"] = raw_text.lower()
+            # We still proceed to NLP to see if they provided weather too
+
+        # ── 1. Rule-based pre-filter (runs BEFORE NLP) ───────────────
         # Catches rejection/feedback phrases the model misclassifies.
         rule_intent = self._detect_rejection(raw_text)
         if rule_intent == "REJECTION":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
+                self.retry_count += 1
                 return self._generate_recommendations(is_retry=True)
             self._reset_context()
             return "Okay, let's start fresh. What kind of outfit are you looking for?"
@@ -102,15 +153,25 @@ class WardrobeChatbot:
         extracted = self.nlp.predict(raw_text)
 
         intent       = extracted.get("intent", "OTHER")
-        conf         = extracted.get("confidence", {})
-        intent_conf  = conf.get("intent") or 0.0
+        confidence   = extracted.get("confidence", {})
+        intent_conf  = confidence.get("intent") or 0.0
 
+        # ── 2. Explicit Shop Greeting ──────────────────────────────
+        # If they just entered shopping mode OR mentioned it, and no details found
+        if (just_switched_to_shop or explicit_shop) and not extracted.get("occasion") and not extracted.get("weather"):
+            self.state = AWAITING_OCCASION
+            if just_switched_to_shop:
+                return "Great choice! I've opened the **H&M Global Store** for you. What kind of outfit are we shopping for today? (Casual, formal, etc.)"
+            else:
+                return "You're in the **H&M Global Store**! What kind of outfit are we shopping for? (Casual, formal, etc.)"
+
+        # ── 3. Intent Routing ────────────────────────────────────────
         if intent_conf < 0.6:
             intent = "OTHER"
 
-        occ_conf = conf.get("occasion") or 0.0
-        wea_conf = conf.get("weather")  or 0.0
-        sty_conf = conf.get("style")    or 0.0
+        occ_conf = confidence.get("occasion") or 0.0
+        wea_conf = confidence.get("weather")  or 0.0
+        sty_conf = confidence.get("style")    or 0.0
 
         # ── 2. Intent routing: terminal intents (no context change) ──
         if intent == "SMALL_TALK":
@@ -208,10 +269,12 @@ class WardrobeChatbot:
         wea_cls = self.context["weather_class"]
 
         # Fetch extra outfits so we have alternates for retries
+        print(f"[Assistant] Searching for {occ.upper()} outfits for {wea_cls.upper() if wea_cls else 'ANY'} weather...")
         outfits = self.api.get_outfits(occasion=occ, weather=wea, top_n=6)
 
         # ── Progressive fallback if weather filter left no complete outfit ──
         if not outfits and wea is not None:
+            print(f"[Assistant] No exact matches for {wea_cls.upper()}. Trying with relaxed weather constraints...")
             # Relax season constraint but keep warmth preference via scoring
             outfits = self.api.get_outfits(occasion=occ, weather=None, top_n=6)
             if outfits:
@@ -225,21 +288,79 @@ class WardrobeChatbot:
                 outfits.sort(key=_warmth_penalty)
 
         if not outfits:
-            return (
-                f"I couldn't find any suitable {occ.upper()} outfits "
-                f"for {(wea_cls or 'any').upper()} weather in your wardrobe.\n"
-                f"Try uploading more items with: upload <image_path>\n"
-            )
-
-        if is_retry and len(outfits) > 1:
-            selected = outfits[1:4] if len(outfits) >= 4 else outfits[1:]
-            response = "\nNo problem! Here are some alternative outfit options:\n"
+            # Automatic Fallback: If personal wardrobe is empty, try H&M catalog
+            if not self.shop_mode:
+                print("\n[Assistant] No matches in your wardrobe. Searching H&M Global Store...")
+                self.api.reload_wardrobe(self.wardrobe_paths["hm"])
+                self.shop_mode = True
+                self.retry_count = 0
+                
+                # Try generating with weather first
+                outfits = self.api.get_outfits(
+                    occasion=occ, weather=wea, style=self.context.get("style"), top_n=6
+                )
+                # Progressive fallback for H&M
+                if not outfits and wea is not None:
+                    outfits = self.api.get_outfits(
+                        occasion=occ, weather=None, style=self.context.get("style"), top_n=6
+                    )
+                
+                if not outfits:
+                    # Reset back to personal just in case
+                    self.api.reload_wardrobe(self.wardrobe_paths["personal"])
+                    self.shop_mode = False
+                    return f"I couldn't find any suitable {occ.upper()} outfits for {(wea_cls or 'any').upper()} weather anywhere!"
+                
+                selected = outfits[:3]
+                response = f"I couldn't find any suitable {occ.upper()} outfits in your wardrobe, so here are some options from the **H&M Global Store** instead:\n"
+            else:
+                return f"I couldn't find any suitable {occ.upper()} outfits for {(wea_cls or 'any').upper()} weather in the store either."
         else:
-            selected = outfits[:3]
-            temp_str = f" ({wea['temperature']}°C)" if wea and "temperature" in wea else ""
-            response  = f"\n[Extracted] Occasion: {occ.upper()}, Weather: {(wea_cls or 'N/A').upper()}{temp_str}\n"
-            response += "\n* Here are your outfit recommendations:\n"
+            # Check if this is a retry and we should show alternatives
+            if is_retry:
+                start_idx = self.retry_count * 3
+                end_idx = start_idx + 3
+                
+                if len(outfits) > start_idx:
+                    # We have alternatives in the current wardrobe
+                    selected = outfits[start_idx:end_idx]
+                    mode_prefix = "[H&M STORE]" if self.shop_mode else "[WARDROBE]"
+                    response = f"\n{mode_prefix} No problem! Here are some alternative outfit options (Set {self.retry_count + 1}):\n"
+                elif not self.shop_mode:
+                    # No alternatives left in personal wardrobe -> Switch to H&M
+                    print(f"\n[Assistant] Exhausted {len(outfits)} personal options. Switching to H&M Store...")
+                    self.api.reload_wardrobe(self.wardrobe_paths["hm"])
+                    self.shop_mode = True
+                    self.retry_count = 0 # Reset retry count for the new catalog
+                    
+                    # Try with weather first
+                    outfits = self.api.get_outfits(
+                        occasion=occ, weather=wea, style=self.context.get("style"), top_n=6
+                    )
+                    # Progressive fallback for H&M as well
+                    if not outfits and wea is not None:
+                        outfits = self.api.get_outfits(
+                            occasion=occ, weather=None, style=self.context.get("style"), top_n=6
+                        )
+                    
+                    if not outfits:
+                        return "I've run out of recommendations in your wardrobe and couldn't find matches in the store either."
+                    
+                    selected = outfits[:3]
+                    response = "I've run out of options in your wardrobe, so let's check the **H&M Global Store** for something new!\n"
+                else:
+                    # Already in H&M and no more options
+                    return "I've shown you all the best matches I could find in the store!"
+            else:
+                # Standard first-time generation
+                self.retry_count = 0
+                selected = outfits[:3]
+                mode_prefix = "[H&M STORE]" if self.shop_mode else "[WARDROBE]"
+                temp_str = f" ({wea['temperature']}°C)" if wea and "temperature" in wea else ""
+                response  = f"\n{mode_prefix} Occasion: {occ.upper()}, Weather: {(wea_cls or 'N/A').upper()}{temp_str}\n"
+                response += "\n* Here are your outfit recommendations:\n"
 
+        # Store for reference
         self.last_recommendations = selected
 
         for i, outfit in enumerate(selected, 1):
@@ -365,6 +486,7 @@ def main():
     print("  Chat naturally to get outfit recommendations.")
     print("  Example: 'I need a formal outfit, it's freezing outside.'")
     print("  Commands:")
+    print("    shop                 — toggle between Personal Wardrobe and H&M Store")
     print("    upload <image_path>  — add a clothing item from an image")
     print("    quit / exit / q      — exit the assistant")
     print("=" * 60)
@@ -382,6 +504,11 @@ def main():
         if user_input.lower() in ("quit", "exit", "q"):
             print("Goodbye!")
             break
+
+        # ── Shop command ─────────────────────────────────────────────
+        if user_input.lower() == "shop":
+            print(f"\n{bot.toggle_shop_mode()}")
+            continue
 
         # ── Upload command ───────────────────────────────────────────
         if user_input.lower().startswith("upload "):
