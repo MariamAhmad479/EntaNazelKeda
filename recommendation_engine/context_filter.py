@@ -136,9 +136,15 @@ class ContextFilter:
         """Filter items by temperature and weather condition.
 
         Uses warmth-level and season mapping.
+
+        Strategy
+        --------
+        1. Strict pass  — items within the exact warmth range + matching season.
+        2. Relaxed pass — ±1 warmth tolerance, used only if strict yields < 3 items.
+        3. Last resort  — pick items closest to the target warmth (never silently
+           returns all items, which was causing shorts to appear in cold weather).
         """
         temp = weather.get("temperature")
-        condition = weather.get("condition", "").lower()
 
         if temp is None:
             return items
@@ -146,26 +152,39 @@ class ContextFilter:
         min_warmth, max_warmth = _temperature_to_warmth_range(temp)
         valid_seasons = set(_temperature_to_seasons(temp))
 
-        filtered = []
-        for item in items:
-            # Check warmth range
-            if not (min_warmth <= item.warmth_level <= max_warmth):
-                # Allow ±1 tolerance for flexibility
-                if abs(item.warmth_level - min_warmth) > 1 and abs(item.warmth_level - max_warmth) > 1:
-                    continue
+        def _passes(item: ClothingItem, strict: bool) -> bool:
+            # ── Warmth check ──────────────────────────────────────────
+            in_range = min_warmth <= item.warmth_level <= max_warmth
+            if not in_range:
+                if strict:
+                    return False
+                # Relaxed: allow ±1
+                if not (min_warmth - 1 <= item.warmth_level <= max_warmth + 1):
+                    return False
 
-            # Check season overlap
+            # ── Season check ─────────────────────────────────────────
             item_seasons = set(item.seasons)
             if item_seasons and not item_seasons.intersection(valid_seasons):
-                # Allow items that are multi-season (≥3 seasons = year-round)
-                if len(item_seasons) < 3:
-                    continue
+                # Year-round items (4 seasons listed) always pass
+                if len(item_seasons) < 4:
+                    return False
 
-            filtered.append(item)
+            return True
 
-        # If filtering removed everything, relax and return originals
+        # Pass 1: strict
+        filtered = [item for item in items if _passes(item, strict=True)]
+
+        # Pass 2: relax warmth ±1 if strict left too few
+        if len(filtered) < 3:
+            relaxed = [item for item in items if _passes(item, strict=False)]
+            if len(relaxed) > len(filtered):
+                filtered = relaxed
+
+        # Pass 3: last resort — rank by closeness to target warmth centre
         if not filtered:
-            return items
+            target = (min_warmth + max_warmth) / 2
+            sorted_by_closeness = sorted(items, key=lambda i: abs(i.warmth_level - target))
+            filtered = sorted_by_closeness[:max(3, len(items) // 2)]
 
         return filtered
 

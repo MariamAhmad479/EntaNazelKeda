@@ -18,7 +18,7 @@
       "seasons": [
         "summer"
       ],
-      "warmth_level": 1,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-13 193825.png"
@@ -39,8 +39,7 @@
         "casual"
       ],
       "seasons": [
-        "summer",
-        "spring"
+        "summer"
       ],
       "warmth_level": 2,
       "formality_level": 3,
@@ -63,9 +62,7 @@
         "casual"
       ],
       "seasons": [
-        "summer",
-        "spring",
-        "autumn"
+        "summer"
       ],
       "warmth_level": 2,
       "formality_level": 3,
@@ -88,9 +85,7 @@
         "casual"
       ],
       "seasons": [
-        "summer",
-        "spring",
-        "autumn"
+        "summer"
       ],
       "warmth_level": 2,
       "formality_level": 3,
@@ -113,9 +108,7 @@
         "casual"
       ],
       "seasons": [
-        "summer",
-        "spring",
-        "autumn"
+        "summer"
       ],
       "warmth_level": 2,
       "formality_level": 3,
@@ -138,10 +131,9 @@
         "casual"
       ],
       "seasons": [
-        "autumn",
-        "winter"
+        "summer"
       ],
-      "warmth_level": 4,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223509.png"
@@ -162,8 +154,7 @@
         "casual"
       ],
       "seasons": [
-        "summer",
-        "spring"
+        "summer"
       ],
       "warmth_level": 2,
       "formality_level": 3,
@@ -186,11 +177,9 @@
         "casual"
       ],
       "seasons": [
-        "spring",
-        "autumn",
-        "winter"
+        "autumn"
       ],
-      "warmth_level": 3,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223545.png"
@@ -211,11 +200,9 @@
         "casual"
       ],
       "seasons": [
-        "spring",
-        "autumn",
-        "winter"
+        "summer"
       ],
-      "warmth_level": 3,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223553.png"
@@ -236,10 +223,7 @@
         "casual"
       ],
       "seasons": [
-        "summer",
-        "spring",
-        "autumn",
-        "winter"
+        "summer"
       ],
       "warmth_level": 2,
       "formality_level": 3,
@@ -262,10 +246,7 @@
         "casual"
       ],
       "seasons": [
-        "summer",
-        "spring",
-        "autumn",
-        "winter"
+        "summer"
       ],
       "warmth_level": 2,
       "formality_level": 3,
@@ -288,11 +269,9 @@
         "casual"
       ],
       "seasons": [
-        "spring",
-        "autumn",
-        "winter"
+        "autumn"
       ],
-      "warmth_level": 3,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223647.png"
@@ -313,11 +292,9 @@
         "casual"
       ],
       "seasons": [
-        "spring",
-        "autumn",
-        "winter"
+        "autumn"
       ],
-      "warmth_level": 3,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223656.png"
@@ -338,11 +315,9 @@
         "casual"
       ],
       "seasons": [
-        "spring",
-        "autumn",
-        "winter"
+        "summer"
       ],
-      "warmth_level": 3,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223700.png"
@@ -363,10 +338,9 @@
         "casual"
       ],
       "seasons": [
-        "autumn",
-        "winter"
+        "autumn"
       ],
-      "warmth_level": 4,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223708.png"
@@ -389,7 +363,7 @@
       "seasons": [
         "summer"
       ],
-      "warmth_level": 1,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223731.png"
@@ -410,11 +384,9 @@
         "casual"
       ],
       "seasons": [
-        "spring",
-        "autumn",
-        "winter"
+        "autumn"
       ],
-      "warmth_level": 3,
+      "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\WhatsApp Image 2026-05-15 at 11.54.51 PM.jpeg"
@@ -435,10 +407,7 @@
         "casual"
       ],
       "seasons": [
-        "summer",
-        "spring",
-        "autumn",
-        "winter"
+        "summer"
       ],
       "warmth_level": 2,
       "formality_level": 3,
