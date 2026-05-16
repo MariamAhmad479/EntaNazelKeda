@@ -1,0 +1,86 @@
+place_name,city,category,rating,user_ratings_total,address,lat,lng
+Khan el-Khalili,Cairo,tourist_attraction,4.6,12500,Al-Azhar St Cairo,30.0478,31.2625
+The Egyptian Museum,Cairo,museum,4.7,18200,Tahrir Square Cairo,30.0478,31.2336
+Cairo Tower,Cairo,tourist_attraction,4.4,9800,Gezira Island Cairo,30.0459,31.2243
+City Stars Mall,Cairo,shopping_mall,4.4,22000,Omar Ibn El-Khattab St Cairo,30.0731,31.3407
+Mall of Egypt,Cairo,shopping_mall,4.5,31000,Alexandria Desert Road Cairo,30.0102,31.1821
+Mall of Arabia,Cairo,shopping_mall,4.3,18700,Juhayna Square Cairo,30.0068,31.1845
+Al-Azhar Mosque,Cairo,mosque,4.8,14300,Al-Azhar St Cairo,30.0459,31.2617
+Muhammad Ali Mosque,Cairo,mosque,4.7,16800,The Citadel Cairo,30.0286,31.2597
+Al-Hussein Mosque,Cairo,mosque,4.6,9200,Al-Hussein Square Cairo,30.0489,31.2628
+Abdeen Palace,Cairo,tourist_attraction,4.3,5600,Abdeen Square Cairo,30.0422,31.2461
+Maadi Corniche,Cairo,park,4.2,7800,Corniche El Nile Maadi Cairo,29.9602,31.2317
+Al-Azhar Park,Cairo,park,4.6,13400,Salah Salem St Cairo,30.0408,31.2756
+Khufu Pyramid,Giza,tourist_attraction,4.8,45000,Al Haram St Giza,29.9792,31.1342
+Sphinx,Giza,tourist_attraction,4.7,38000,Nazlet El-Semman Giza,29.9753,31.1376
+Giza Pyramids Complex,Giza,tourist_attraction,4.8,52000,Al Haram Giza,29.9773,31.1325
+Solar Boat Museum,Giza,museum,4.4,6700,Giza Pyramid Complex,29.9769,31.1241
+Fayrouz Restaurant Giza,Giza,restaurant,4.2,3200,Al Haram St Giza,29.9821,31.1398
+Abu El Sid,Cairo,restaurant,4.5,8900,26 July St Zamalek Cairo,30.0608,31.2219
+Koshary El Tahrir,Cairo,restaurant,4.4,11200,Tahrir Square Cairo,30.0444,31.2357
+Zooba,Cairo,restaurant,4.6,7600,26 July St Cairo,30.0572,31.2298
+Sequoia,Cairo,restaurant,4.5,9100,Abu El Feda St Zamalek Cairo,30.0651,31.2178
+Pier 88,Cairo,night_club,4.3,4500,Four Seasons Nile Plaza Cairo,30.0436,31.2285
+The Tap Maadi,Cairo,night_club,4.1,3800,Road 9 Maadi Cairo,29.9598,31.2562
+Cairo Jazz Club,Cairo,night_club,4.4,6200,26 July St Cairo,30.0581,31.2174
+Gold's Gym Mohandessin,Cairo,gym,4.2,2100,Gamet El Dewal St Cairo,30.0572,31.2021
+Fitness First City Stars,Cairo,gym,4.3,1800,City Stars Mall Cairo,30.0731,31.3407
+Cleopatra Spa Cairo,Cairo,spa,4.5,1400,Heliopolis Cairo,30.0892,31.3217
+Four Seasons Cairo,Cairo,hotel,4.7,8700,Nile Corniche Cairo,30.0436,31.2285
+Marriott Mena House,Giza,hotel,4.7,7200,Pyramids Road Giza,29.9875,31.1387
+Kempinski Nile Hotel,Cairo,hotel,4.6,6100,Corniche El Nile Cairo,30.0375,31.2281
+Bibliotheca Alexandrina,Alexandria,museum,4.7,21000,El Corniche Alexandria,31.2089,29.9092
+Alexandria National Museum,Alexandria,museum,4.5,8900,Ahmed Orabi St Alexandria,31.2001,29.9187
+Qaitbay Citadel,Alexandria,tourist_attraction,4.6,14500,Eastern Harbor Alexandria,31.2137,29.8853
+Montaza Palace,Alexandria,tourist_attraction,4.5,18700,Montaza Alexandria,31.2842,30.0167
+Montaza Beach,Alexandria,beach,4.3,22000,Montaza Alexandria,31.2856,30.0198
+Mamoura Beach,Alexandria,beach,4.2,15600,Mamoura Alexandria,31.2934,30.0356
+Stanley Beach,Alexandria,beach,4.1,19800,Stanley Alexandria,31.2312,29.9578
+San Giovanni Beach,Alexandria,beach,4.0,12300,Stanley Alexandria,31.2298,29.9541
+Sidi Bishr Beach,Alexandria,beach,3.9,17400,Sidi Bishr Alexandria,31.2712,30.0089
+Abu Qir Fish Restaurant,Alexandria,restaurant,4.4,9800,Abu Qir Alexandria,31.3201,30.0634
+Elite Restaurant,Alexandria,restaurant,4.3,6700,Saad Zaghloul Square Alexandria,31.2001,29.9092
+Mosque of Abu al-Abbas,Alexandria,mosque,4.8,11200,El Anfushi Alexandria,31.2021,29.8912
+Al-Mursi Mosque,Alexandria,mosque,4.7,9600,El Anfushi Alexandria,31.2034,29.8923
+San Stefano Mall,Alexandria,shopping_mall,4.3,16800,San Stefano Alexandria,31.2234,29.9398
+Karnak Temple,Luxor,tourist_attraction,4.8,28900,Karnak Luxor,25.7188,32.6573
+Luxor Temple,Luxor,tourist_attraction,4.7,24300,Corniche El Nile Luxor,25.6997,32.6391
+Valley of the Kings,Luxor,tourist_attraction,4.8,31200,West Bank Luxor,25.7402,32.6014
+Hatshepsut Temple,Luxor,tourist_attraction,4.7,19800,Deir el-Bahari Luxor,25.7379,32.6056
+Luxor Museum,Luxor,museum,4.6,8700,Corniche El Nile Luxor,25.6981,32.6390
+Winter Palace Hotel,Luxor,hotel,4.6,7800,Corniche El Nile Luxor,25.6981,32.6390
+Sofitel Winter Palace,Luxor,hotel,4.7,6500,Corniche El Nile Luxor,25.6975,32.6388
+Marsam Restaurant,Luxor,restaurant,4.3,3200,West Bank Luxor,25.7312,32.6098
+Luxor Mosque,Luxor,mosque,4.5,4100,El Matar St Luxor,25.7001,32.6402
+Philae Temple,Aswan,tourist_attraction,4.8,18900,Agilkia Island Aswan,24.0231,32.8840
+Abu Simbel Temple,Aswan,tourist_attraction,4.9,22400,Abu Simbel Aswan,22.3372,31.6258
+Nubian Museum,Aswan,museum,4.7,9800,Abtal El Tahrir St Aswan,24.0823,32.8947
+Aswan High Dam,Aswan,tourist_attraction,4.5,14300,High Dam Aswan,23.9700,32.8670
+Movenpick Aswan,Aswan,hotel,4.6,5600,Elephantine Island Aswan,24.0889,32.8921
+Sofitel Legend Cataract,Aswan,hotel,4.8,7100,Abtal El Tahrir Aswan,24.0886,32.8995
+Panorama Restaurant Aswan,Aswan,restaurant,4.4,2800,Corniche El Nile Aswan,24.0876,32.8983
+Ferial Garden,Aswan,park,4.3,3400,Corniche El Nile Aswan,24.0901,32.8967
+Hurghada Marina,Hurghada,tourist_attraction,4.4,16700,Marina Hurghada,27.2122,33.8354
+Hurghada Grand Aquarium,Hurghada,tourist_attraction,4.5,12300,Hurghada,27.2267,33.8389
+Sindbad Beach Resort,Hurghada,beach,4.3,18900,Sindbad St Hurghada,27.2489,33.8312
+Magawish Beach,Hurghada,beach,4.2,14200,Magawish Hurghada,27.1823,33.8723
+Senzo Mall,Hurghada,shopping_mall,4.2,11400,Hurghada,27.2345,33.8456
+Little Buddha Hurghada,Hurghada,night_club,4.3,5600,Hurghada Marina,27.2122,33.8354
+Titanic Palace,Hurghada,hotel,4.4,9800,Hurghada,27.1234,33.9234
+Steigenberger Aldau,Hurghada,hotel,4.6,8700,Hurghada,27.2034,33.8312
+Moby Dick Restaurant,Hurghada,restaurant,4.3,4500,Hurghada Marina,27.2122,33.8354
+Abu Hashima Mosque,Hurghada,mosque,4.5,3200,El Dahar Hurghada,27.2601,33.8123
+Naama Bay,Sharm el-Sheikh,tourist_attraction,4.5,21000,Naama Bay Sharm el-Sheikh,27.9158,34.3300
+Ras Mohammed Park,Sharm el-Sheikh,tourist_attraction,4.8,16700,South Sinai,27.7280,34.2490
+Sharm Old Market,Sharm el-Sheikh,tourist_attraction,4.2,9800,Old Market Sharm el-Sheikh,27.8612,34.2812
+Sharks Bay Beach,Sharm el-Sheikh,beach,4.4,13400,Sharks Bay Sharm el-Sheikh,27.9567,34.3123
+Nabq Beach,Sharm el-Sheikh,beach,4.3,8900,Nabq Sharm el-Sheikh,27.9978,34.3456
+Four Seasons Sharm,Sharm el-Sheikh,hotel,4.8,9200,Sharm el-Sheikh,27.9234,34.3312
+Savoy Sharm,Sharm el-Sheikh,hotel,4.5,7800,Naama Bay Sharm el-Sheikh,27.9167,34.3289
+Farsha Cafe,Sharm el-Sheikh,cafe,4.6,6700,Hadaba Sharm el-Sheikh,27.8534,34.2934
+Camel Bar,Sharm el-Sheikh,night_club,4.2,5400,Naama Bay Sharm el-Sheikh,27.9145,34.3278
+Pacha Sharm,Sharm el-Sheikh,night_club,4.1,4800,Naama Bay Sharm el-Sheikh,27.9134,34.3267
+Coffeeshop Company Cairo,Cairo,cafe,4.2,5600,Zamalek Cairo,30.0608,31.2219
+Cilantro Cafe Cairo,Cairo,cafe,4.3,8900,Downtown Cairo,30.0444,31.2357
+Roastery Cafe Alexandria,Alexandria,cafe,4.4,4300,San Stefano Alexandria,31.2234,29.9398
+Costa Coffee Luxor,Luxor,cafe,4.1,2100,Corniche El Nile Luxor,25.6981,32.6390

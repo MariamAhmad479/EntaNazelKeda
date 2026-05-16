@@ -7,19 +7,32 @@ from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from recommendation_engine.api import RecommendationAPI
+from recommendation_engine.location_weather import load_locations, get_location_details, map_category_to_occasion, fetch_realtime_weather
 
 st.title("✨ Get Recommendation")
 st.write("Choose your preferences and generate an outfit recommendation.")
 
-occasion = st.selectbox(
-    "Where are you going?",
-    ["University", "Work", "Casual outing", "Wedding", "Gym", "Date", "Formal event"]
-)
+mode = st.radio("How would you like to get recommendations?", ["Location-Based (Auto Weather)", "Manual Input"])
 
-weather = st.selectbox(
-    "Weather",
-    ["Hot", "Cold", "Rainy", "Mild"]
-)
+if mode == "Manual Input":
+    occasion = st.selectbox(
+        "Where are you going?",
+        ["University", "Work", "Casual outing", "Wedding", "Gym", "Date", "Formal event"]
+    )
+    
+    weather = st.selectbox(
+        "Weather",
+        ["Hot", "Cold", "Rainy", "Mild"]
+    )
+else:
+    csv_path = os.path.join("data", "egypt_places_dummy.csv")
+    df_locations = load_locations(csv_path)
+    if not df_locations.empty:
+        places = df_locations['place_name'].tolist()
+        selected_place = st.selectbox("Select your destination:", places)
+    else:
+        st.error("Could not load locations data.")
+        selected_place = None
 
 style = st.selectbox(
     "Preferred style",
@@ -41,24 +54,42 @@ if st.button("Generate Recommendation"):
     api = RecommendationAPI(wardrobe_path)
     
     # Map inputs to RecommendationEngine enums
-    occ_map = {
-        "University": "casual",
-        "Work": "business",
-        "Casual outing": "casual",
-        "Wedding": "formal",
-        "Gym": "sport",
-        "Date": "casual",
-        "Formal event": "formal"
-    }
-    api_occasion = occ_map.get(occasion, "casual")
-    
-    weather_map = {
-        "Hot": {"temperature": 32, "condition": "sunny"},
-        "Cold": {"temperature": 5, "condition": "cloudy"},
-        "Rainy": {"temperature": 15, "condition": "rainy"},
-        "Mild": {"temperature": 22, "condition": "clear"}
-    }
-    api_weather = weather_map.get(weather, {"temperature": 22, "condition": "clear"})
+    if mode == "Manual Input":
+        occ_map = {
+            "University": "casual",
+            "Work": "business",
+            "Casual outing": "casual",
+            "Wedding": "formal",
+            "Gym": "sport",
+            "Date": "casual",
+            "Formal event": "formal"
+        }
+        api_occasion = occ_map.get(occasion, "casual")
+        
+        weather_map = {
+            "Hot": {"temperature": 32, "condition": "sunny"},
+            "Cold": {"temperature": 5, "condition": "cloudy"},
+            "Rainy": {"temperature": 15, "condition": "rainy"},
+            "Mild": {"temperature": 22, "condition": "clear"}
+        }
+        api_weather = weather_map.get(weather, {"temperature": 22, "condition": "clear"})
+    else:
+        if selected_place:
+            with st.spinner("Fetching real-time weather & occasion info..."):
+                loc_details = get_location_details(df_locations, selected_place)
+                cat = loc_details.get("category", "")
+                lat = loc_details.get("lat", 30.0444)
+                lng = loc_details.get("lng", 31.2357)
+                
+                api_occasion = map_category_to_occasion(cat)
+                api_weather = fetch_realtime_weather(lat, lng)
+                
+                st.info(f"📍 **Location:** {selected_place} ({cat.replace('_', ' ').title()})  \n"
+                        f"👗 **Mapped Occasion:** {api_occasion.title()}  \n"
+                        f"🌤️ **Current Weather:** {api_weather['temperature']}°C, {api_weather['condition'].title()}")
+        else:
+            st.error("Please select a valid location.")
+            st.stop()
     
     style_map = {
         "Casual": "minimalist",
