@@ -195,11 +195,11 @@ class RecommendationAPI:
     def get_wardrobe_summary(self) -> dict:
         return self._wardrobe.summary()
 
-    def get_outfits(self, occasion=None, weather=None, style=None, top_n=5) -> List[dict]:
+    def get_outfits(self, occasion=None, weather=None, style=None, gender=None, top_n=5) -> List[dict]:
         items = self._wardrobe.get_all_items()
         if not items:
             return []
-        filtered = self._filter.filter_items(items, occasion=occasion, weather=weather, style=style)
+        filtered = self._filter.filter_items(items, occasion=occasion, weather=weather, style=style, gender=gender)
         outfits = self._generator.generate(filtered, top_n=top_n)
         return [o.to_dict() for o in outfits]
 

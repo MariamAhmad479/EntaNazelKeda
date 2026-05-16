@@ -1,8 +1,11 @@
 {
-  "vocab_size": 524,
+  "vocab_size": 606,
   "embed_dim": 64,
   "hidden_dim": 128,
   "num_occasions": 6,
   "num_weather": 3,
-  "num_styles": 6
+  "num_styles": 6,
+  "num_layers": 2,
+  "dropout": 0.3,
+  "bidirectional": true
 }

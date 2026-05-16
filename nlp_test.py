@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from nlp import NLPInference
 
-m = NLPInference("nlp/saved_models")
+m = NLPInference()
 print("NLP Manual Test — type a query and press Enter. Type 'quit' to exit.")
 print("-" * 55)
 
@@ -19,15 +19,19 @@ while True:
         continue
 
     r = m.predict(q)
+    conf = r.get("confidence", {})
 
-    occasion = r["occasion"] or "unknown"
-    style    = r["style"]    or "unknown"
+    occasion = f"{r['occasion']} ({conf.get('occasion', 0.0):.3f})" if r["occasion"] else "unknown"
+    style    = f"{r['style']} ({conf.get('style', 0.0):.3f})" if r["style"] else "unknown"
 
     if r["weather"]:
-        weather = "{} ({}C)".format(r["weather_class"], r["weather"]["temperature"])
+        weather = f"{r['weather_class']} ({r['weather']['temperature']}C) ({conf.get('weather', 0.0):.3f})"
     else:
         weather = "unknown"
 
+    intent = f"{r.get('intent')} ({conf.get('intent', 0.0):.3f})"
+
+    print("  Intent   :", intent)
     print("  Occasion :", occasion)
     print("  Weather  :", weather)
     print("  Style    :", style)

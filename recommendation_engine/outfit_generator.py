@@ -141,7 +141,26 @@ class OutfitGenerator:
             )
             candidates.sort(key=lambda o: o.score, reverse=True)
 
-        return candidates[:top_n]
+        # Explicitly ensure no outfit contains both a dress and a bottom
+        valid_candidates = []
+        for outfit in candidates:
+            cats = {item.category for item in outfit.items}
+            if ClothingCategory.DRESS in cats and (cats & BOTTOM_CATEGORIES):
+                continue
+            valid_candidates.append(outfit)
+
+        # Introduce variety by randomly sampling from a larger pool of top candidates
+        pool_size = top_n * 3
+        top_pool = valid_candidates[:pool_size]
+        
+        import random
+        if len(top_pool) > top_n:
+            final_selection = random.sample(top_pool, top_n)
+            final_selection.sort(key=lambda o: o.score, reverse=True)
+        else:
+            final_selection = top_pool
+
+        return final_selection
 
     # ------------------------------------------------------------------
     # Internal helpers

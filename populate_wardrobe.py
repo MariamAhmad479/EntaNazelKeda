@@ -7,10 +7,35 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from vision import predict_item
 from recommendation_engine.api import RecommendationAPI
 
+def map_color_to_rgb(color_name):
+    color_map = {
+        "black": [0, 0, 0],
+        "white": [255, 255, 255],
+        "gray": [128, 128, 128],
+        "grey": [128, 128, 128],
+        "silver": [192, 192, 192],
+        "red": [255, 0, 0],
+        "maroon": [128, 0, 0],
+        "blue": [0, 0, 255],
+        "navy blue": [0, 0, 128],
+        "navy": [0, 0, 128],
+        "light blue": [173, 216, 230],
+        "green": [0, 128, 0],
+        "olive": [128, 128, 0],
+        "yellow": [255, 255, 0],
+        "orange": [255, 165, 0],
+        "pink": [255, 192, 203],
+        "purple": [128, 0, 128],
+        "brown": [165, 42, 42],
+        "beige": [245, 245, 220],
+        "gold": [255, 215, 0]
+    }
+    return color_map.get(color_name.lower(), [128, 128, 128])
+
 def map_prediction_to_item(pred, filename, image):
     # Expect the CNN to return 'baseColour' now
     color_name = pred.get("baseColour", "black").lower()
-    rgb = [0, 0, 0] # Default, can be mapped from color_name if needed
+    rgb = map_color_to_rgb(color_name)
     
     cat_str = pred.get("subCategory", "").lower()
     art_str = pred.get("articleType", "").lower()
@@ -27,20 +52,34 @@ def map_prediction_to_item(pred, filename, image):
         "formality_level": 3
     }
     
-    if "top" in cat_str or "shirt" in art_str or "tshirt" in art_str:
-        item_dict["category"] = "shirt"
-    elif "bottom" in cat_str or "pant" in art_str or "jeans" in art_str:
-        item_dict["category"] = "pants"
-    elif "dress" in cat_str or "dress" in art_str:
+    if any(word in art_str for word in ["dress", "saree", "jumpsuit", "romper", "gown"]):
         item_dict["category"] = "dress"
-    elif "shoe" in cat_str or "foot" in cat_str or "sneaker" in art_str:
-        item_dict["category"] = "shoes"
-    elif "jacket" in art_str or "coat" in art_str or "outer" in cat_str:
-        item_dict["category"] = "jacket"
-    elif "skirt" in art_str:
-        item_dict["category"] = "skirt"
+    elif any(word in art_str for word in ["shirt", "tshirt", "top", "blouse", "kurta", "tunic", "tank"]):
+        item_dict["category"] = "shirt"
+    elif any(word in art_str for word in ["pant", "jeans", "trouser", "track pant", "legging", "jogger"]):
+        item_dict["category"] = "pants"
     elif "short" in art_str:
         item_dict["category"] = "shorts"
+    elif "skirt" in art_str:
+        item_dict["category"] = "skirt"
+    elif any(word in art_str for word in ["shoe", "sneaker", "boot", "sandal", "heel", "flip flop", "flat"]):
+        item_dict["category"] = "shoes"
+    elif any(word in art_str for word in ["jacket", "coat", "sweater", "sweatshirt", "hoodie", "blazer", "cardigan"]):
+        item_dict["category"] = "jacket"
+    elif any(word in art_str for word in ["sock", "tie", "belt", "hat", "cap", "bag", "jewel", "watch", "accessory", "bra", "briefs", "dupatta", "scarf"]):
+        item_dict["category"] = "accessory"
+    elif "top" in cat_str:
+        item_dict["category"] = "shirt"
+    elif "bottom" in cat_str:
+        item_dict["category"] = "pants"
+    elif "shoe" in cat_str or "foot" in cat_str or "flip flops" in cat_str:
+        item_dict["category"] = "shoes"
+    elif "dress" in cat_str:
+        item_dict["category"] = "dress"
+    elif "outer" in cat_str:
+        item_dict["category"] = "jacket"
+    elif "innerwear" in cat_str:
+        item_dict["category"] = "accessory"
     else:
         item_dict["category"] = "accessory"
         
@@ -79,6 +118,9 @@ def main():
         try:
             image = Image.open(img_path)
             prediction = predict_item(image)
+            if prediction.get("subCategory", "").lower() == "innerwear":
+                print(f"Skipping innerwear: {filename}")
+                continue
             item_dict = map_prediction_to_item(prediction, filename, image)
             item_dict["image_path"] = img_path
             

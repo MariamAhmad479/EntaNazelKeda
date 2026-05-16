@@ -1,0 +1,418 @@
+{
+  "items": [
+    {
+      "id": "4169fe63",
+      "name": "Blue Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-13 193825.png"
+    },
+    {
+      "id": "9d5aba16",
+      "name": "Blue Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-13 195736.png"
+    },
+    {
+      "id": "84d27e43",
+      "name": "White Tops",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-13 195754.png"
+    },
+    {
+      "id": "2e1604a8",
+      "name": "Blue Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223429.png"
+    },
+    {
+      "id": "a59a0350",
+      "name": "White Tops",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223437.png"
+    },
+    {
+      "id": "a0b9dcdf",
+      "name": "Pink Scarves",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        192,
+        203
+      ],
+      "color_name": "pink",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223509.png"
+    },
+    {
+      "id": "77d9ecb9",
+      "name": "Brown Skirts",
+      "category": "skirt",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223534.png"
+    },
+    {
+      "id": "43273059",
+      "name": "Brown Trousers",
+      "category": "pants",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223545.png"
+    },
+    {
+      "id": "9b78698b",
+      "name": "Blue Jeans",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223553.png"
+    },
+    {
+      "id": "df550f44",
+      "name": "Pink Socks",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        192,
+        203
+      ],
+      "color_name": "pink",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223623.png"
+    },
+    {
+      "id": "81c5be80",
+      "name": "Grey Pendant",
+      "category": "accessory",
+      "color_rgb": [
+        128,
+        128,
+        128
+      ],
+      "color_name": "grey",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223642.png"
+    },
+    {
+      "id": "9a779a55",
+      "name": "White Track pants",
+      "category": "pants",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223647.png"
+    },
+    {
+      "id": "49afe396",
+      "name": "Blue Jeans",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223656.png"
+    },
+    {
+      "id": "5393b269",
+      "name": "Blue Jeans",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223700.png"
+    },
+    {
+      "id": "c64753d5",
+      "name": "Blue Jackets",
+      "category": "jacket",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223708.png"
+    },
+    {
+      "id": "459465ae",
+      "name": "Navy blue Flip flops",
+      "category": "shoes",
+      "color_rgb": [
+        0,
+        0,
+        128
+      ],
+      "color_name": "navy blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223731.png"
+    },
+    {
+      "id": "54d196e3",
+      "name": "White Track pants",
+      "category": "pants",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\WhatsApp Image 2026-05-15 at 11.54.51 PM.jpeg"
+    },
+    {
+      "id": "66bb1bec",
+      "name": "White Socks",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\WhatsApp Image 2026-05-15 at 11.55.22 PM.jpeg"
+    }
+  ]
+}
