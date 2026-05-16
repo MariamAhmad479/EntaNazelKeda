@@ -74,6 +74,7 @@ class ContextFilter:
         occasion: Optional[str] = None,
         weather: Optional[Dict] = None,
         style: Optional[str] = None,
+        gender: Optional[str] = None,
     ) -> List[ClothingItem]:
         """Apply all active filters and return matching items.
 
@@ -88,6 +89,8 @@ class ContextFilter:
             where condition is e.g. "sunny", "rainy", "snowy".
         style : str or None
             Style name (must match a ``Style`` enum value).
+        gender : str or None
+            Gender for styling ("Male", "Female", "Unisex").
         """
         result = list(items)
 
@@ -99,6 +102,9 @@ class ContextFilter:
 
         if style is not None:
             result = self._filter_by_style(result, style)
+
+        if gender is not None and gender.lower() != "unisex":
+            result = self._filter_by_gender(result, gender)
 
         return result
 
@@ -182,6 +188,23 @@ class ContextFilter:
 
         matches = [item for item in items if item.style == target]
         return matches if matches else items
+
+    # ------------------------------------------------------------------
+    # Gender filter
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _filter_by_gender(
+        items: List[ClothingItem], gender: str
+    ) -> List[ClothingItem]:
+        gender_lower = gender.lower()
+        if gender_lower == "female":
+            exclude = ["men", "boy", "tie", "cufflink", "trunk", "boxer", "brief"]
+            return [i for i in items if not any(w in i.name.lower() for w in exclude)]
+        elif gender_lower == "male":
+            exclude = ["women", "girl", "dress", "skirt", "saree", "blouse", "legging", "heel", "purse", "bra", "panties"]
+            return [i for i in items if not any(w in i.name.lower() for w in exclude)]
+        return items
 
     def __repr__(self) -> str:
         return "ContextFilter()"

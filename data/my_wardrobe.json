@@ -1,15 +1,15 @@
 {
   "items": [
     {
-      "id": "ac8a61bd",
-      "name": "Gray Shorts",
-      "category": "pants",
+      "id": "4169fe63",
+      "name": "Blue Shorts",
+      "category": "shorts",
       "color_rgb": [
-        123,
-        150,
-        177
+        0,
+        0,
+        255
       ],
-      "color_name": "gray",
+      "color_name": "blue",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -24,15 +24,15 @@
       "image_path": "outfits\\Screenshot 2026-05-13 193825.png"
     },
     {
-      "id": "b0399ee0",
-      "name": "Pink Dresses",
+      "id": "9d5aba16",
+      "name": "Blue Dresses",
       "category": "dress",
       "color_rgb": [
-        171,
-        178,
-        193
+        0,
+        0,
+        255
       ],
-      "color_name": "pink",
+      "color_name": "blue",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -47,15 +47,15 @@
       "image_path": "outfits\\Screenshot 2026-05-13 195736.png"
     },
     {
-      "id": "40261fef",
-      "name": "Beige Tops",
-      "category": "accessory",
+      "id": "84d27e43",
+      "name": "White Tops",
+      "category": "shirt",
       "color_rgb": [
-        222,
-        217,
-        204
+        255,
+        255,
+        255
       ],
-      "color_name": "beige",
+      "color_name": "white",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -70,15 +70,15 @@
       "image_path": "outfits\\Screenshot 2026-05-13 195754.png"
     },
     {
-      "id": "bd199ea1",
-      "name": "Gray Tshirts",
+      "id": "2e1604a8",
+      "name": "Blue Tshirts",
       "category": "shirt",
       "color_rgb": [
-        135,
-        173,
-        214
+        0,
+        0,
+        255
       ],
-      "color_name": "gray",
+      "color_name": "blue",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -93,15 +93,15 @@
       "image_path": "outfits\\Screenshot 2026-05-15 223429.png"
     },
     {
-      "id": "d1c8650c",
-      "name": "Beige Dupatta",
+      "id": "a59a0350",
+      "name": "White Tops",
       "category": "shirt",
       "color_rgb": [
-        228,
-        228,
-        227
+        255,
+        255,
+        255
       ],
-      "color_name": "beige",
+      "color_name": "white",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -116,88 +116,19 @@
       "image_path": "outfits\\Screenshot 2026-05-15 223437.png"
     },
     {
-      "id": "54aad5ce",
-      "name": "Black Tshirts",
-      "category": "shirt",
+      "id": "a0b9dcdf",
+      "name": "Pink Scarves",
+      "category": "accessory",
       "color_rgb": [
-        36,
-        36,
-        31
-      ],
-      "color_name": "black",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual"
-      ],
-      "seasons": [
-        "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223442.png"
-    },
-    {
-      "id": "76338633",
-      "name": "Gray Kurtas",
-      "category": "shirt",
-      "color_rgb": [
-        144,
-        145,
-        163
-      ],
-      "color_name": "gray",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "formal"
-      ],
-      "seasons": [
-        "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223452.png"
-    },
-    {
-      "id": "d8f2718b",
-      "name": "Gray Dresses",
-      "category": "dress",
-      "color_rgb": [
-        195,
-        180,
-        141
-      ],
-      "color_name": "gray",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual"
-      ],
-      "seasons": [
-        "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223501.png"
-    },
-    {
-      "id": "15f32b52",
-      "name": "Pink Sarees",
-      "category": "shirt",
-      "color_rgb": [
-        200,
-        158,
-        163
+        255,
+        192,
+        203
       ],
       "color_name": "pink",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
-        "formal"
+        "casual"
       ],
       "seasons": [
         "summer"
@@ -208,15 +139,15 @@
       "image_path": "outfits\\Screenshot 2026-05-15 223509.png"
     },
     {
-      "id": "460e4686",
-      "name": "Gray Dresses",
-      "category": "pants",
+      "id": "77d9ecb9",
+      "name": "Brown Skirts",
+      "category": "skirt",
       "color_rgb": [
-        145,
-        128,
-        115
+        165,
+        42,
+        42
       ],
-      "color_name": "gray",
+      "color_name": "brown",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -231,38 +162,15 @@
       "image_path": "outfits\\Screenshot 2026-05-15 223534.png"
     },
     {
-      "id": "56c87e8e",
-      "name": "Gray Trousers",
-      "category": "shirt",
-      "color_rgb": [
-        165,
-        147,
-        129
-      ],
-      "color_name": "gray",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual"
-      ],
-      "seasons": [
-        "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223545.png"
-    },
-    {
-      "id": "a426d262",
-      "name": "Gray Jeans",
+      "id": "43273059",
+      "name": "Brown Trousers",
       "category": "pants",
       "color_rgb": [
-        69,
-        80,
-        105
+        165,
+        42,
+        42
       ],
-      "color_name": "gray",
+      "color_name": "brown",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -274,18 +182,18 @@
       "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223553.png"
+      "image_path": "outfits\\Screenshot 2026-05-15 223545.png"
     },
     {
-      "id": "56a53dbf",
-      "name": "Pink Tops",
-      "category": "accessory",
+      "id": "9b78698b",
+      "name": "Blue Jeans",
+      "category": "pants",
       "color_rgb": [
-        228,
-        216,
-        196
+        0,
+        0,
+        255
       ],
-      "color_name": "pink",
+      "color_name": "blue",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -297,18 +205,18 @@
       "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223605.png"
+      "image_path": "outfits\\Screenshot 2026-05-15 223553.png"
     },
     {
-      "id": "b642e1be",
-      "name": "Gray Dresses",
-      "category": "dress",
+      "id": "df550f44",
+      "name": "Pink Socks",
+      "category": "accessory",
       "color_rgb": [
-        210,
-        110,
-        118
+        255,
+        192,
+        203
       ],
-      "color_name": "gray",
+      "color_name": "pink",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -323,38 +231,15 @@
       "image_path": "outfits\\Screenshot 2026-05-15 223623.png"
     },
     {
-      "id": "e0c18397",
-      "name": "Pink Track pants",
-      "category": "pants",
+      "id": "81c5be80",
+      "name": "Grey Pendant",
+      "category": "accessory",
       "color_rgb": [
-        193,
-        197,
-        206
+        128,
+        128,
+        128
       ],
-      "color_name": "pink",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "formal"
-      ],
-      "seasons": [
-        "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223642.png"
-    },
-    {
-      "id": "f08f2669",
-      "name": "Pink Shorts",
-      "category": "pants",
-      "color_rgb": [
-        196,
-        201,
-        209
-      ],
-      "color_name": "pink",
+      "color_name": "grey",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -366,18 +251,41 @@
       "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223642.png"
+    },
+    {
+      "id": "9a779a55",
+      "name": "White Track pants",
+      "category": "pants",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223647.png"
     },
     {
-      "id": "45a6d1b9",
-      "name": "Navy Track pants",
+      "id": "49afe396",
+      "name": "Blue Jeans",
       "category": "pants",
       "color_rgb": [
-        53,
-        64,
-        95
+        0,
+        0,
+        255
       ],
-      "color_name": "navy",
+      "color_name": "blue",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -392,15 +300,38 @@
       "image_path": "outfits\\Screenshot 2026-05-15 223656.png"
     },
     {
-      "id": "4522f730",
-      "name": "Gray Track pants",
+      "id": "5393b269",
+      "name": "Blue Jeans",
       "category": "pants",
       "color_rgb": [
-        89,
-        96,
-        120
+        0,
+        0,
+        255
       ],
-      "color_name": "gray",
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223700.png"
+    },
+    {
+      "id": "c64753d5",
+      "name": "Blue Jackets",
+      "category": "jacket",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -412,41 +343,18 @@
       "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223700.png"
-    },
-    {
-      "id": "eee68aed",
-      "name": "Gray Flip flops",
-      "category": "pants",
-      "color_rgb": [
-        129,
-        145,
-        171
-      ],
-      "color_name": "gray",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual"
-      ],
-      "seasons": [
-        "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223708.png"
     },
     {
-      "id": "7fefcb54",
-      "name": "Pink Sports shoes",
+      "id": "459465ae",
+      "name": "Navy blue Flip flops",
       "category": "shoes",
       "color_rgb": [
-        182,
-        178,
-        173
+        0,
+        0,
+        128
       ],
-      "color_name": "pink",
+      "color_name": "navy blue",
       "pattern": "solid",
       "style": "classic",
       "occasions": [
@@ -454,29 +362,6 @@
       ],
       "seasons": [
         "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223718.png"
-    },
-    {
-      "id": "ff47c6a3",
-      "name": "Brown Heels",
-      "category": "shoes",
-      "color_rgb": [
-        91,
-        83,
-        75
-      ],
-      "color_name": "brown",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual"
-      ],
-      "seasons": [
-        "winter"
       ],
       "warmth_level": 2,
       "formality_level": 3,
@@ -484,82 +369,13 @@
       "image_path": "outfits\\Screenshot 2026-05-15 223731.png"
     },
     {
-      "id": "d87521db",
-      "name": "Gray Flats",
-      "category": "shoes",
-      "color_rgb": [
-        150,
-        103,
-        79
-      ],
-      "color_name": "gray",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual"
-      ],
-      "seasons": [
-        "winter"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223736.png"
-    },
-    {
-      "id": "b181b04e",
-      "name": "Gray Heels",
-      "category": "shoes",
-      "color_rgb": [
-        170,
-        157,
-        149
-      ],
-      "color_name": "gray",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual"
-      ],
-      "seasons": [
-        "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223743.png"
-    },
-    {
-      "id": "9643c015",
-      "name": "Brown Socks",
-      "category": "accessory",
-      "color_rgb": [
-        101,
-        81,
-        66
-      ],
-      "color_name": "brown",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual"
-      ],
-      "seasons": [
-        "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223801.png"
-    },
-    {
-      "id": "a7b85c56",
+      "id": "54d196e3",
       "name": "White Track pants",
       "category": "pants",
       "color_rgb": [
-        0,
-        0,
-        0
+        255,
+        255,
+        255
       ],
       "color_name": "white",
       "pattern": "solid",
@@ -576,13 +392,13 @@
       "image_path": "outfits\\WhatsApp Image 2026-05-15 at 11.54.51 PM.jpeg"
     },
     {
-      "id": "6450ac49",
-      "name": "White Tops",
-      "category": "shirt",
+      "id": "66bb1bec",
+      "name": "White Socks",
+      "category": "accessory",
       "color_rgb": [
-        0,
-        0,
-        0
+        255,
+        255,
+        255
       ],
       "color_name": "white",
       "pattern": "solid",

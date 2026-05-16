@@ -75,6 +75,7 @@ if st.button("Generate Recommendation"):
             occasion=api_occasion,
             weather=api_weather,
             style=api_style,
+            gender=gender,
             top_n=3
         )
         
