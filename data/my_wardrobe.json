@@ -597,6 +597,489 @@
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\WhatsApp Image 2026-05-15 at 11.55.22 PM.jpeg"
+    },
+    {
+      "id": "03fc6569",
+      "name": "White Track pants",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\WhatsApp Image 2026-05-15 at 11.54.51 PM.jpeg"
+    },
+    {
+      "id": "d212b307",
+      "name": "Beige Bra",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "beige",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223501.png"
+    },
+    {
+      "id": "84f81a7f",
+      "name": "Black Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223442.png"
+    },
+    {
+      "id": "807e79a1",
+      "name": "White Shirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223429.png"
+    },
+    {
+      "id": "5c6cb44e",
+      "name": "Red Skirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "formal"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223623.png"
+    },
+    {
+      "id": "b84a9f71",
+      "name": "White Kurtas",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223437.png"
+    },
+    {
+      "id": "c3a83a9c",
+      "name": "Blue Shorts",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-13 193825.png"
+    },
+    {
+      "id": "7e061352",
+      "name": "White Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223534.png"
+    },
+    {
+      "id": "86d862c2",
+      "name": "Blue Jackets",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223708.png"
+    },
+    {
+      "id": "caeeb682",
+      "name": "Blue Jackets",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223708.png"
+    },
+    {
+      "id": "7e5fec10",
+      "name": "Blue Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-13 195736.png"
+    },
+    {
+      "id": "9576693e",
+      "name": "White Track pants",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223647.png"
+    },
+    {
+      "id": "55769c66",
+      "name": "Blue Jeans",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223656.png"
+    },
+    {
+      "id": "011082f3",
+      "name": "Blue Jackets",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223708.png"
+    },
+    {
+      "id": "93740a02",
+      "name": "Yellow Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "yellow",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223501.png"
+    },
+    {
+      "id": "0b8f7c16",
+      "name": "Blue Shorts",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-13 193825.png"
+    },
+    {
+      "id": "f0df1371",
+      "name": "Black Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223442.png"
+    },
+    {
+      "id": "d1f189be",
+      "name": "Brown Skirts",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223534.png"
+    },
+    {
+      "id": "2318cd6d",
+      "name": "Red Socks",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223623.png"
+    },
+    {
+      "id": "78e49de8",
+      "name": "Navy blue Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "navy blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-13 195736.png"
+    },
+    {
+      "id": "efc47d49",
+      "name": "Navy blue Trousers",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "navy blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223656.png"
     }
   ]
 }
