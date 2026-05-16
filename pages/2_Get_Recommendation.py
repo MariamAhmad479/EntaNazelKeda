@@ -12,6 +12,7 @@ from recommendation_engine.location_weather import load_locations, get_location_
 st.title("✨ Get Recommendation")
 st.write("Choose your preferences and generate an outfit recommendation.")
 
+use_global_catalog = st.checkbox("Shop the Look (Use Global Store Catalog)", help="Check this if your wardrobe is empty or you want H&M recommendations.")
 mode = st.radio("How would you like to get recommendations?", ["Location-Based (Auto Weather)", "Manual Input"])
 
 if mode == "Manual Input":
@@ -46,10 +47,16 @@ gender = st.selectbox(
 
 if st.button("Generate Recommendation"):
     # Initialize API
-    wardrobe_path = os.path.join("data", "my_wardrobe.json")
-    if not os.path.exists(wardrobe_path):
-        st.warning("Your wardrobe is empty! Please upload outfits first.")
-        st.stop()
+    if use_global_catalog:
+        wardrobe_path = os.path.join("data", "hm_catalog.json")
+        if not os.path.exists(wardrobe_path):
+            st.warning("Global catalog not found! Please run the conversion script first.")
+            st.stop()
+    else:
+        wardrobe_path = os.path.join("data", "my_wardrobe.json")
+        if not os.path.exists(wardrobe_path):
+            st.warning("Your wardrobe is empty! Please upload outfits first.")
+            st.stop()
         
     api = RecommendationAPI(wardrobe_path)
     
