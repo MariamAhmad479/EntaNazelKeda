@@ -33,6 +33,7 @@ import torch.nn.functional as F
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from nlp.dataset import OCCASIONS, WEATHER_CLASSES, STYLES, INTENT_CLASSES
+from recommendation_engine.location_weather import load_locations, get_location_details, map_category_to_occasion, fetch_realtime_weather
 
 OCCASION_CONF_THRESH = 0.30
 WEATHER_CONF_THRESH  = 0.30
@@ -194,6 +195,10 @@ class NLPInference:
         self.idx2style    = {i: s for i, s in enumerate(STYLES)}
         self.idx2intent   = {i: c for i, c in enumerate(INTENT_CLASSES)}
 
+        # Load locations for substring matching
+        csv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "egypt_places_dummy.csv")
+        self.df_locations = load_locations(csv_path)
+
     # ── Core prediction ───────────────────────────────────────────────────────
 
     def predict(self, text: str) -> dict:
@@ -256,6 +261,35 @@ class NLPInference:
             weather_class = None
             temperature   = None
             condition     = None
+
+        # ── Location Matching Override ─────────────────────────────────────────
+        matched_location = None
+        if not self.df_locations.empty:
+            text_lower = text.lower()
+            for place in self.df_locations['place_name'].values:
+                if str(place).lower() in text_lower:
+                    matched_location = place
+                    break
+        
+        if matched_location:
+            print(f"\n[NLPInference] Detected location: {matched_location}")
+            loc_details = get_location_details(self.df_locations, matched_location)
+            cat = loc_details.get("category", "")
+            lat = loc_details.get("lat", 30.0444)
+            lng = loc_details.get("lng", 31.2357)
+            
+            # Override occasion and weather using the realtime API
+            occasion = map_category_to_occasion(cat)
+            api_weather = fetch_realtime_weather(lat, lng)
+            temperature = api_weather["temperature"]
+            condition = api_weather["condition"]
+            weather_class = _temp_to_class(temperature)
+            
+            # Force the intent to OUTFIT_REQUEST so the dialogue manager doesn't ignore it
+            intent = "OUTFIT_REQUEST"
+            i_conf_v = 1.0
+            
+            print(f"               Mapped to Occasion: {occasion}, Temp: {temperature}C")
 
         weather_dict = (
             {"temperature": temperature, "condition": condition}

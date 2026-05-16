@@ -125,10 +125,9 @@ class WardrobeChatbot:
             return random.choice(greetings)
 
         if intent == "OTHER":
-            # If we're already showing results and the user says something vague,
-            # treat it as an implicit "show me something else" rather than giving up.
-            if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
-                return self._generate_recommendations(is_retry=True)
+            if self.state == SHOWING_RESULTS:
+                self._reset_context()
+                return "Okay, I've cleared your previous search. What kind of outfit do you need now?"
             return ("I didn't quite catch any outfit details. "
                     "Do you want outfit suggestions or need help deciding what to wear?")
 
@@ -141,11 +140,6 @@ class WardrobeChatbot:
             )
 
         # ── 3. REJECTION / FEEDBACK: handle BEFORE touching context ──
-        #
-        # These intents mean "same context, different outfit".
-        # We MUST NOT let the NLP's spurious occasion/weather extractions
-        # overwrite the user's original request (e.g. "I don't like these"
-        # should never change COLD → MILD).
         if intent == "REJECTION":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
                 return self._generate_recommendations(is_retry=True)
@@ -175,13 +169,6 @@ class WardrobeChatbot:
         if extracted.get("style"):
             self.context["style"] = extracted["style"]
             updated_something = True
-
-        # Safety net: if we are SHOWING_RESULTS and nothing new was said
-        # with sufficient confidence, treat the input as an implicit retry
-        # rather than breaking the conversation.
-        if self.state == SHOWING_RESULTS and not updated_something:
-            if self.context["occasion"] and self.context["weather_class"]:
-                return self._generate_recommendations(is_retry=True)
 
         # ── 6. Partial information → ask follow-up ───────────────────
         if not self.context["occasion"] and not self.context["weather_class"]:
