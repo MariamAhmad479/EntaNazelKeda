@@ -31,6 +31,7 @@ class WardrobeChatbot:
             "style":        None,
         }
         self.last_recommendations = []
+        self.current_outfit_pool = []
         self.shop_mode = False
         self.retry_count = 0  # Track how many times the user rejected outfits
         self.wardrobe_paths = {
@@ -57,6 +58,7 @@ class WardrobeChatbot:
             "style":         None,
         }
         self.last_recommendations = []
+        self.current_outfit_pool = []
         self.retry_count = 0
         self.state = AWAITING_QUERY
 
@@ -267,98 +269,104 @@ class WardrobeChatbot:
         occ     = self.context["occasion"]
         wea     = self.context["weather"]       # dict or None
         wea_cls = self.context["weather_class"]
+        style   = self.context.get("style")
 
-        # Fetch extra outfits so we have alternates for retries
-        print(f"[Assistant] Searching for {occ.upper()} outfits for {wea_cls.upper() if wea_cls else 'ANY'} weather...")
-        outfits = self.api.get_outfits(occasion=occ, weather=wea, top_n=6)
+        if is_retry and not self.current_outfit_pool:
+            is_retry = False
 
-        # ── Progressive fallback if weather filter left no complete outfit ──
-        if not outfits and wea is not None:
-            print(f"[Assistant] No exact matches for {wea_cls.upper()}. Trying with relaxed weather constraints...")
-            # Relax season constraint but keep warmth preference via scoring
-            outfits = self.api.get_outfits(occasion=occ, weather=None, top_n=6)
-            if outfits:
-                # Re-rank: prefer items with higher warmth for cold, lower for hot
-                target_warmth = 4 if wea["temperature"] <= 15 else 1
-                def _warmth_penalty(o):
-                    avg_w = sum(
-                        item.get("warmth_level", 2) for item in o["items"]
-                    ) / max(len(o["items"]), 1)
-                    return abs(avg_w - target_warmth)
-                outfits.sort(key=_warmth_penalty)
+        if not is_retry:
+            # Fetch extra outfits so we have alternates for retries
+            print(f"[Assistant] Searching for {occ.upper()} outfits for {wea_cls.upper() if wea_cls else 'ANY'} weather...")
+            outfits = self.api.get_outfits(occasion=occ, weather=wea, style=style, top_n=30)
 
-        if not outfits:
-            # Automatic Fallback: If personal wardrobe is empty, try H&M catalog
-            if not self.shop_mode:
-                print("\n[Assistant] No matches in your wardrobe. Searching H&M Global Store...")
-                self.api.reload_wardrobe(self.wardrobe_paths["hm"])
-                self.shop_mode = True
-                self.retry_count = 0
-                
-                # Try generating with weather first
-                outfits = self.api.get_outfits(
-                    occasion=occ, weather=wea, style=self.context.get("style"), top_n=6
-                )
-                # Progressive fallback for H&M
-                if not outfits and wea is not None:
-                    outfits = self.api.get_outfits(
-                        occasion=occ, weather=None, style=self.context.get("style"), top_n=6
-                    )
-                
-                if not outfits:
-                    # Reset back to personal just in case
-                    self.api.reload_wardrobe(self.wardrobe_paths["personal"])
-                    self.shop_mode = False
-                    return f"I couldn't find any suitable {occ.upper()} outfits for {(wea_cls or 'any').upper()} weather anywhere!"
-                
-                selected = outfits[:3]
-                response = f"I couldn't find any suitable {occ.upper()} outfits in your wardrobe, so here are some options from the **H&M Global Store** instead:\n"
-            else:
-                return f"I couldn't find any suitable {occ.upper()} outfits for {(wea_cls or 'any').upper()} weather in the store either."
-        else:
-            # Check if this is a retry and we should show alternatives
-            if is_retry:
-                start_idx = self.retry_count * 3
-                end_idx = start_idx + 3
-                
-                if len(outfits) > start_idx:
-                    # We have alternatives in the current wardrobe
-                    selected = outfits[start_idx:end_idx]
-                    mode_prefix = "[H&M STORE]" if self.shop_mode else "[WARDROBE]"
-                    response = f"\n{mode_prefix} No problem! Here are some alternative outfit options (Set {self.retry_count + 1}):\n"
-                elif not self.shop_mode:
-                    # No alternatives left in personal wardrobe -> Switch to H&M
-                    print(f"\n[Assistant] Exhausted {len(outfits)} personal options. Switching to H&M Store...")
+            # ── Progressive fallback if weather filter left no complete outfit ──
+            if not outfits and wea is not None:
+                print(f"[Assistant] No exact matches for {wea_cls.upper()}. Trying with relaxed weather constraints...")
+                # Relax season constraint but keep warmth preference via scoring
+                outfits = self.api.get_outfits(occasion=occ, weather=None, style=style, top_n=30)
+                if outfits:
+                    # Re-rank: prefer items with higher warmth for cold, lower for hot
+                    target_warmth = 4 if wea["temperature"] <= 15 else 1
+                    def _warmth_penalty(o):
+                        avg_w = sum(
+                            item.get("warmth_level", 2) for item in o["items"]
+                        ) / max(len(o["items"]), 1)
+                        return abs(avg_w - target_warmth)
+                    outfits.sort(key=_warmth_penalty)
+
+            if not outfits:
+                # Automatic Fallback: If personal wardrobe is empty, try H&M catalog
+                if not self.shop_mode:
+                    print("\n[Assistant] No matches in your wardrobe. Searching H&M Global Store...")
                     self.api.reload_wardrobe(self.wardrobe_paths["hm"])
                     self.shop_mode = True
-                    self.retry_count = 0 # Reset retry count for the new catalog
+                    self.retry_count = 0
                     
-                    # Try with weather first
+                    # Try generating with weather first
                     outfits = self.api.get_outfits(
-                        occasion=occ, weather=wea, style=self.context.get("style"), top_n=6
+                        occasion=occ, weather=wea, style=style, top_n=30
                     )
-                    # Progressive fallback for H&M as well
+                    # Progressive fallback for H&M
                     if not outfits and wea is not None:
                         outfits = self.api.get_outfits(
-                            occasion=occ, weather=None, style=self.context.get("style"), top_n=6
+                            occasion=occ, weather=None, style=style, top_n=30
                         )
                     
                     if not outfits:
-                        return "I've run out of recommendations in your wardrobe and couldn't find matches in the store either."
+                        # Reset back to personal just in case
+                        self.api.reload_wardrobe(self.wardrobe_paths["personal"])
+                        self.shop_mode = False
+                        return f"I couldn't find any suitable {occ.upper()} outfits for {(wea_cls or 'any').upper()} weather anywhere!"
                     
-                    selected = outfits[:3]
-                    response = "I've run out of options in your wardrobe, so let's check the **H&M Global Store** for something new!\n"
+                    self.current_outfit_pool = outfits
+                    selected = self.current_outfit_pool[:3]
+                    response = f"I couldn't find any suitable {occ.upper()} outfits in your wardrobe, so here are some options from the **H&M Global Store** instead:\n"
                 else:
-                    # Already in H&M and no more options
-                    return "I've shown you all the best matches I could find in the store!"
+                    return f"I couldn't find any suitable {occ.upper()} outfits for {(wea_cls or 'any').upper()} weather in the store either."
             else:
-                # Standard first-time generation
+                self.current_outfit_pool = outfits
                 self.retry_count = 0
-                selected = outfits[:3]
+                selected = self.current_outfit_pool[:3]
                 mode_prefix = "[H&M STORE]" if self.shop_mode else "[WARDROBE]"
                 temp_str = f" ({wea['temperature']}°C)" if wea and "temperature" in wea else ""
                 response  = f"\n{mode_prefix} Occasion: {occ.upper()}, Weather: {(wea_cls or 'N/A').upper()}{temp_str}\n"
                 response += "\n* Here are your outfit recommendations:\n"
+        else:
+            # We are in retry mode
+            start_idx = self.retry_count * 3
+            end_idx = start_idx + 3
+            
+            if start_idx < len(self.current_outfit_pool):
+                # We have alternatives in the current cached pool
+                selected = self.current_outfit_pool[start_idx:end_idx]
+                mode_prefix = "[H&M STORE]" if self.shop_mode else "[WARDROBE]"
+                response = f"\n{mode_prefix} No problem! Here are some alternative outfit options (Set {self.retry_count + 1}):\n"
+            elif not self.shop_mode:
+                # No alternatives left in personal wardrobe -> Switch to H&M
+                print(f"\n[Assistant] Exhausted {len(self.current_outfit_pool)} personal options. Switching to H&M Store...")
+                self.api.reload_wardrobe(self.wardrobe_paths["hm"])
+                self.shop_mode = True
+                self.retry_count = 0 # Reset retry count for the new catalog
+                
+                # Try with weather first
+                outfits = self.api.get_outfits(
+                    occasion=occ, weather=wea, style=style, top_n=30
+                )
+                # Progressive fallback for H&M as well
+                if not outfits and wea is not None:
+                    outfits = self.api.get_outfits(
+                        occasion=occ, weather=None, style=style, top_n=30
+                    )
+                
+                if not outfits:
+                    return "I've run out of recommendations in your wardrobe and couldn't find matches in the store either."
+                
+                self.current_outfit_pool = outfits
+                selected = self.current_outfit_pool[:3]
+                response = "I've run out of options in your wardrobe, so let's check the **H&M Global Store** for something new!\n"
+            else:
+                # Already in H&M and no more options
+                return "I've shown you all the best matches I could find in the store!"
 
         # Store for reference
         self.last_recommendations = selected

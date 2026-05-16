@@ -127,9 +127,8 @@ class OutfitGenerator:
 
                 # Still sample to stay within max_combinations
                 import random
-                random.seed(42)
                 
-                # To avoid materializing the list, we sample indices
+                # To avoid materializing the list, we sample indices without global seeding
                 indices = random.sample(range(num_combos), min(num_combos, self.max_combinations))
                 for idx in indices:
                     # Map flat index back to product indices
@@ -171,12 +170,19 @@ class OutfitGenerator:
             )
             candidates.sort(key=lambda o: o.score, reverse=True)
 
-        # Explicitly ensure no outfit contains both a dress and a bottom
+        # Explicitly ensure no outfit contains both a dress and a bottom, and deduplicate identical-looking outfits
         valid_candidates = []
+        seen_outfits = set()
         for outfit in candidates:
             cats = {item.category for item in outfit.items}
             if ClothingCategory.DRESS in cats and (cats & BOTTOM_CATEGORIES):
                 continue
+            
+            # Deduplicate by item names/colors so they look unique to the user
+            outfit_key = tuple(sorted((item.name, item.color_name) for item in outfit.items))
+            if outfit_key in seen_outfits:
+                continue
+            seen_outfits.add(outfit_key)
             valid_candidates.append(outfit)
 
         # Introduce variety by randomly sampling from a larger pool of top candidates
