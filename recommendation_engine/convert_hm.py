@@ -45,6 +45,22 @@ def run_conversion():
     exclude = ['Underwear', 'Nightwear', 'Swimwear', 'Socks & Tights', 'Items', 'Stationery']
     df = df[~df['product_group_name'].isin(exclude)]
     
+    # Robust word-boundary-aware innerwear filter
+    innerwear_keywords = {
+        "bra", "bras", "bralette", "bralettes", "underwear", "brief", "briefs",
+        "panty", "panties", "trunk", "trunks", "boxer", "boxers", "socks", "sock",
+        "tight", "tights", "stocking", "stockings", "nightwear", "sleepwear",
+        "loungewear", "pajamas", "pyjamas", "undergarment", "undergarments"
+    }
+    
+    import re
+    def is_innerwear(row) -> bool:
+        text = f"{row.get('product_group_name', '')} {row.get('product_type_name', '')} {row.get('prod_name', '')} {row.get('department_name', '')}".lower()
+        tokens = set(re.findall(r'[a-z]+', text))
+        return not tokens.isdisjoint(innerwear_keywords)
+        
+    df = df[~df.apply(is_innerwear, axis=1)]
+    
     print(f"Found {len(df)} suitable garments. Sampling 10,000 for the global catalog...")
     if len(df) > 10000:
         df = df.sample(10000, random_state=42)

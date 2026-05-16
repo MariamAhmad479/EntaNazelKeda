@@ -77,60 +77,39 @@ def remove_background_make_white(image):
 
 
 # ==========================================
-# PREDICTION FUNCTION
+# PREDICTION FUNCTIONS
 # ==========================================
 
-def predict_item(image, use_background_removal=True):
-
+def predict_and_clean_item(image, use_background_removal=True):
+    """
+    Runs prediction and returns (result_dict, cleaned_highres_image).
+    """
     if not isinstance(image, Image.Image):
         image = Image.open(image)
 
     image = image.convert("RGB")
 
     # Remove background and put clothing on white background
+    cleaned_image = image
     if use_background_removal:
-        image = remove_background_make_white(image)
+        cleaned_image = remove_background_make_white(image)
 
-    # Resize
-    image = image.resize(IMG_SIZE)
+    # Resize for model input
+    resized_image = cleaned_image.resize(IMG_SIZE)
 
-    # IMPORTANT:
-    # Use same preprocessing used during training.
-    image_array = np.array(image).astype("float32")
+    # Preprocess
+    image_array = np.array(resized_image).astype("float32")
+    image_array = tf.keras.applications.mobilenet_v2.preprocess_input(image_array)
+    image_array = np.expand_dims(image_array, axis=0)
 
-    image_array = tf.keras.applications.mobilenet_v2.preprocess_input(
-        image_array
-    )
+    predictions = model.predict(image_array, verbose=0)
 
-    image_array = np.expand_dims(
-        image_array,
-        axis=0
-    )
-
-    predictions = model.predict(
-        image_array,
-        verbose=0
-    )
-
-    subcategory = encoders["subCategory"].inverse_transform(
-        [np.argmax(predictions[0])]
-    )[0]
-
-    article_type = encoders["articleType"].inverse_transform(
-        [np.argmax(predictions[1])]
-    )[0]
-
-    base_colour = encoders["baseColour"].inverse_transform(
-        [np.argmax(predictions[2])]
-    )[0]
-
-    season = encoders["season"].inverse_transform(
-        [np.argmax(predictions[3])]
-    )[0]
-
-    usage = encoders["usage"].inverse_transform(
-        [np.argmax(predictions[4])]
-    )[0]
+    # Decode labels
+    subcategory = encoders["subCategory"].inverse_transform([np.argmax(predictions[0])])[0]
+    article_type = encoders["articleType"].inverse_transform([np.argmax(predictions[1])])[0]
+    base_colour = encoders["baseColour"].inverse_transform([np.argmax(predictions[2])])[0]
+    season = encoders["season"].inverse_transform([np.argmax(predictions[3])])[0]
+    usage = encoders["usage"].inverse_transform([np.argmax(predictions[4])])[0]
 
     result = {
         "subCategory": subcategory,
@@ -140,4 +119,65 @@ def predict_item(image, use_background_removal=True):
         "usage": usage,
     }
 
-    return result
+    return result, cleaned_image
+
+
+def predict_item(image, use_background_removal=True):
+    """Backwards compatibility: returns only the prediction result."""
+    res, _ = predict_and_clean_item(image, use_background_removal)
+    return res
+
+
+# ==========================================
+# VISION MODEL CLASS
+# ==========================================
+
+class VisionModel:
+    """
+    Encapsulated Vision Model interface for the recommendation engine.
+    """
+
+    def analyze(self, image_source):
+        """
+        Analyzes an image and returns a dict with category mapping and features.
+        """
+        # image_source can be path or Image object
+        res, _ = predict_and_clean_item(image_source)
+
+        # Map to Recommendation Engine categories
+        # (This avoids circular imports and provides the keys RecommendationAPI expects)
+        art = res["articleType"].lower()
+        cat_str = res["subCategory"].lower()
+        
+        category = "accessory"
+        if any(w in art for w in ["dress", "saree", "jumpsuit", "romper"]):
+            category = "dress"
+        elif any(w in art for w in ["shirt", "tshirt", "top", "blouse", "kurta"]):
+            category = "shirt"
+        elif any(w in art for w in ["pant", "jeans", "trouser", "legging", "jogger"]):
+            category = "pants"
+        elif "short" in art:
+            category = "shorts"
+        elif "skirt" in art:
+            category = "skirt"
+        elif any(w in art for w in ["shoe", "sneaker", "boot", "sandal", "heel", "flip flop"]):
+            category = "shoes"
+        elif any(w in art for w in ["jacket", "coat", "sweater", "sweatshirt", "hoodie", "blazer"]):
+            category = "jacket"
+        elif "top" in cat_str:
+            category = "shirt"
+        elif "bottom" in cat_str:
+            category = "pants"
+
+        # Construct final output
+        analysis = {
+            "category": category,
+            "subCategory": res["subCategory"],
+            "articleType": res["articleType"],
+            "baseColour": res["baseColour"],
+            "season": res["season"],
+            "usage": res["usage"],
+            "image_features": None # Can be extended to extract 2048-D features if needed
+        }
+        
+        return analysis

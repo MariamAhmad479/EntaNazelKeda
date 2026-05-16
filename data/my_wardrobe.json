@@ -469,29 +469,6 @@
       "image_path": "outfits\\WhatsApp Image 2026-05-15 at 11.54.51 PM.jpeg"
     },
     {
-      "id": "d212b307",
-      "name": "Beige Bra",
-      "category": "accessory",
-      "color_rgb": [
-        0,
-        0,
-        0
-      ],
-      "color_name": "beige",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual"
-      ],
-      "seasons": [
-        "summer"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "outfits\\Screenshot 2026-05-15 223501.png"
-    },
-    {
       "id": "84f81a7f",
       "name": "Black Tshirts",
       "category": "shirt",

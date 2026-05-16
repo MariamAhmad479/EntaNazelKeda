@@ -6,7 +6,7 @@ import sys
 # Add the project root to sys.path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from vision import predict_item
+from vision import predict_and_clean_item
 from recommendation_engine.api import RecommendationAPI
 
 st.title("Upload Outfit")
@@ -41,7 +41,9 @@ def map_prediction_to_item(pred, image):
     }
     
     # Map Category
-    if "top" in cat_str or "shirt" in art_str or "tshirt" in art_str:
+    if "innerwear" in cat_str or "loungewear" in cat_str or "bra" in art_str or "brief" in art_str or "underwear" in art_str:
+        raise ValueError(f"The model incorrectly classified this as '{art_str}' ({cat_str}). Innerwear is not allowed. Please crop your screenshot closer to the item and try again!")
+    elif "top" in cat_str or "shirt" in art_str or "tshirt" in art_str:
         item_dict["category"] = "shirt"
     elif "bottom" in cat_str or "pant" in art_str or "jeans" in art_str:
         item_dict["category"] = "pants"
@@ -86,18 +88,19 @@ if uploaded_file is not None:
     st.image(image, width=300)
 
     if st.button("Predict & Add to Wardrobe"):
-        with st.spinner("Analyzing outfit..."):
-            prediction = predict_item(image)
+        with st.spinner("Analyzing outfit & removing background..."):
+            prediction, cleaned_image = predict_and_clean_item(image)
         
         st.success("Prediction Complete!")
+        st.image(cleaned_image, caption="Cleaned Image (White Background)", width=300)
         st.json(prediction)
         
-        # Save image
+        # Save cleaned white-background image
         img_path = os.path.join("outfits", uploaded_file.name)
-        image.save(img_path)
+        cleaned_image.save(img_path)
         
         # Add to Wardrobe
-        item_dict = map_prediction_to_item(prediction, image)
+        item_dict = map_prediction_to_item(prediction, cleaned_image)
         item_dict["image_path"] = img_path
         
         try:
