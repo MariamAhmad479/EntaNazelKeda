@@ -153,11 +153,29 @@ class OutfitGenerator:
 
         # --- Dress outfits: dress + shoes ---
         if dresses and shoes:
-            for dress, shoe in product(dresses, shoes):
-                base_items = [dress, shoe]
-                outfit = self._score_outfit(base_items)
-                if outfit.score >= self.min_score:
-                    candidates.append(outfit)
+            num_combos_dresses = len(dresses) * len(shoes)
+            if num_combos_dresses > self.max_combinations * 2:
+                if num_combos_dresses > 100_000:
+                    limit = 200 # 200 * 200 = 40,000
+                    dresses = dresses[:limit]
+                    shoes = shoes[:limit]
+                    num_combos_dresses = len(dresses) * len(shoes)
+                
+                import random
+                indices = random.sample(range(num_combos_dresses), min(num_combos_dresses, self.max_combinations))
+                for idx in indices:
+                    i_shoe = idx % len(shoes)
+                    i_dress = idx // len(shoes)
+                    base_items = [dresses[i_dress], shoes[i_shoe]]
+                    outfit = self._score_outfit(base_items)
+                    if outfit.score >= self.min_score:
+                        candidates.append(outfit)
+            else:
+                for dress, shoe in product(dresses, shoes):
+                    base_items = [dress, shoe]
+                    outfit = self._score_outfit(base_items)
+                    if outfit.score >= self.min_score:
+                        candidates.append(outfit)
 
         # Sort by score descending
         candidates.sort(key=lambda o: o.score, reverse=True)

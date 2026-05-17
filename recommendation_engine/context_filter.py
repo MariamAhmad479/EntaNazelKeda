@@ -68,6 +68,93 @@ class ContextFilter:
     ... )
     """
 
+    def _filter_slot(
+        self,
+        slot_items: List[ClothingItem],
+        occasion: Optional[str] = None,
+        weather: Optional[Dict] = None,
+        style: Optional[str] = None,
+        gender: Optional[str] = None,
+        color: Optional[str] = None,
+    ) -> List[ClothingItem]:
+        """Apply filters to a specific slot with progressive relaxation."""
+        if not slot_items:
+            return []
+
+        # 1. Apply Gender filter (strict, unless it leaves it empty)
+        res = slot_items
+        if gender is not None and gender.lower() != "unisex":
+            res = self._filter_by_gender(res, gender)
+            if not res:
+                res = slot_items  # Fallback to unisex/original
+
+        # 2. Apply Style filter (has its own fallback to all if no match)
+        if style is not None:
+            res = self._filter_by_style(res, style)
+
+        # 3. Progressive relaxation levels for Color, Occasion, and Weather
+        for col_level in ["strict", "any"]:
+            for occ_level, wea_level in [
+                ("strict", "strict"),
+                ("strict", "relaxed"),
+                ("strict", "any"),
+                ("any", "strict"),
+                ("any", "relaxed"),
+                ("any", "any")
+            ]:
+                # Filter by occasion
+                occ_filtered = res
+                if occasion is not None and occ_level == "strict":
+                    try:
+                        occ_val = Occasion(occasion.lower())
+                        occ_filtered = [item for item in res if occ_val in item.occasions]
+                    except ValueError:
+                        pass
+
+                if not occ_filtered:
+                    continue
+
+                # Filter by weather
+                wea_filtered = occ_filtered
+                if weather is not None and weather.get("temperature") is not None:
+                    temp = weather["temperature"]
+                    min_w, max_w = _temperature_to_warmth_range(temp)
+                    valid_seasons = set(_temperature_to_seasons(temp))
+
+                    def _passes_wea(item: ClothingItem, level: str) -> bool:
+                        # Season check (relaxed/strict both do season check)
+                        item_seasons = set(item.seasons)
+                        if item_seasons and not item_seasons.intersection(valid_seasons):
+                            if len(item_seasons) < 4:
+                                return False
+
+                        # Warmth check
+                        if level == "strict":
+                            return min_w <= item.warmth_level <= max_w
+                        elif level == "relaxed":
+                            return min_w - 1 <= item.warmth_level <= max_w + 1
+                        return True # "any"
+
+                    wea_filtered = [item for item in occ_filtered if _passes_wea(item, wea_level)]
+
+                    if not wea_filtered and wea_level == "any":
+                        # Last resort: sort by closeness to target warmth center
+                        target = (min_w + max_w) / 2
+                        wea_filtered = sorted(occ_filtered, key=lambda i: abs(i.warmth_level - target))
+
+                if not wea_filtered:
+                    continue
+
+                # Filter by color
+                col_filtered = wea_filtered
+                if color is not None and col_level == "strict":
+                    col_filtered = [item for item in wea_filtered if color.lower() in item.color_name.lower()]
+
+                if col_filtered:
+                    return col_filtered
+
+        return res
+
     def filter_items(
         self,
         items: List[ClothingItem],
@@ -75,8 +162,10 @@ class ContextFilter:
         weather: Optional[Dict] = None,
         style: Optional[str] = None,
         gender: Optional[str] = None,
+        color: Optional[str] = None,
+        piece: Optional[str] = None,
     ) -> List[ClothingItem]:
-        """Apply all active filters and return matching items.
+        """Apply all active filters and return matching items using slot-aware relaxation.
 
         Parameters
         ----------
@@ -91,8 +180,13 @@ class ContextFilter:
             Style name (must match a ``Style`` enum value).
         gender : str or None
             Gender for styling ("Male", "Female", "Unisex").
+        color : str or None
+            Preferred color name.
+        piece : str or None
+            Garment piece restriction name.
         """
-        result = list(items)
+        if not items:
+            return []
 
         # Globally exclude any innerwear (socks, bra, underwear, briefs, sleepwear, loungewear, pajamas, etc.)
         innerwear_keywords = {
@@ -104,23 +198,74 @@ class ContextFilter:
         
         import re
         result = [
-            i for i in result
+            i for i in items
             if set(re.findall(r"[a-z]+", i.name.lower())).isdisjoint(innerwear_keywords)
         ]
 
-        if occasion is not None:
-            result = self._filter_by_occasion(result, occasion)
+        from .data_models import ClothingCategory, TOP_CATEGORIES, BOTTOM_CATEGORIES, FULL_BODY_CATEGORIES, FOOTWEAR_CATEGORIES
 
-        if weather is not None:
-            result = self._filter_by_weather(result, weather)
+        # Map piece string to ClothingCategory
+        piece_cat = None
+        if piece is not None:
+            p_lower = piece.lower()
+            if "skirt" in p_lower:
+                piece_cat = ClothingCategory.SKIRT
+            elif "pant" in p_lower or "trouser" in p_lower or "jean" in p_lower:
+                piece_cat = ClothingCategory.PANTS
+            elif "short" in p_lower:
+                piece_cat = ClothingCategory.SHORTS
+            elif "dress" in p_lower or "gown" in p_lower:
+                piece_cat = ClothingCategory.DRESS
+            elif "shirt" in p_lower or "blouse" in p_lower or "top" in p_lower or "tshirt" in p_lower or "t-shirt" in p_lower:
+                piece_cat = ClothingCategory.SHIRT
+            elif "jacket" in p_lower or "coat" in p_lower or "blazer" in p_lower:
+                piece_cat = ClothingCategory.JACKET
+            elif "accessory" in p_lower or "bag" in p_lower or "hat" in p_lower or "sunglass" in p_lower:
+                piece_cat = ClothingCategory.ACCESSORY
+            elif "shoe" in p_lower or "sandal" in p_lower or "boot" in p_lower or "sneaker" in p_lower or "heel" in p_lower:
+                piece_cat = ClothingCategory.SHOES
 
-        if style is not None:
-            result = self._filter_by_style(result, style)
+        # Partition into category slots
+        shoes_items = [i for i in result if i.category in FOOTWEAR_CATEGORIES]
+        dresses_items = [i for i in result if i.category in FULL_BODY_CATEGORIES]
+        tops_items = [i for i in result if i.category in TOP_CATEGORIES and i.category != ClothingCategory.JACKET]
+        bottoms_items = [i for i in result if i.category in BOTTOM_CATEGORIES]
+        jackets_items = [i for i in result if i.category == ClothingCategory.JACKET]
+        accessories_items = [i for i in result if i.category == ClothingCategory.ACCESSORY]
+        
+        # Restrict slots based on piece_cat
+        if piece_cat is not None:
+            if piece_cat in FOOTWEAR_CATEGORIES:
+                shoes_items = [i for i in shoes_items if i.category == piece_cat]
+            elif piece_cat in FULL_BODY_CATEGORIES:
+                dresses_items = [i for i in dresses_items if i.category == piece_cat]
+                tops_items = []
+                bottoms_items = []
+            elif piece_cat == ClothingCategory.SHIRT:
+                tops_items = [i for i in tops_items if i.category == piece_cat]
+                dresses_items = []
+            elif piece_cat in BOTTOM_CATEGORIES:
+                bottoms_items = [i for i in bottoms_items if i.category == piece_cat]
+                dresses_items = []
+            elif piece_cat == ClothingCategory.JACKET:
+                jackets_items = [i for i in jackets_items if i.category == piece_cat]
+            elif piece_cat == ClothingCategory.ACCESSORY:
+                accessories_items = [i for i in accessories_items if i.category == piece_cat]
 
-        if gender is not None and gender.lower() != "unisex":
-            result = self._filter_by_gender(result, gender)
+        captured_ids = {i.id for i in shoes_items + dresses_items + tops_items + bottoms_items + jackets_items + accessories_items}
+        other_items = [i for i in result if i.id not in captured_ids]
 
-        return result
+        # Apply progressive filtering to each slot individually
+        filtered_shoes = self._filter_slot(shoes_items, occasion, weather, style, gender, color)
+        filtered_dresses = self._filter_slot(dresses_items, occasion, weather, style, gender, color)
+        filtered_tops = self._filter_slot(tops_items, occasion, weather, style, gender, color)
+        filtered_bottoms = self._filter_slot(bottoms_items, occasion, weather, style, gender, color)
+        
+        filtered_jackets = self._filter_slot(jackets_items, occasion, weather, style, gender, color)
+        filtered_accessories = self._filter_slot(accessories_items, occasion, weather, style, gender, color)
+        filtered_other = self._filter_slot(other_items, occasion, weather, style, gender, color)
+
+        return filtered_shoes + filtered_dresses + filtered_tops + filtered_bottoms + filtered_jackets + filtered_accessories + filtered_other
 
     # ------------------------------------------------------------------
     # Occasion filter

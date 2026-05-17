@@ -34,9 +34,32 @@ class WardrobeChatbot:
         self.current_outfit_pool = []
         self.shop_mode = False
         self.retry_count = 0  # Track how many times the user rejected outfits
+        
+        # Determine the correct path for hm_catalog.json dynamically
+        project_root = os.path.dirname(os.path.abspath(__file__))
+        hm_catalog_path = os.path.join(project_root, "data", "hm_catalog.json")
+        
+        # Fallbacks to ensure we locate the file under different running environments
+        if not os.path.exists(hm_catalog_path):
+            # Check 2 or 3 directory levels up from the user wardrobe path
+            path_check = api.wardrobe_path
+            for _ in range(4):
+                path_check = os.path.dirname(path_check)
+                candidate = os.path.join(path_check, "hm_catalog.json")
+                if os.path.exists(candidate):
+                    hm_catalog_path = candidate
+                    break
+                candidate_in_data = os.path.join(path_check, "data", "hm_catalog.json")
+                if os.path.exists(candidate_in_data):
+                    hm_catalog_path = candidate_in_data
+                    break
+            else:
+                # Absolute fallback to local folder search
+                hm_catalog_path = os.path.join(os.path.dirname(api.wardrobe_path), "hm_catalog.json")
+                
         self.wardrobe_paths = {
             "personal": api.wardrobe_path,
-            "hm": os.path.join(os.path.dirname(api.wardrobe_path), "hm_catalog.json")
+            "hm": hm_catalog_path
         }
 
     def toggle_shop_mode(self) -> str:
@@ -56,6 +79,8 @@ class WardrobeChatbot:
             "weather":       None,
             "weather_class": None,
             "style":         None,
+            "color":         None,
+            "piece":         None,
         }
         self.last_recommendations = []
         self.current_outfit_pool = []
@@ -86,6 +111,18 @@ class WardrobeChatbot:
     def _detect_rejection(text: str) -> str | None:
         """Return 'REJECTION', 'FEEDBACK', or None based on keyword matching."""
         t = text.lower()
+        
+        # If the input contains slot terms (weather/occasion), it's a slot update/correction, not a generic rejection.
+        slot_terms = [
+            "hot", "warm", "sunny", "mild", "nice", "cool", "cloudy", "cold", 
+            "freezing", "chilly", "winter", "casual", "formal", "business", 
+            "office", "work", "meeting", "sport", "gym", "workout", "party", 
+            "club", "dinner", "date", "wedding", "outdoor", "hiking", "camping", 
+            "picnic"
+        ]
+        if any(term in t for term in slot_terms):
+            return None
+
         for kw in WardrobeChatbot._FEEDBACK_KEYWORDS:
             if kw in t:
                 return "FEEDBACK"
@@ -169,7 +206,10 @@ class WardrobeChatbot:
 
         # ── 3. Intent Routing ────────────────────────────────────────
         if intent_conf < 0.6:
-            intent = "OTHER"
+            if extracted.get("occasion") or extracted.get("weather_class"):
+                intent = "OUTFIT_REQUEST"
+            else:
+                intent = "OTHER"
 
         occ_conf = confidence.get("occasion") or 0.0
         wea_conf = confidence.get("weather")  or 0.0
@@ -233,6 +273,14 @@ class WardrobeChatbot:
             self.context["style"] = extracted["style"]
             updated_something = True
 
+        if extracted.get("color"):
+            self.context["color"] = extracted["color"]
+            updated_something = True
+
+        if extracted.get("piece"):
+            self.context["piece"] = extracted["piece"]
+            updated_something = True
+
         # ── 6. Partial information → ask follow-up ───────────────────
         if not self.context["occasion"] and not self.context["weather_class"]:
             self.state = AWAITING_QUERY
@@ -270,6 +318,8 @@ class WardrobeChatbot:
         wea     = self.context["weather"]       # dict or None
         wea_cls = self.context["weather_class"]
         style   = self.context.get("style")
+        color   = self.context.get("color")
+        piece   = self.context.get("piece")
 
         if is_retry and not self.current_outfit_pool:
             is_retry = False
@@ -277,13 +327,13 @@ class WardrobeChatbot:
         if not is_retry:
             # Fetch extra outfits so we have alternates for retries
             print(f"[Assistant] Searching for {occ.upper()} outfits for {wea_cls.upper() if wea_cls else 'ANY'} weather...")
-            outfits = self.api.get_outfits(occasion=occ, weather=wea, style=style, top_n=30)
+            outfits = self.api.get_outfits(occasion=occ, weather=wea, style=style, color=color, piece=piece, top_n=30)
 
             # ── Progressive fallback if weather filter left no complete outfit ──
             if not outfits and wea is not None:
                 print(f"[Assistant] No exact matches for {wea_cls.upper()}. Trying with relaxed weather constraints...")
                 # Relax season constraint but keep warmth preference via scoring
-                outfits = self.api.get_outfits(occasion=occ, weather=None, style=style, top_n=30)
+                outfits = self.api.get_outfits(occasion=occ, weather=None, style=style, color=color, piece=piece, top_n=30)
                 if outfits:
                     # Re-rank: prefer items with higher warmth for cold, lower for hot
                     target_warmth = 4 if wea["temperature"] <= 15 else 1
@@ -304,12 +354,12 @@ class WardrobeChatbot:
                     
                     # Try generating with weather first
                     outfits = self.api.get_outfits(
-                        occasion=occ, weather=wea, style=style, top_n=30
+                        occasion=occ, weather=wea, style=style, color=color, piece=piece, top_n=30
                     )
                     # Progressive fallback for H&M
                     if not outfits and wea is not None:
                         outfits = self.api.get_outfits(
-                            occasion=occ, weather=None, style=style, top_n=30
+                            occasion=occ, weather=None, style=style, color=color, piece=piece, top_n=30
                         )
                     
                     if not outfits:
@@ -350,12 +400,12 @@ class WardrobeChatbot:
                 
                 # Try with weather first
                 outfits = self.api.get_outfits(
-                    occasion=occ, weather=wea, style=style, top_n=30
+                    occasion=occ, weather=wea, style=style, color=color, piece=piece, top_n=30
                 )
                 # Progressive fallback for H&M as well
                 if not outfits and wea is not None:
                     outfits = self.api.get_outfits(
-                        occasion=occ, weather=None, style=style, top_n=30
+                        occasion=occ, weather=None, style=style, color=color, piece=piece, top_n=30
                     )
                 
                 if not outfits:

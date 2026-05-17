@@ -291,6 +291,106 @@ class NLPInference:
             
             print(f"               Mapped to Occasion: {occasion}, Temp: {temperature}C")
 
+        # ── Keyword Matching Fallback Override ─────────────────────────────────
+        if not matched_location:
+            import re
+            text_lower = text.lower()
+            
+            def has_word(w_list, text_val):
+                words = re.findall(r"[a-z]+", text_val)
+                return any(w in words for w in w_list)
+
+            # Occasion keywords matching
+            occ_keywords = {
+                "casual": ["casual", "hangout", "mall", "everyday", "relaxing", "chill", "informal", "cafe", "coffeeshop", "coffee", "restaurant", "movies", "cinema", "brunch", "lunch", "shopping", "stroll", "walk"],
+                "formal": ["formal", "wedding", "black tie", "fancy", "elegant", "ceremony", "gala", "banquet", "prom", "graduation", "reception"],
+                "business": ["business", "office", "work", "interview", "meeting", "job", "corporate", "conference", "presentation", "professional", "boardroom"],
+                "sport": ["sport", "gym", "workout", "running", "athletic", "exercise", "pool", "swim", "training", "jogging", "yoga"],
+                "party": ["party", "club", "dinner", "date", "night out", "celebration", "gathering", "birthday", "nightclub", "evening"],
+                "outdoor": ["outdoor", "hiking", "camping", "park", "picnic", "outside", "trail", "beach", "nature"]
+            }
+
+            # Weather keywords matching
+            wea_keywords = {
+                "hot": ["hot", "warm", "sunny", "boiling", "summer", "heat", "scorching", "sweltering", "humid", "tropical"],
+                "mild": ["mild", "nice", "pleasant", "spring", "cool", "breezy", "windy", "cloudy", "comfortable", "perfect"],
+                "cold": ["cold", "freezing", "chilly", "winter", "snow", "frosty", "shivering", "icy", "arctic"]
+            }
+
+            # Check and override occasion
+            found_occ = None
+            for key, kws in occ_keywords.items():
+                if has_word(kws, text_lower):
+                    found_occ = key
+                    break
+            
+            if found_occ:
+                occasion = found_occ
+                if o_conf_v < 0.6:
+                    o_conf_v = 0.95
+
+            # Check and override weather
+            found_wea = None
+            for key, kws in wea_keywords.items():
+                if has_word(kws, text_lower):
+                    found_wea = key
+                    break
+
+            if found_wea and explicit_temp is None:
+                weather_class = found_wea
+                temperature = self.WEATHER_TO_TEMP[weather_class]
+                condition = self.WEATHER_TO_CONDITION[weather_class]
+                if w_conf_v < 0.6:
+                    w_conf_v = 0.95
+
+            # Force intent to OUTFIT_REQUEST if we successfully matched occasion or weather keywords
+            if found_occ or found_wea:
+                if i_conf_v < 0.6 or intent in ["OTHER", "SMALL_TALK"]:
+                    intent = "OUTFIT_REQUEST"
+                    i_conf_v = 0.95
+
+        # ── Color & Piece Extraction ──────────────────────────────────────────
+        text_lower = text.lower()
+        import re
+        
+        # Color match
+        supported_colors = [
+            "blue", "red", "black", "white", "green", "pink", "purple", "orange", 
+            "brown", "grey", "gray", "beige", "navy", "turquoise", "cream", "khaki", 
+            "gold", "silver"
+        ]
+        color = None
+        words = re.findall(r"[a-z]+", text_lower)
+        for col in supported_colors:
+            if col in words:
+                color = col
+                if col == "gray":
+                    color = "grey"
+                break
+                
+        # Piece match
+        piece_keywords = {
+            "skirt": ["skirt", "skirts"],
+            "pants": ["pants", "pants", "trouser", "trousers", "jean", "jeans"],
+            "shorts": ["shorts"],
+            "dress": ["dress", "dresses", "gown", "gowns"],
+            "shirt": ["shirt", "shirts", "blouse", "blouses", "top", "tops", "tshirt", "tshirts", "t-shirt", "t-shirts"],
+            "jacket": ["jacket", "jackets", "coat", "coats", "blazer", "blazers", "cardigan", "cardigans"],
+            "accessory": ["accessory", "accessories", "bag", "bags", "hat", "hats", "sunglasses", "belt", "belts"],
+            "shoes": ["shoes", "shoe", "boot", "boots", "sneaker", "sneakers", "sandal", "sandals", "heels", "heel", "flip flop", "flip flops", "espadrille", "espadrilles"]
+        }
+        piece = None
+        for p_cat, p_kws in piece_keywords.items():
+            if any(kw in words for kw in p_kws):
+                piece = p_cat
+                break
+                
+        # Force intent if color or piece is specified
+        if color or piece:
+            if i_conf_v < 0.6 or intent in ["OTHER", "SMALL_TALK"]:
+                intent = "OUTFIT_REQUEST"
+                i_conf_v = 0.95
+
         weather_dict = (
             {"temperature": temperature, "condition": condition}
             if temperature is not None else None
@@ -302,6 +402,8 @@ class NLPInference:
             "weather_class": weather_class,
             "weather":       weather_dict,
             "style":         style,
+            "color":         color,
+            "piece":         piece,
             "confidence": {
                 "intent":   i_conf_v,
                 "occasion": round(o_conf_v, 3) if occasion else None,
@@ -318,6 +420,8 @@ class NLPInference:
             "weather_class": None,
             "weather":       None,
             "style":         None,
+            "color":         None,
+            "piece":         None,
             "confidence":    {}
         }
 
