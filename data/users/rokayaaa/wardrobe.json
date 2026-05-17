@@ -1197,6 +1197,7 @@
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Women's Contrast Color Splicing Front Button Decoration Casual Long Sleeve Jacket.jpg"
     },
     {
+<<<<<<< HEAD
       "id": "c08bcde5",
       "name": "Black Sports sandals",
       "category": "shoes",
@@ -1221,6 +1222,9 @@
     },
     {
       "id": "d8b4c1c6",
+=======
+      "id": "a03fc605",
+>>>>>>> 8306e114da34bfaffc16b18caeb4cb99c8546a1f
       "name": "Blue Shorts",
       "category": "shorts",
       "color_rgb": [
@@ -1240,6 +1244,7 @@
       "warmth_level": 2,
       "formality_level": 3,
       "image_features": null,
+<<<<<<< HEAD
       "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\\u2661.jpg"
     },
     {
@@ -1494,6 +1499,9 @@
       "formality_level": 3,
       "image_features": null,
       "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\download (7).jpg"
+=======
+      "image_path": "E:\\UNI SHIT\\Year three\\Semester two\\EntaNazelKeda\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\\u2661.jpg"
+>>>>>>> 8306e114da34bfaffc16b18caeb4cb99c8546a1f
     }
   ]
 }

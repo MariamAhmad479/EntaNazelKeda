@@ -205,12 +205,18 @@ class RecommendationAPI:
     def get_wardrobe_summary(self) -> dict:
         return self._wardrobe.summary()
 
-    def get_outfits(self, occasion=None, weather=None, style=None, gender=None, top_n=5) -> List[dict]:
+    def get_outfits(self, occasion=None, weather=None, style=None, gender=None, color=None, piece=None, top_n=5) -> List[dict]:
         items = self._wardrobe.get_all_items()
         if not items:
             return []
-        filtered = self._filter.filter_items(items, occasion=occasion, weather=weather, style=style, gender=gender)
+        filtered = self._filter.filter_items(items, occasion=occasion, weather=weather, style=style, gender=gender, color=color, piece=piece)
         outfits = self._generator.generate(filtered, top_n=top_n)
+        
+        # Progressive fallback: if no outfits were found but filtered items exist,
+        # try generating again with a relaxed compatibility threshold
+        if not outfits and filtered:
+            outfits = self._generator.generate(filtered, top_n=top_n, min_score=0.20)
+            
         return [o.to_dict() for o in outfits]
 
     def submit_feedback(self, outfit_id: str, action: str) -> None:

@@ -1,5 +1,6 @@
 import os
 import sys
+from typing import Optional, Dict, List
 
 # Add the project root to sys.path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -29,14 +30,38 @@ class WardrobeChatbot:
             "weather":      None,   # dict {"temperature": int, "condition": str} or None
             "weather_class": None,  # "HOT" / "MILD" / "COLD"
             "style":        None,
+            "gender":       None,
         }
         self.last_recommendations = []
         self.current_outfit_pool = []
         self.shop_mode = False
         self.retry_count = 0  # Track how many times the user rejected outfits
+        
+        # Determine the correct path for hm_catalog.json dynamically
+        project_root = os.path.dirname(os.path.abspath(__file__))
+        hm_catalog_path = os.path.join(project_root, "data", "hm_catalog.json")
+        
+        # Fallbacks to ensure we locate the file under different running environments
+        if not os.path.exists(hm_catalog_path):
+            # Check 2 or 3 directory levels up from the user wardrobe path
+            path_check = api.wardrobe_path
+            for _ in range(4):
+                path_check = os.path.dirname(path_check)
+                candidate = os.path.join(path_check, "hm_catalog.json")
+                if os.path.exists(candidate):
+                    hm_catalog_path = candidate
+                    break
+                candidate_in_data = os.path.join(path_check, "data", "hm_catalog.json")
+                if os.path.exists(candidate_in_data):
+                    hm_catalog_path = candidate_in_data
+                    break
+            else:
+                # Absolute fallback to local folder search
+                hm_catalog_path = os.path.join(os.path.dirname(api.wardrobe_path), "hm_catalog.json")
+                
         self.wardrobe_paths = {
             "personal": api.wardrobe_path,
-            "hm": os.path.join(os.path.dirname(api.wardrobe_path), "hm_catalog.json")
+            "hm": hm_catalog_path
         }
 
     def toggle_shop_mode(self) -> str:
@@ -56,8 +81,12 @@ class WardrobeChatbot:
             "weather":       None,
             "weather_class": None,
             "style":         None,
+            "color":         None,
+            "piece":         None,
+            "gender":        None,
         }
         self.last_recommendations = []
+        self.previous_recommendations = []
         self.current_outfit_pool = []
         self.retry_count = 0
         self.state = AWAITING_QUERY
@@ -86,6 +115,18 @@ class WardrobeChatbot:
     def _detect_rejection(text: str) -> str | None:
         """Return 'REJECTION', 'FEEDBACK', or None based on keyword matching."""
         t = text.lower()
+        
+        # If the input contains slot terms (weather/occasion), it's a slot update/correction, not a generic rejection.
+        slot_terms = [
+            "hot", "warm", "sunny", "mild", "nice", "cool", "cloudy", "cold", 
+            "freezing", "chilly", "winter", "casual", "formal", "business", 
+            "office", "work", "meeting", "sport", "gym", "workout", "party", 
+            "club", "dinner", "date", "wedding", "outdoor", "hiking", "camping", 
+            "picnic"
+        ]
+        if any(term in t for term in slot_terms):
+            return None
+
         for kw in WardrobeChatbot._FEEDBACK_KEYWORDS:
             if kw in t:
                 return "FEEDBACK"
@@ -99,11 +140,68 @@ class WardrobeChatbot:
             return "REJECTION"
         return None
 
+    @staticmethod
+    def _detect_acceptance(text: str) -> int | None:
+        """If user is accepting/saving an outfit, return the 1-based index (1, 2, or 3), otherwise None."""
+        t = text.lower()
+        
+        # Check for acceptance/liking keywords
+        accept_kws = ["like", "love", "save", "choose", "pick", "take", "want", "keep", "perfect", "great", "nice", "best"]
+        has_accept = any(kw in t for kw in accept_kws) or "outfit" in t or "number" in t
+        if not has_accept:
+            return None
+            
+        import re
+        # Look for numbers
+        num_match = re.search(r'\b(1|2|3|one|two|three)\b', t)
+        if num_match:
+            val = num_match.group(1)
+            if val in ("1", "one"):
+                return 1
+            if val in ("2", "two"):
+                return 2
+            if val in ("3", "three"):
+                return 3
+                
+        # Look for ordinals
+        ord_match = re.search(r'\b(first|second|third)\b', t)
+        if ord_match:
+            val = ord_match.group(1)
+            if val == "first":
+                return 1
+            if val == "second":
+                return 2
+            if val == "third":
+                return 3
+                
+        return None
+
     # ------------------------------------------------------------------
-    def handle_input(self, user_input: str) -> str:
-        import random
+    def handle_input(self, user_input: str, gender: Optional[str] = None) -> str:
+        import random, re
         raw_text = user_input.strip()
         lower_text = raw_text.lower()
+
+        # ── Gender keyword detection ──
+        female_kws = ["women", "woman", "female", "girl", "girls", "lady", "ladies", "dress", "skirt", "saree", "bride"]
+        male_kws = ["men", "man", "male", "boy", "boys", "guy", "guys", "suit", "tie", "groom"]
+        
+        detected_gender = None
+        for kw in female_kws:
+            if re.search(r'\b' + re.escape(kw) + r'\b', lower_text):
+                detected_gender = "Female"
+                break
+        if not detected_gender:
+            for kw in male_kws:
+                if re.search(r'\b' + re.escape(kw) + r'\b', lower_text):
+                    detected_gender = "Male"
+                    break
+
+        if gender is not None:
+            # Sync with UI selection (map 'Unisex' to None or keep it)
+            self.context["gender"] = None if gender == "Unisex" else gender
+        elif detected_gender is not None:
+            self.context["gender"] = detected_gender
 
         # ── 0. Shop/Wardrobe Intent Detection ──
         shop_keywords = ["shop", "store", "buy", "h&m", "hm", "global catalog", "retail"]
@@ -137,16 +235,69 @@ class WardrobeChatbot:
             # We still proceed to NLP to see if they provided weather too
 
         # ── 1. Rule-based pre-filter (runs BEFORE NLP) ───────────────
+        acc_index = self._detect_acceptance(raw_text)
+        if acc_index is not None and self.state == SHOWING_RESULTS and self.last_recommendations:
+            if 1 <= acc_index <= len(self.last_recommendations):
+                import json, os
+                outfit = self.last_recommendations[acc_index - 1]
+                outfit_id = outfit.get("outfit_id")
+                
+                # Setup saving paths
+                user_dir = os.path.dirname(self.api.wardrobe_path)
+                outfits_path = os.path.join(user_dir, "saved_outfits.json")
+                
+                saved_list = []
+                if os.path.exists(outfits_path):
+                    try:
+                        with open(outfits_path, 'r', encoding='utf-8') as f:
+                            saved_list = json.load(f)
+                    except Exception:
+                        saved_list = []
+                
+                # Check if already saved
+                if any(o.get("outfit_id") == outfit_id for o in saved_list):
+                    return f"You've already saved **Outfit #{acc_index}** ({outfit['summary']})!"
+                
+                # Add context details
+                outfit_to_save = dict(outfit)
+                outfit_to_save["context"] = f"Chat: {self.context['occasion']} & {self.context['weather_class']}"
+                saved_list.append(outfit_to_save)
+                
+                try:
+                    with open(outfits_path, 'w', encoding='utf-8') as f:
+                        json.dump(saved_list, f, indent=2)
+                    
+                    # Submit feedback to active API
+                    self.api.submit_feedback(outfit_id, "accept")
+                    self._reset_context()
+                    
+                    return (
+                        f"Awesome choice! 💾 I've successfully saved **Outfit #{acc_index}** "
+                        f"({outfit['summary']}) to your saved outfits closet.\n\n"
+                        f"I also logged this acceptance in my learning model to prefer these style elements for you! "
+                        f"What kind of outfit are we picking next?"
+                    )
+                except Exception as e:
+                    return f"I liked Outfit #{acc_index} too, but had a small issue saving it: {e}."
+
         # Catches rejection/feedback phrases the model misclassifies.
         rule_intent = self._detect_rejection(raw_text)
         if rule_intent == "REJECTION":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
+                # Log previously displayed recommendations as 'reject'
+                if hasattr(self, "previous_recommendations") and self.previous_recommendations:
+                    for o in self.previous_recommendations:
+                        self.api.submit_feedback(o["outfit_id"], "reject")
                 self.retry_count += 1
                 return self._generate_recommendations(is_retry=True)
             self._reset_context()
             return "Okay, let's start fresh. What kind of outfit are you looking for?"
         if rule_intent == "FEEDBACK":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
+                # Log previously displayed recommendations as 'reject'
+                if hasattr(self, "previous_recommendations") and self.previous_recommendations:
+                    for o in self.previous_recommendations:
+                        self.api.submit_feedback(o["outfit_id"], "reject")
                 return self._generate_recommendations(is_retry=True)
             return "Could you be more specific? Like 'make it more casual' or 'something for the cold'?"
 
@@ -169,7 +320,10 @@ class WardrobeChatbot:
 
         # ── 3. Intent Routing ────────────────────────────────────────
         if intent_conf < 0.6:
-            intent = "OTHER"
+            if extracted.get("occasion") or extracted.get("weather_class"):
+                intent = "OUTFIT_REQUEST"
+            else:
+                intent = "OTHER"
 
         occ_conf = confidence.get("occasion") or 0.0
         wea_conf = confidence.get("weather")  or 0.0
@@ -205,12 +359,20 @@ class WardrobeChatbot:
         # ── 3. REJECTION / FEEDBACK: handle BEFORE touching context ──
         if intent == "REJECTION":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
+                # Log previously displayed recommendations as 'reject'
+                if hasattr(self, "previous_recommendations") and self.previous_recommendations:
+                    for o in self.previous_recommendations:
+                        self.api.submit_feedback(o["outfit_id"], "reject")
                 return self._generate_recommendations(is_retry=True)
             self._reset_context()
             return "Okay, let's start fresh. What kind of outfit are you looking for?"
 
         if intent == "FEEDBACK":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
+                # Log previously displayed recommendations as 'reject'
+                if hasattr(self, "previous_recommendations") and self.previous_recommendations:
+                    for o in self.previous_recommendations:
+                        self.api.submit_feedback(o["outfit_id"], "reject")
                 return self._generate_recommendations(is_retry=True)
             return "Could you be more specific? Like 'make it more casual' or 'something for the cold'?"
 
@@ -231,6 +393,14 @@ class WardrobeChatbot:
 
         if extracted.get("style"):
             self.context["style"] = extracted["style"]
+            updated_something = True
+
+        if extracted.get("color"):
+            self.context["color"] = extracted["color"]
+            updated_something = True
+
+        if extracted.get("piece"):
+            self.context["piece"] = extracted["piece"]
             updated_something = True
 
         # ── 6. Partial information → ask follow-up ───────────────────
@@ -270,20 +440,23 @@ class WardrobeChatbot:
         wea     = self.context["weather"]       # dict or None
         wea_cls = self.context["weather_class"]
         style   = self.context.get("style")
+        color   = self.context.get("color")
+        piece   = self.context.get("piece")
+        gender  = self.context.get("gender")
 
         if is_retry and not self.current_outfit_pool:
             is_retry = False
 
         if not is_retry:
             # Fetch extra outfits so we have alternates for retries
-            print(f"[Assistant] Searching for {occ.upper()} outfits for {wea_cls.upper() if wea_cls else 'ANY'} weather...")
-            outfits = self.api.get_outfits(occasion=occ, weather=wea, style=style, top_n=30)
+            print(f"[Assistant] Searching for {occ.upper()} outfits for {wea_cls.upper() if wea_cls else 'ANY'} weather (gender={gender})...")
+            outfits = self.api.get_outfits(occasion=occ, weather=wea, style=style, gender=gender, color=color, piece=piece, top_n=30)
 
             # ── Progressive fallback if weather filter left no complete outfit ──
             if not outfits and wea is not None:
                 print(f"[Assistant] No exact matches for {wea_cls.upper()}. Trying with relaxed weather constraints...")
                 # Relax season constraint but keep warmth preference via scoring
-                outfits = self.api.get_outfits(occasion=occ, weather=None, style=style, top_n=30)
+                outfits = self.api.get_outfits(occasion=occ, weather=None, style=style, gender=gender, color=color, piece=piece, top_n=30)
                 if outfits:
                     # Re-rank: prefer items with higher warmth for cold, lower for hot
                     target_warmth = 4 if wea["temperature"] <= 15 else 1
@@ -304,12 +477,12 @@ class WardrobeChatbot:
                     
                     # Try generating with weather first
                     outfits = self.api.get_outfits(
-                        occasion=occ, weather=wea, style=style, top_n=30
+                        occasion=occ, weather=wea, style=style, gender=gender, color=color, piece=piece, top_n=30
                     )
                     # Progressive fallback for H&M
                     if not outfits and wea is not None:
                         outfits = self.api.get_outfits(
-                            occasion=occ, weather=None, style=style, top_n=30
+                            occasion=occ, weather=None, style=style, gender=gender, color=color, piece=piece, top_n=30
                         )
                     
                     if not outfits:
@@ -350,12 +523,12 @@ class WardrobeChatbot:
                 
                 # Try with weather first
                 outfits = self.api.get_outfits(
-                    occasion=occ, weather=wea, style=style, top_n=30
+                    occasion=occ, weather=wea, style=style, gender=gender, color=color, piece=piece, top_n=30
                 )
                 # Progressive fallback for H&M as well
                 if not outfits and wea is not None:
                     outfits = self.api.get_outfits(
-                        occasion=occ, weather=None, style=style, top_n=30
+                        occasion=occ, weather=None, style=style, gender=gender, color=color, piece=piece, top_n=30
                     )
                 
                 if not outfits:
@@ -370,6 +543,7 @@ class WardrobeChatbot:
 
         # Store for reference
         self.last_recommendations = selected
+        self.previous_recommendations = list(selected)
 
         for i, outfit in enumerate(selected, 1):
             response += f"\nOutfit #{i} (Score: {outfit['score']:.2f})\n"

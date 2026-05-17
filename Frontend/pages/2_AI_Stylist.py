@@ -24,6 +24,17 @@ st.set_page_config(page_title="AI Stylist", page_icon="✨", layout="wide")
 load_css()
 render_sidebar()
 
+# Custom gender preference selector in sidebar for personalized styling
+with st.sidebar:
+    st.markdown("---")
+    st.markdown("<p style='font-weight:700; color:#d4a017; font-size:16px; margin-bottom: 5px;'>👗 Stylist Settings</p>", unsafe_allow_html=True)
+    gender_pref = st.selectbox(
+        "AI Stylist Gender Preference:",
+        ["Unisex", "Male", "Female"],
+        index=0,
+        help="Select your garment cut preference for personalized AI styling. Choose Unisex to allow the AI to auto-detect or remain neutral."
+    )
+
 st.title("✨ AI Stylist Chat")
 st.write("Chat naturally with your digital fashion consultant. Try saying things like *'I need a casual look for hot weather'* or upload a picture of a garment to instantly add it to your wardrobe and get matching advice!")
 
@@ -226,7 +237,7 @@ if chat_data:
             else:
                 with st.spinner("AI is thinking..."):
                     try:
-                        response_text = st.session_state.chatbot.handle_input(prompt)
+                        response_text = st.session_state.chatbot.handle_input(prompt, gender=gender_pref)
                     except Exception as e:
                         response_text = f"Sorry, I ran into an issue parsing your query: {e}. Try checking your NLP training model."
 
