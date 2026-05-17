@@ -1,0 +1,93 @@
+[
+  {
+    "outfit_id": "add5fd57",
+    "score": 0.923,
+    "breakdown": {
+      "color": 0.8833,
+      "style": 1.0,
+      "formality": 1.0,
+      "similarity": 0.8087
+    },
+    "items": [
+      {
+        "id": "shirt002",
+        "name": "Navy Blue Polo",
+        "category": "shirt",
+        "color_rgb": [
+          0,
+          0,
+          128
+        ],
+        "color_name": "navy blue",
+        "pattern": "solid",
+        "style": "preppy",
+        "occasions": [
+          "casual",
+          "business"
+        ],
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "warmth_level": 2,
+        "formality_level": 3,
+        "image_features": null,
+        "image_path": null
+      },
+      {
+        "id": "pants003",
+        "name": "Beige Chinos",
+        "category": "pants",
+        "color_rgb": [
+          210,
+          180,
+          140
+        ],
+        "color_name": "beige",
+        "pattern": "solid",
+        "style": "preppy",
+        "occasions": [
+          "casual",
+          "business"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "warmth_level": 2,
+        "formality_level": 3,
+        "image_features": null,
+        "image_path": null
+      },
+      {
+        "id": "shoes003",
+        "name": "Brown Loafers",
+        "category": "shoes",
+        "color_rgb": [
+          139,
+          90,
+          43
+        ],
+        "color_name": "brown",
+        "pattern": "solid",
+        "style": "preppy",
+        "occasions": [
+          "casual",
+          "business"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "warmth_level": 2,
+        "formality_level": 3,
+        "image_features": null,
+        "image_path": null
+      }
+    ],
+    "summary": "Navy Blue Polo (navy blue) + Beige Chinos (beige) + Brown Loafers (brown)",
+    "context": "i want a casual outfit"
+  }
+]

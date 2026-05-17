@@ -1,0 +1,136 @@
+[
+  {
+    "outfit_id": "51e8d739",
+    "score": 0.9779,
+    "breakdown": {
+      "color": 1.0,
+      "style": 1.0,
+      "formality": 1.0,
+      "similarity": 0.9116
+    },
+    "items": [
+      {
+        "id": "hm_553873013",
+        "name": "Dragonfly",
+        "category": "dress",
+        "color_rgb": [
+          255,
+          255,
+          255
+        ],
+        "color_name": "white",
+        "pattern": "floral",
+        "style": "classic",
+        "occasions": [
+          "casual"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "warmth_level": 3,
+        "formality_level": 2,
+        "image_features": null,
+        "image_path": null
+      },
+      {
+        "id": "hm_727880038",
+        "name": "Mimmi new",
+        "category": "shoes",
+        "color_rgb": [
+          255,
+          255,
+          255
+        ],
+        "color_name": "white",
+        "pattern": "floral",
+        "style": "classic",
+        "occasions": [
+          "casual"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "warmth_level": 3,
+        "formality_level": 2,
+        "image_features": null,
+        "image_path": null
+      }
+    ],
+    "summary": "Dragonfly (white) + Mimmi new (white)",
+    "context": "H&M Casual at 22\u00b0C (All style)"
+  },
+  {
+    "outfit_id": "39f9f7be",
+    "score": 0.9504,
+    "breakdown": {
+      "color": 1.0,
+      "style": 1.0,
+      "formality": 1.0,
+      "similarity": 0.8015
+    },
+    "items": [
+      {
+        "id": "dress001",
+        "name": "Little Black Dress",
+        "category": "dress",
+        "color_rgb": [
+          15,
+          15,
+          15
+        ],
+        "color_name": "black",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal",
+          "party"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "warmth_level": 2,
+        "formality_level": 5,
+        "image_features": null,
+        "image_path": null
+      },
+      {
+        "id": "shoes001",
+        "name": "Black Oxford Shoes",
+        "category": "shoes",
+        "color_rgb": [
+          20,
+          20,
+          20
+        ],
+        "color_name": "black",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal",
+          "business"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "warmth_level": 2,
+        "formality_level": 5,
+        "image_features": null,
+        "image_path": null
+      }
+    ],
+    "summary": "Little Black Dress (black) + Black Oxford Shoes (black)",
+    "context": "I need a casual look for a mild 20 degrees weather"
+  }
+]

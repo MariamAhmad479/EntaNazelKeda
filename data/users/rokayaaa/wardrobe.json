@@ -1,0 +1,1200 @@
+{
+  "items": [
+    {
+      "id": "8d5e9c57",
+      "name": "Blue Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Screenshot 2026-05-13 193825.png"
+    },
+    {
+      "id": "640a1d50",
+      "name": "Blue Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Screenshot 2026-05-15 223429.png"
+    },
+    {
+      "id": "27902557",
+      "name": "Black Caps",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Screenshot 2026-05-15 223731.png"
+    },
+    {
+      "id": "bfb30561",
+      "name": "Blue Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Screenshot 2026-05-13 195736.png"
+    },
+    {
+      "id": "29076e8b",
+      "name": "Black Clutches",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\@southcaste.jpg"
+    },
+    {
+      "id": "4f8b7c12",
+      "name": "Blue Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\\u2661.jpg"
+    },
+    {
+      "id": "a3799e86",
+      "name": "Blue Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\AGOLDE Alek Denim Mini Skirt 23 - Light Wash.jpg"
+    },
+    {
+      "id": "8f29e49b",
+      "name": "Blue Jeans",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\AGOLDE Clara Baggy low-rise wide-leg organic jeans.jpg"
+    },
+    {
+      "id": "716c0dbc",
+      "name": "Red Backpacks",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Bodycon Dress.jpg"
+    },
+    {
+      "id": "612662a0",
+      "name": "Blue Duffel bag",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Chinelo Santa Lolla Logo Azul.jpg"
+    },
+    {
+      "id": "03c73e17",
+      "name": "White Dresses",
+      "category": "dress",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Contrast Trim Bow-embellished Long-sleeve Dress.jpg"
+    },
+    {
+      "id": "e23daada",
+      "name": "White Compact",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (1).jpg"
+    },
+    {
+      "id": "60621832",
+      "name": "Brown Backpacks",
+      "category": "accessory",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (2).jpg"
+    },
+    {
+      "id": "7f313b95",
+      "name": "Black Socks",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (3).jpg"
+    },
+    {
+      "id": "e47760ce",
+      "name": "Black Track pants",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (4).jpg"
+    },
+    {
+      "id": "a064cde3",
+      "name": "Black Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (5).jpg"
+    },
+    {
+      "id": "cef5bae1",
+      "name": "Red Socks",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (6).jpg"
+    },
+    {
+      "id": "2b57a5bc",
+      "name": "Red Innerwear vests",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (7).jpg"
+    },
+    {
+      "id": "76c9dfd8",
+      "name": "Navy blue Track pants",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        128
+      ],
+      "color_name": "navy blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (8).jpg"
+    },
+    {
+      "id": "3e69d0d8",
+      "name": "Red Scarves",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (9).jpg"
+    },
+    {
+      "id": "d15649dd",
+      "name": "Pink Skirts",
+      "category": "skirt",
+      "color_rgb": [
+        255,
+        192,
+        203
+      ],
+      "color_name": "pink",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (10).jpg"
+    },
+    {
+      "id": "2c724ac3",
+      "name": "Black Skirts",
+      "category": "skirt",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (11).jpg"
+    },
+    {
+      "id": "8df51ff7",
+      "name": "Red Caps",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (12).jpg"
+    },
+    {
+      "id": "3fcf1500",
+      "name": "Black Flip flops",
+      "category": "shoes",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (13).jpg"
+    },
+    {
+      "id": "7daee400",
+      "name": "White Sports shoes",
+      "category": "shoes",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (14).jpg"
+    },
+    {
+      "id": "60c3f1d3",
+      "name": "White Sports shoes",
+      "category": "shoes",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (15).jpg"
+    },
+    {
+      "id": "5e99859c",
+      "name": "Black Sports sandals",
+      "category": "shoes",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (16).jpg"
+    },
+    {
+      "id": "0df51ae3",
+      "name": "Navy blue Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        128
+      ],
+      "color_name": "navy blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (17).jpg"
+    },
+    {
+      "id": "97f07a78",
+      "name": "Yellow Dresses",
+      "category": "dress",
+      "color_rgb": [
+        255,
+        255,
+        0
+      ],
+      "color_name": "yellow",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (18).jpg"
+    },
+    {
+      "id": "0f36a7ea",
+      "name": "Skin Compact",
+      "category": "accessory",
+      "color_rgb": [
+        128,
+        128,
+        128
+      ],
+      "color_name": "skin",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (19).jpg"
+    },
+    {
+      "id": "68aec37a",
+      "name": "Blue Duffel bag",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (20).jpg"
+    },
+    {
+      "id": "92f9a859",
+      "name": "Yellow Handbags",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        255,
+        0
+      ],
+      "color_name": "yellow",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (21).jpg"
+    },
+    {
+      "id": "e3151afe",
+      "name": "Yellow Mufflers",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        255,
+        0
+      ],
+      "color_name": "yellow",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (22).jpg"
+    },
+    {
+      "id": "63fe65ce",
+      "name": "Red Caps",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (23).jpg"
+    },
+    {
+      "id": "2e4f2129",
+      "name": "White Skirts",
+      "category": "skirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (24).jpg"
+    },
+    {
+      "id": "718481fb",
+      "name": "Black Handbags",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (25).jpg"
+    },
+    {
+      "id": "e96c4e07",
+      "name": "Black Jackets",
+      "category": "jacket",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (26).jpg"
+    },
+    {
+      "id": "2f3e3b4a",
+      "name": "Black Caps",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (27).jpg"
+    },
+    {
+      "id": "30b035cc",
+      "name": "Black Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (28).jpg"
+    },
+    {
+      "id": "e97edb55",
+      "name": "White Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (29).jpg"
+    },
+    {
+      "id": "a7bbce80",
+      "name": "White Shirts",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (30).jpg"
+    },
+    {
+      "id": "0e848890",
+      "name": "Cream Dresses",
+      "category": "dress",
+      "color_rgb": [
+        128,
+        128,
+        128
+      ],
+      "color_name": "cream",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (31).jpg"
+    },
+    {
+      "id": "2a0bd250",
+      "name": "White Dresses",
+      "category": "dress",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (32).jpg"
+    },
+    {
+      "id": "1e200e38",
+      "name": "Brown Socks",
+      "category": "accessory",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (33).jpg"
+    },
+    {
+      "id": "bb83d42b",
+      "name": "Blue Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download (34).jpg"
+    },
+    {
+      "id": "b332da4c",
+      "name": "White Skirts",
+      "category": "skirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\download.jpg"
+    },
+    {
+      "id": "9f61a65d",
+      "name": "Red Dresses",
+      "category": "dress",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\dress png.jpg"
+    },
+    {
+      "id": "e6a0db0d",
+      "name": "White Perfume and body mist",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Fall Women Outfits,White Soft Knit, Fur Paneled Cuffs Off Shoulder _Bow Tie Long Sleeves  Women's  Dress,Homecoming Dresses,College.jpg"
+    },
+    {
+      "id": "cbad957f",
+      "name": "Beige Casual shoes",
+      "category": "shoes",
+      "color_rgb": [
+        245,
+        245,
+        220
+      ],
+      "color_name": "beige",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Girls Winter Shoes.jpg"
+    },
+    {
+      "id": "c58d92c1",
+      "name": "Pink Scarves",
+      "category": "accessory",
+      "color_rgb": [
+        255,
+        192,
+        203
+      ],
+      "color_name": "pink",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\SHEIN USA.jpg"
+    },
+    {
+      "id": "42159539",
+      "name": "White Dresses",
+      "category": "dress",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Solid Babydoll Blouse Top - Cider.jpg"
+    },
+    {
+      "id": "80cbc568",
+      "name": "White Shirts",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Women's Contrast Color Splicing Front Button Decoration Casual Long Sleeve Jacket.jpg"
+    }
+  ]
+}
