@@ -927,6 +927,52 @@
       "formality_level": 3,
       "image_features": null,
       "image_path": "outfits\\Screenshot 2026-05-15 223656.png"
+    },
+    {
+      "id": "e2c098aa",
+      "name": "Yellow Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "yellow",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\Screenshot 2026-05-15 223501.png"
+    },
+    {
+      "id": "edce44dc",
+      "name": "Black Sports sandals",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "outfits\\download (16).jpg"
     }
   ]
 }
