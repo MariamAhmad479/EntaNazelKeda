@@ -138,6 +138,7 @@ class ClothingItem:
     seasons: List[Season]
     warmth_level: int  # 1-5
     formality_level: int  # 1-5
+    gender: str = "unisex"
     id: str = field(default_factory=lambda: str(uuid.uuid4())[:8])
     image_features: Optional[List[float]] = None
     image_path: Optional[str] = None
@@ -160,6 +161,7 @@ class ClothingItem:
             "seasons": [s.value for s in self.seasons],
             "warmth_level": self.warmth_level,
             "formality_level": self.formality_level,
+            "gender": self.gender,
             "image_features": self.image_features,
             "image_path": self.image_path,
         }
@@ -179,6 +181,7 @@ class ClothingItem:
             seasons=[Season(s) for s in d["seasons"]],
             warmth_level=d["warmth_level"],
             formality_level=d["formality_level"],
+            gender=d.get("gender", "unisex"),
             image_features=d.get("image_features"),
             image_path=d.get("image_path"),
         )

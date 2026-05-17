@@ -136,10 +136,10 @@ class _LstmBackend:
         unk_idx = self.vocab.word2idx["<UNK>"]
         tokens  = self._preprocess(text)
         if not tokens:
-            return None, None, None
+            return None, None, None, None
         encoded = [self.vocab.word2idx.get(t, unk_idx) for t in tokens]
         if sum(1 for i in encoded if i == unk_idx) / len(encoded) > 0.6:
-            return None, None, None
+            return None, None, None, None
         ids = torch.tensor(encoded, dtype=torch.long).unsqueeze(0).to(self.device)
         with torch.no_grad():
             o_lg, w_lg, s_lg = self.model(ids)

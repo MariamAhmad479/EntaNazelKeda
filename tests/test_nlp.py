@@ -33,9 +33,7 @@ _model_available = _torch_available and os.path.exists(os.path.join(MODEL_DIR, "
 
 _needs_torch = pytest.mark.skipif(not _torch_available, reason="PyTorch not installed")
 
-# Import the unbound method directly — no model weights needed, method only uses re
-from nlp.inference import NLPInference as _NLPClass
-_extract_temp = _NLPClass._extract_explicit_temperature
+from nlp.inference import _extract_explicit_temperature as _extract_temp
 
 
 # =============================================================================
@@ -316,36 +314,36 @@ class TestExtractExplicitTemperature:
     """Tests for the regex-based temperature extractor in isolation."""
 
     def test_celsius_with_degree_symbol(self):
-        assert _extract_temp(None, "It's 22°C outside") == pytest.approx(22.0)
+        assert _extract_temp("It's 22°C outside") == pytest.approx(22.0)
 
     def test_degrees_celsius_word(self):
-        assert _extract_temp(None, "35 degrees celsius") == pytest.approx(35.0)
+        assert _extract_temp("35 degrees celsius") == pytest.approx(35.0)
 
     def test_fahrenheit_converts_correctly(self):
-        result = _extract_temp(None, "It's 90°F today")
+        result = _extract_temp("It's 90°F today")
         assert result == pytest.approx((90 - 32) * 5 / 9, abs=0.1)
 
     def test_bare_degrees_low_assumed_celsius(self):
-        assert _extract_temp(None, "only 5 degrees") == pytest.approx(5.0)
+        assert _extract_temp("only 5 degrees") == pytest.approx(5.0)
 
     def test_bare_degrees_high_assumed_fahrenheit(self):
-        result = _extract_temp(None, "95 degrees today")
+        result = _extract_temp("95 degrees today")
         assert result == pytest.approx((95 - 32) * 5 / 9, abs=0.1)
 
     def test_minus_prefix(self):
-        assert _extract_temp(None, "minus 10 degrees") == pytest.approx(-10.0)
+        assert _extract_temp("minus 10 degrees") == pytest.approx(-10.0)
 
     def test_negative_prefix(self):
-        assert _extract_temp(None, "negative 5 degrees") == pytest.approx(-5.0)
+        assert _extract_temp("negative 5 degrees") == pytest.approx(-5.0)
 
     def test_no_number_returns_none(self):
-        assert _extract_temp(None, "it is cold outside") is None
+        assert _extract_temp("it is cold outside") is None
 
     def test_bare_number_without_unit_returns_none(self):
-        assert _extract_temp(None, "I am 25 years old") is None
+        assert _extract_temp("I am 25 years old") is None
 
     def test_freezing_point(self):
-        assert _extract_temp(None, "0 degrees celsius") == pytest.approx(0.0)
+        assert _extract_temp("0 degrees celsius") == pytest.approx(0.0)
 
 
 # =============================================================================

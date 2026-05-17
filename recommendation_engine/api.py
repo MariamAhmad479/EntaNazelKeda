@@ -211,6 +211,12 @@ class RecommendationAPI:
             return []
         filtered = self._filter.filter_items(items, occasion=occasion, weather=weather, style=style, gender=gender)
         outfits = self._generator.generate(filtered, top_n=top_n)
+        
+        # Progressive fallback: if no outfits were found but filtered items exist,
+        # try generating again with a relaxed compatibility threshold
+        if not outfits and filtered:
+            outfits = self._generator.generate(filtered, top_n=top_n, min_score=0.20)
+            
         return [o.to_dict() for o in outfits]
 
     def submit_feedback(self, outfit_id: str, action: str) -> None:

@@ -64,7 +64,35 @@ with col_form:
     occasions = ["Casual", "Formal", "Business", "Sport", "Party", "Outdoor"]
     selected_occasion = st.selectbox("What is the occasion?", occasions)
     
-    selected_temp = st.slider("Outside Temperature (°C)", min_value=-10, max_value=45, value=22)
+    # Weather Seasons Mapping
+    WEATHER_SEASONS = {
+        "☀️ Summer (Hot, ≥ 25°C)": 30,
+        "🌸 Spring (Mild, 16–24°C)": 20,
+        "🍁 Autumn (Chilly, 6–15°C)": 12,
+        "❄️ Winter (Freezing, ≤ 5°C)": 3
+    }
+    
+    # Initialize session state for selected weather index
+    if "selected_season" not in st.session_state:
+        st.session_state["selected_season"] = "🌸 Spring (Mild, 16–24°C)"
+        
+    col_season, col_rand = st.columns([2.5, 1.5])
+    with col_season:
+        selected_season = st.selectbox(
+            "Select Season Context:",
+            list(WEATHER_SEASONS.keys()),
+            index=list(WEATHER_SEASONS.keys()).index(st.session_state["selected_season"])
+        )
+        st.session_state["selected_season"] = selected_season
+    with col_rand:
+        st.markdown("<div style='margin-top: 28px;'></div>", unsafe_allow_html=True)
+        if st.button("🎲 Randomize", help="Select a random season context!", key="randomize_weather_btn"):
+            import random
+            random_season = random.choice(list(WEATHER_SEASONS.keys()))
+            st.session_state["selected_season"] = random_season
+            st.rerun()
+            
+    selected_temp = WEATHER_SEASONS[selected_season]
     
     styles = ["All", "Classic", "Streetwear", "Minimalist", "Preppy", "Athletic", "Bohemian"]
     selected_style = st.selectbox("Preferred Style Tag:", styles)
@@ -87,6 +115,19 @@ with col_results:
             "temperature": selected_temp,
             "condition": "clear"
         }
+        
+        # Log previous unseen/unsaved outfits as 'reject'
+        if "hm_outfits" in st.session_state:
+            saved_indices = st.session_state.get("saved_hm_indices", set())
+            for idx, outfit in enumerate(st.session_state["hm_outfits"]):
+                if idx not in saved_indices:
+                    try:
+                        user_api = get_user_api(username)
+                        user_api.submit_feedback(outfit["outfit_id"], "reject")
+                    except Exception as e:
+                        print(f"[Feedback] Failed to log reject on skip: {e}")
+        # Clear the saved indices set for the new batch
+        st.session_state["saved_hm_indices"] = set()
         
         with st.spinner("AI is searching the H&M database for compatible outfits..."):
             try:
@@ -160,8 +201,10 @@ with col_results:
                     success, save_msg = save_outfit(outfit, context_prompt, username)
                     if success:
                         st.success(save_msg)
+                        if "saved_hm_indices" not in st.session_state:
+                            st.session_state["saved_hm_indices"] = set()
+                        st.session_state["saved_hm_indices"].add(idx)
                     else:
                         st.info(save_msg)
-            st.markdown("<div style='border-bottom: 1.5px solid rgba(212,160,23,0.2); margin-bottom: 25px;'></div>", unsafe_allow_html=True)
     else:
         st.info("Select occasion/weather details on the left and click 'Generate' to see H&M outfits here!")

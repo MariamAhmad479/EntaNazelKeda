@@ -29,6 +29,7 @@ class WardrobeChatbot:
             "weather":      None,   # dict {"temperature": int, "condition": str} or None
             "weather_class": None,  # "HOT" / "MILD" / "COLD"
             "style":        None,
+            "gender":       None,
         }
         self.last_recommendations = []
         self.current_outfit_pool = []
@@ -56,8 +57,10 @@ class WardrobeChatbot:
             "weather":       None,
             "weather_class": None,
             "style":         None,
+            "gender":        None,
         }
         self.last_recommendations = []
+        self.previous_recommendations = []
         self.current_outfit_pool = []
         self.retry_count = 0
         self.state = AWAITING_QUERY
@@ -100,10 +103,31 @@ class WardrobeChatbot:
         return None
 
     # ------------------------------------------------------------------
-    def handle_input(self, user_input: str) -> str:
-        import random
+    def handle_input(self, user_input: str, gender: Optional[str] = None) -> str:
+        import random, re
         raw_text = user_input.strip()
         lower_text = raw_text.lower()
+
+        # ── Gender keyword detection ──
+        female_kws = ["women", "woman", "female", "girl", "girls", "lady", "ladies", "dress", "skirt", "saree", "bride"]
+        male_kws = ["men", "man", "male", "boy", "boys", "guy", "guys", "suit", "tie", "groom"]
+        
+        detected_gender = None
+        for kw in female_kws:
+            if re.search(r'\b' + re.escape(kw) + r'\b', lower_text):
+                detected_gender = "Female"
+                break
+        if not detected_gender:
+            for kw in male_kws:
+                if re.search(r'\b' + re.escape(kw) + r'\b', lower_text):
+                    detected_gender = "Male"
+                    break
+
+        if gender is not None:
+            # Sync with UI selection (map 'Unisex' to None or keep it)
+            self.context["gender"] = None if gender == "Unisex" else gender
+        elif detected_gender is not None:
+            self.context["gender"] = detected_gender
 
         # ── 0. Shop/Wardrobe Intent Detection ──
         shop_keywords = ["shop", "store", "buy", "h&m", "hm", "global catalog", "retail"]
@@ -141,12 +165,20 @@ class WardrobeChatbot:
         rule_intent = self._detect_rejection(raw_text)
         if rule_intent == "REJECTION":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
+                # Log previously displayed recommendations as 'reject'
+                if hasattr(self, "previous_recommendations") and self.previous_recommendations:
+                    for o in self.previous_recommendations:
+                        self.api.submit_feedback(o["outfit_id"], "reject")
                 self.retry_count += 1
                 return self._generate_recommendations(is_retry=True)
             self._reset_context()
             return "Okay, let's start fresh. What kind of outfit are you looking for?"
         if rule_intent == "FEEDBACK":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
+                # Log previously displayed recommendations as 'reject'
+                if hasattr(self, "previous_recommendations") and self.previous_recommendations:
+                    for o in self.previous_recommendations:
+                        self.api.submit_feedback(o["outfit_id"], "reject")
                 return self._generate_recommendations(is_retry=True)
             return "Could you be more specific? Like 'make it more casual' or 'something for the cold'?"
 
@@ -205,12 +237,20 @@ class WardrobeChatbot:
         # ── 3. REJECTION / FEEDBACK: handle BEFORE touching context ──
         if intent == "REJECTION":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
+                # Log previously displayed recommendations as 'reject'
+                if hasattr(self, "previous_recommendations") and self.previous_recommendations:
+                    for o in self.previous_recommendations:
+                        self.api.submit_feedback(o["outfit_id"], "reject")
                 return self._generate_recommendations(is_retry=True)
             self._reset_context()
             return "Okay, let's start fresh. What kind of outfit are you looking for?"
 
         if intent == "FEEDBACK":
             if self.state == SHOWING_RESULTS and self.context["occasion"] and self.context["weather_class"]:
+                # Log previously displayed recommendations as 'reject'
+                if hasattr(self, "previous_recommendations") and self.previous_recommendations:
+                    for o in self.previous_recommendations:
+                        self.api.submit_feedback(o["outfit_id"], "reject")
                 return self._generate_recommendations(is_retry=True)
             return "Could you be more specific? Like 'make it more casual' or 'something for the cold'?"
 
@@ -270,20 +310,21 @@ class WardrobeChatbot:
         wea     = self.context["weather"]       # dict or None
         wea_cls = self.context["weather_class"]
         style   = self.context.get("style")
+        gender  = self.context.get("gender")
 
         if is_retry and not self.current_outfit_pool:
             is_retry = False
 
         if not is_retry:
             # Fetch extra outfits so we have alternates for retries
-            print(f"[Assistant] Searching for {occ.upper()} outfits for {wea_cls.upper() if wea_cls else 'ANY'} weather...")
-            outfits = self.api.get_outfits(occasion=occ, weather=wea, style=style, top_n=30)
+            print(f"[Assistant] Searching for {occ.upper()} outfits for {wea_cls.upper() if wea_cls else 'ANY'} weather (gender={gender})...")
+            outfits = self.api.get_outfits(occasion=occ, weather=wea, style=style, gender=gender, top_n=30)
 
             # ── Progressive fallback if weather filter left no complete outfit ──
             if not outfits and wea is not None:
                 print(f"[Assistant] No exact matches for {wea_cls.upper()}. Trying with relaxed weather constraints...")
                 # Relax season constraint but keep warmth preference via scoring
-                outfits = self.api.get_outfits(occasion=occ, weather=None, style=style, top_n=30)
+                outfits = self.api.get_outfits(occasion=occ, weather=None, style=style, gender=gender, top_n=30)
                 if outfits:
                     # Re-rank: prefer items with higher warmth for cold, lower for hot
                     target_warmth = 4 if wea["temperature"] <= 15 else 1
@@ -304,12 +345,12 @@ class WardrobeChatbot:
                     
                     # Try generating with weather first
                     outfits = self.api.get_outfits(
-                        occasion=occ, weather=wea, style=style, top_n=30
+                        occasion=occ, weather=wea, style=style, gender=gender, top_n=30
                     )
                     # Progressive fallback for H&M
                     if not outfits and wea is not None:
                         outfits = self.api.get_outfits(
-                            occasion=occ, weather=None, style=style, top_n=30
+                            occasion=occ, weather=None, style=style, gender=gender, top_n=30
                         )
                     
                     if not outfits:
@@ -350,12 +391,12 @@ class WardrobeChatbot:
                 
                 # Try with weather first
                 outfits = self.api.get_outfits(
-                    occasion=occ, weather=wea, style=style, top_n=30
+                    occasion=occ, weather=wea, style=style, gender=gender, top_n=30
                 )
                 # Progressive fallback for H&M as well
                 if not outfits and wea is not None:
                     outfits = self.api.get_outfits(
-                        occasion=occ, weather=None, style=style, top_n=30
+                        occasion=occ, weather=None, style=style, gender=gender, top_n=30
                     )
                 
                 if not outfits:
@@ -370,6 +411,7 @@ class WardrobeChatbot:
 
         # Store for reference
         self.last_recommendations = selected
+        self.previous_recommendations = list(selected)
 
         for i, outfit in enumerate(selected, 1):
             response += f"\nOutfit #{i} (Score: {outfit['score']:.2f})\n"

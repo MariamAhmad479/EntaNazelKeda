@@ -89,5 +89,194 @@
     ],
     "summary": "Navy Blue Polo (navy blue) + Beige Chinos (beige) + Brown Loafers (brown)",
     "context": "i want a casual outfit"
+  },
+  {
+    "outfit_id": "290960da",
+    "score": 0.9775,
+    "breakdown": {
+      "color": 1.0,
+      "style": 1.0,
+      "formality": 1.0,
+      "similarity": 0.91
+    },
+    "items": [
+      {
+        "id": "hm_615668003",
+        "name": "SC WONDER dress",
+        "category": "dress",
+        "color_rgb": [
+          255,
+          250,
+          240
+        ],
+        "color_name": "off white",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "casual"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "warmth_level": 3,
+        "formality_level": 2,
+        "gender": "female",
+        "image_features": null,
+        "image_path": null
+      },
+      {
+        "id": "hm_894687001",
+        "name": "Banksy Sneaker",
+        "category": "shoes",
+        "color_rgb": [
+          245,
+          245,
+          245
+        ],
+        "color_name": "white",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "casual"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "warmth_level": 3,
+        "formality_level": 2,
+        "gender": "male",
+        "image_features": null,
+        "image_path": null
+      }
+    ],
+    "summary": "SC WONDER dress (off white) + Banksy Sneaker (white)",
+    "context": "H&M Casual at 12\u00b0C (All style)"
+  },
+  {
+    "outfit_id": "8ce7e057",
+    "score": 0.9478,
+    "breakdown": {
+      "color": 1.0,
+      "style": 1.0,
+      "formality": 1.0,
+      "similarity": 0.7914
+    },
+    "items": [
+      {
+        "id": "hm_575960002",
+        "name": "PE Lia silk shirt",
+        "category": "shirt",
+        "color_rgb": [
+          255,
+          250,
+          240
+        ],
+        "color_name": "off white",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal",
+          "casual"
+        ],
+        "seasons": [
+          "winter",
+          "autumn"
+        ],
+        "warmth_level": 3,
+        "formality_level": 4,
+        "gender": "female",
+        "image_features": null,
+        "image_path": null
+      },
+      {
+        "id": "hm_812122005",
+        "name": "Tuxedo trs",
+        "category": "pants",
+        "color_rgb": [
+          160,
+          160,
+          160
+        ],
+        "color_name": "grey",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal",
+          "party",
+          "casual"
+        ],
+        "seasons": [
+          "winter",
+          "autumn"
+        ],
+        "warmth_level": 4,
+        "formality_level": 4,
+        "gender": "female",
+        "image_features": null,
+        "image_path": null
+      },
+      {
+        "id": "hm_893441001",
+        "name": "Oliver Laces SB",
+        "category": "shoes",
+        "color_rgb": [
+          245,
+          245,
+          245
+        ],
+        "color_name": "white",
+        "pattern": "striped",
+        "style": "classic",
+        "occasions": [
+          "formal",
+          "casual"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "warmth_level": 3,
+        "formality_level": 4,
+        "gender": "unisex",
+        "image_features": null,
+        "image_path": null
+      },
+      {
+        "id": "hm_874937001",
+        "name": "TC - wool comb",
+        "category": "accessory",
+        "color_rgb": [
+          245,
+          245,
+          245
+        ],
+        "color_name": "white",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal",
+          "casual"
+        ],
+        "seasons": [
+          "winter",
+          "autumn"
+        ],
+        "warmth_level": 3,
+        "formality_level": 4,
+        "gender": "female",
+        "image_features": null,
+        "image_path": null
+      }
+    ],
+    "summary": "PE Lia silk shirt (off white) + Tuxedo trs (grey) + Oliver Laces SB (white) + TC - wool comb (white)",
+    "context": "H&M Formal at 12\u00b0C (All style)"
   }
 ]
