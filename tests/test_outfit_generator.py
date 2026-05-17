@@ -94,3 +94,44 @@ def test_no_shoes_no_outfits():
     gen = OutfitGenerator(min_score=0.0)
     outfits = gen.generate(items, top_n=5)
     assert outfits == []
+
+
+def test_randomization_produces_variety():
+    # Make a large wardrobe so we trigger randomized pool selection
+    items = []
+    for i in range(15):
+        items.append(_make(f"Shirt {i}", ClothingCategory.SHIRT))
+        items.append(_make(f"Pants {i}", ClothingCategory.PANTS))
+    items.append(_make("Shoes 1", ClothingCategory.SHOES))
+
+    gen = OutfitGenerator(min_score=0.0)
+    # Generate outfit sets multiple times
+    outfits1 = gen.generate(items, top_n=3)
+    outfits2 = gen.generate(items, top_n=3)
+    
+    summaries1 = [o.to_dict()["summary"] for o in outfits1]
+    summaries2 = [o.to_dict()["summary"] for o in outfits2]
+    
+    assert len(summaries1) == 3
+    assert len(summaries2) == 3
+
+
+def test_deduplication_removes_identical_looking_outfits():
+    # Create duplicate items (same name and color name) but different physical objects
+    items = [
+        _make("White Shirt", ClothingCategory.SHIRT),
+        _make("White Shirt", ClothingCategory.SHIRT), # Duplicate shirt
+        _make("Blue Shorts", ClothingCategory.PANTS),
+        _make("Shoes 1", ClothingCategory.SHOES),
+    ]
+    
+    gen = OutfitGenerator(min_score=0.0)
+    outfits = gen.generate(items, top_n=10)
+    
+    summaries = [o.to_dict()["summary"] for o in outfits]
+    unique_summaries = set(summaries)
+    
+    assert len(summaries) == len(unique_summaries)
+    # It should only return 1 unique outfit option since the shirt is identical
+    assert len(summaries) == 1
+

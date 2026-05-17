@@ -110,18 +110,46 @@ class OutfitGenerator:
 
         # --- Standard outfits: top + bottom + shoes ---
         if tops and bottoms and shoes:
-            combos = list(product(tops, bottoms, shoes))
-            # Limit combinatorial explosion
-            if len(combos) > self.max_combinations:
-                import random
-                random.seed(42)
-                combos = random.sample(combos, self.max_combinations)
+            # Prevent combinatorial explosion BEFORE materializing the list
+            num_combos = len(tops) * len(bottoms) * len(shoes)
+            
+            # If num_combos is huge, we don't want to materialize the whole list
+            # We'll either sample directly or truncate the source lists
+            if num_combos > self.max_combinations * 2:
+                # Use a more efficient sampling approach or just truncate
+                if num_combos > 100_000:
+                    # Truncate to keep the search space reasonable
+                    limit = 40 # 40^3 = 64,000
+                    tops = tops[:limit]
+                    bottoms = bottoms[:limit]
+                    shoes = shoes[:limit]
+                    num_combos = len(tops) * len(bottoms) * len(shoes)
 
-            for top, bottom, shoe in combos:
-                base_items = [top, bottom, shoe]
-                outfit = self._score_outfit(base_items)
-                if outfit.score >= self.min_score:
-                    candidates.append(outfit)
+                # Still sample to stay within max_combinations
+                import random
+                
+                # To avoid materializing the list, we sample indices without global seeding
+                indices = random.sample(range(num_combos), min(num_combos, self.max_combinations))
+                for idx in indices:
+                    # Map flat index back to product indices
+                    i_shoe = idx % len(shoes)
+                    idx //= len(shoes)
+                    i_bottom = idx % len(bottoms)
+                    idx //= len(bottoms)
+                    i_top = idx % len(tops)
+                    
+                    base_items = [tops[i_top], bottoms[i_bottom], shoes[i_shoe]]
+                    outfit = self._score_outfit(base_items)
+                    if outfit.score >= self.min_score:
+                        candidates.append(outfit)
+            else:
+                # Small enough to materialize
+                combos = list(product(tops, bottoms, shoes))
+                for top, bottom, shoe in combos:
+                    base_items = [top, bottom, shoe]
+                    outfit = self._score_outfit(base_items)
+                    if outfit.score >= self.min_score:
+                        candidates.append(outfit)
 
         # --- Dress outfits: dress + shoes ---
         if dresses and shoes:
@@ -136,17 +164,25 @@ class OutfitGenerator:
 
         # Optionally try adding jackets / accessories to top outfits
         if include_optional and candidates:
+            # Only consider the top few jackets/accessories to save time
             candidates = self._try_add_optionals(
-                candidates[:top_n * 2], jackets, accessories
+                candidates[:top_n * 2], jackets[:30], accessories[:30]
             )
             candidates.sort(key=lambda o: o.score, reverse=True)
 
-        # Explicitly ensure no outfit contains both a dress and a bottom
+        # Explicitly ensure no outfit contains both a dress and a bottom, and deduplicate identical-looking outfits
         valid_candidates = []
+        seen_outfits = set()
         for outfit in candidates:
             cats = {item.category for item in outfit.items}
             if ClothingCategory.DRESS in cats and (cats & BOTTOM_CATEGORIES):
                 continue
+            
+            # Deduplicate by item names/colors so they look unique to the user
+            outfit_key = tuple(sorted((item.name, item.color_name) for item in outfit.items))
+            if outfit_key in seen_outfits:
+                continue
+            seen_outfits.add(outfit_key)
             valid_candidates.append(outfit)
 
         # Introduce variety by randomly sampling from a larger pool of top candidates

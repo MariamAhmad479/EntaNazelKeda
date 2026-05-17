@@ -94,6 +94,20 @@ class ContextFilter:
         """
         result = list(items)
 
+        # Globally exclude any innerwear (socks, bra, underwear, briefs, sleepwear, loungewear, pajamas, etc.)
+        innerwear_keywords = {
+            "bra", "bras", "bralette", "bralettes", "underwear", "brief", "briefs",
+            "panty", "panties", "trunk", "trunks", "boxer", "boxers", "socks", "sock",
+            "tight", "tights", "stocking", "stockings", "nightwear", "sleepwear",
+            "loungewear", "pajamas", "pyjamas", "undergarment", "undergarments"
+        }
+        
+        import re
+        result = [
+            i for i in result
+            if set(re.findall(r"[a-z]+", i.name.lower())).isdisjoint(innerwear_keywords)
+        ]
+
         if occasion is not None:
             result = self._filter_by_occasion(result, occasion)
 

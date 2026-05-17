@@ -1,0 +1,27 @@
+{
+  "items": [
+    {
+      "id": "723cfe05",
+      "name": "Blue Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\Taher\\images\\Screenshot 2026-05-15 223429.png"
+    }
+  ]
+}
