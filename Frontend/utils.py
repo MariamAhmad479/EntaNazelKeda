@@ -141,6 +141,14 @@ def save_outfit(outfit_dict, context_prompt="Recommendation", username=None):
     try:
         with open(outfits_path, 'w', encoding='utf-8') as f:
             json.dump(outfits, f, indent=2)
+            
+        # Log to the active XGBoost feedback loop as 'accept'
+        try:
+            api = get_user_api(username)
+            api.submit_feedback(outfit_id, "accept")
+        except Exception as feedback_err:
+            print(f"[Feedback] Failed to log accept action: {feedback_err}")
+
         return True, "Outfit saved successfully!"
     except Exception as e:
         return False, f"Failed to save outfit: {e}"
@@ -189,7 +197,7 @@ def load_css():
         background-color: #f0e6d2;
         border-right: 1px solid rgba(212,160,23,0.3);
     }
-    section[data-testid="stSidebar"] * {
+    section[data-testid="stSidebar"] *:not(style):not(script):not([data-testid="stIconMaterial"]):not([class*="material"]) {
         color: #2b1b11 !important;
         font-family: 'Inter', sans-serif;
     }
@@ -369,3 +377,80 @@ def render_sidebar():
         else:
             if st.button("Login / Sign Up"):
                 auth_dialog()
+
+        # Render the live XGBoost feedback & training dashboard in the sidebar
+        try:
+            api = get_user_api(st.session_state["username"])
+            render_xgboost_dashboard(api)
+        except Exception as e:
+            st.sidebar.error(f"Error loading AI Stylist panel: {e}")
+
+def render_xgboost_dashboard(api):
+    """Render a live XGBoost feedback & training widget in the sidebar."""
+    import time
+    st.markdown("---")
+    st.markdown("<p style='font-weight:700; color:#d4a017; font-size:16px; margin-bottom: 5px;'>⚡ AI Stylist Learning</p>", unsafe_allow_html=True)
+    
+    with st.expander("Model Status & Weights", expanded=True):
+        summary = api.get_feedback_summary()
+        accepts = summary.get("accept", 0)
+        rejects = summary.get("reject", 0)
+        total = summary.get("total", 0)
+        
+        col_acc, col_rej = st.columns(2)
+        with col_acc:
+            st.markdown(f"""
+            <div style="background: rgba(46, 204, 113, 0.15); border: 1px solid rgba(46, 204, 113, 0.3); border-radius: 8px; padding: 6px; text-align: center;">
+                <span style="font-size: 9px; font-weight: 600; color: #27ae60; text-transform: uppercase;">Accepts</span><br>
+                <span style="font-size: 16px; font-weight: 700; color: #27ae60;">{accepts}</span>
+            </div>
+            """, unsafe_allow_html=True)
+        with col_rej:
+            st.markdown(f"""
+            <div style="background: rgba(231, 76, 60, 0.15); border: 1px solid rgba(231, 76, 60, 0.3); border-radius: 8px; padding: 6px; text-align: center;">
+                <span style="font-size: 9px; font-weight: 600; color: #c0392b; text-transform: uppercase;">Rejects</span><br>
+                <span style="font-size: 16px; font-weight: 700; color: #c0392b;">{rejects}</span>
+            </div>
+            """, unsafe_allow_html=True)
+            
+        st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
+        
+        # Determine training readiness
+        if total < 10:
+            st.info(f"📥 Need {10 - total} more decisions to learn your style.")
+            retrain_disabled = True
+        elif accepts == 0 or rejects == 0:
+            st.warning("⚖️ Need at least 1 Accept and 1 Reject to capture your style contrast.")
+            retrain_disabled = True
+        else:
+            st.success("✅ AI Stylist is ready to learn your preferences!")
+            retrain_disabled = False
+            
+        if st.button("Retrain AI Stylist ⚡", disabled=retrain_disabled, key="retrain_sidebar_btn"):
+            with st.spinner("XGBoost is analyzing your styling preferences..."):
+                new_weights = api.retrain()
+                if new_weights:
+                    st.success("Preferences learned!")
+                    time.sleep(1)
+                    st.rerun()
+                else:
+                    st.error("Failed to retrain. Ensure feedback log contains both positive and negative actions.")
+                    
+        st.markdown("<hr style='margin: 12px 0; border: 0.5px solid rgba(212,160,23,0.15);'>", unsafe_allow_html=True)
+        
+        weights = api.get_scoring_weights()
+        st.markdown("<p style='font-size: 12px; font-weight:700; color: #2b1b11; margin-bottom:6px;'>Active Scoring Weights:</p>", unsafe_allow_html=True)
+        
+        for k, v in weights.items():
+            pct = int(v * 100)
+            st.markdown(f"""
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 10px; font-weight: 600; color: #5c4631;">
+                    <span>{k.capitalize()}</span>
+                    <span>{pct}%</span>
+                </div>
+                <div style="background-color: #faf6f0; border-radius: 4px; height: 5px; width: 100%; border: 1px solid rgba(212,160,23,0.15);">
+                    <div style="background-color: #d4a017; height: 100%; width: {pct}%; border-radius: 4px;"></div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)

@@ -376,13 +376,34 @@ class ContextFilter:
         items: List[ClothingItem], gender: str
     ) -> List[ClothingItem]:
         gender_lower = gender.lower()
-        if gender_lower == "female":
-            exclude = ["men", "boy", "tie", "cufflink", "trunk", "boxer", "brief"]
-            return [i for i in items if not any(w in i.name.lower() for w in exclude)]
-        elif gender_lower == "male":
-            exclude = ["women", "girl", "dress", "skirt", "saree", "blouse", "legging", "heel", "purse", "bra", "panties"]
-            return [i for i in items if not any(w in i.name.lower() for w in exclude)]
-        return items
+        if gender_lower not in ("female", "male"):
+            return items
+
+        filtered = []
+        female_exclude = ["men", "boy", "tie", "cufflink", "trunk", "boxer", "brief"]
+        male_exclude = ["women", "girl", "dress", "skirt", "saree", "blouse", "legging", "heel", "purse", "bra", "panties"]
+
+        for i in items:
+            item_gender = getattr(i, "gender", "unisex").lower()
+            
+            # Check explicit metadata gender first
+            if item_gender == "female":
+                if gender_lower == "female":
+                    filtered.append(i)
+            elif item_gender == "male":
+                if gender_lower == "male":
+                    filtered.append(i)
+            else:
+                # Unisex / Custom User Uploads fallback: apply substring name rules
+                name_lower = i.name.lower()
+                if gender_lower == "female":
+                    if not any(w in name_lower for w in female_exclude):
+                        filtered.append(i)
+                elif gender_lower == "male":
+                    if not any(w in name_lower for w in male_exclude):
+                        filtered.append(i)
+                        
+        return filtered
 
     def __repr__(self) -> str:
         return "ContextFilter()"

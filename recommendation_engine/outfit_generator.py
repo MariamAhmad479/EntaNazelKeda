@@ -93,18 +93,26 @@ class OutfitGenerator:
         items: List[ClothingItem],
         top_n: int = 10,
         include_optional: bool = True,
+        min_score: Optional[float] = None,
     ) -> List[Outfit]:
         """Generate the top-N outfits from the given items.
 
         Returns outfits sorted by descending compatibility score.
         """
-        # Partition items by slot
-        tops = [i for i in items if i.category in TOP_CATEGORIES and i.category != ClothingCategory.JACKET]
-        bottoms = [i for i in items if i.category in BOTTOM_CATEGORIES]
-        dresses = [i for i in items if i.category in FULL_BODY_CATEGORIES]
-        shoes = [i for i in items if i.category in FOOTWEAR_CATEGORIES]
-        jackets = [i for i in items if i.category == ClothingCategory.JACKET]
-        accessories = [i for i in items if i.category == ClothingCategory.ACCESSORY]
+        # Determine active min score threshold
+        active_min_score = min_score if min_score is not None else self.min_score
+
+        # Partition items by slot (shuffle a copy of the list first to guarantee variety)
+        import random
+        shuffled_items = list(items)
+        random.shuffle(shuffled_items)
+
+        tops = [i for i in shuffled_items if i.category in TOP_CATEGORIES and i.category != ClothingCategory.JACKET]
+        bottoms = [i for i in shuffled_items if i.category in BOTTOM_CATEGORIES]
+        dresses = [i for i in shuffled_items if i.category in FULL_BODY_CATEGORIES]
+        shoes = [i for i in shuffled_items if i.category in FOOTWEAR_CATEGORIES]
+        jackets = [i for i in shuffled_items if i.category == ClothingCategory.JACKET]
+        accessories = [i for i in shuffled_items if i.category == ClothingCategory.ACCESSORY]
 
         candidates: List[Outfit] = []
 
@@ -140,7 +148,7 @@ class OutfitGenerator:
                     
                     base_items = [tops[i_top], bottoms[i_bottom], shoes[i_shoe]]
                     outfit = self._score_outfit(base_items)
-                    if outfit.score >= self.min_score:
+                    if outfit.score >= active_min_score:
                         candidates.append(outfit)
             else:
                 # Small enough to materialize
@@ -148,33 +156,37 @@ class OutfitGenerator:
                 for top, bottom, shoe in combos:
                     base_items = [top, bottom, shoe]
                     outfit = self._score_outfit(base_items)
-                    if outfit.score >= self.min_score:
+                    if outfit.score >= active_min_score:
                         candidates.append(outfit)
 
         # --- Dress outfits: dress + shoes ---
         if dresses and shoes:
-            num_combos_dresses = len(dresses) * len(shoes)
-            if num_combos_dresses > self.max_combinations * 2:
-                if num_combos_dresses > 100_000:
-                    limit = 200 # 200 * 200 = 40,000
+            num_dress_combos = len(dresses) * len(shoes)
+            
+            # Prevent combinatorial explosion for dress combinations
+            if num_dress_combos > self.max_combinations * 2:
+                if num_dress_combos > 100_000:
+                    # Truncate source lists to keep the search space reasonable
+                    limit = 200  # 200^2 = 40,000
                     dresses = dresses[:limit]
                     shoes = shoes[:limit]
-                    num_combos_dresses = len(dresses) * len(shoes)
+                    num_dress_combos = len(dresses) * len(shoes)
                 
                 import random
-                indices = random.sample(range(num_combos_dresses), min(num_combos_dresses, self.max_combinations))
+                indices = random.sample(range(num_dress_combos), min(num_dress_combos, self.max_combinations))
                 for idx in indices:
                     i_shoe = idx % len(shoes)
                     i_dress = idx // len(shoes)
+                    
                     base_items = [dresses[i_dress], shoes[i_shoe]]
                     outfit = self._score_outfit(base_items)
-                    if outfit.score >= self.min_score:
+                    if outfit.score >= active_min_score:
                         candidates.append(outfit)
             else:
                 for dress, shoe in product(dresses, shoes):
                     base_items = [dress, shoe]
                     outfit = self._score_outfit(base_items)
-                    if outfit.score >= self.min_score:
+                    if outfit.score >= active_min_score:
                         candidates.append(outfit)
 
         # Sort by score descending
@@ -184,7 +196,7 @@ class OutfitGenerator:
         if include_optional and candidates:
             # Only consider the top few jackets/accessories to save time
             candidates = self._try_add_optionals(
-                candidates[:top_n * 2], jackets[:30], accessories[:30]
+                candidates[:max(200, top_n * 10)], jackets[:30], accessories[:30]
             )
             candidates.sort(key=lambda o: o.score, reverse=True)
 
@@ -203,16 +215,118 @@ class OutfitGenerator:
             seen_outfits.add(outfit_key)
             valid_candidates.append(outfit)
 
-        # Introduce variety by randomly sampling from a larger pool of top candidates
-        pool_size = top_n * 3
-        top_pool = valid_candidates[:pool_size]
-        
-        import random
-        if len(top_pool) > top_n:
-            final_selection = random.sample(top_pool, top_n)
-            final_selection.sort(key=lambda o: o.score, reverse=True)
-        else:
-            final_selection = top_pool
+        # ── Smart Multi-Pass Greedy Diversity Reranker ──
+        final_selection = []
+        used_main_items = set()  # Track unique dresses, shirts, jackets, pants, skirts, shorts
+        selected_bottom_cats = {}  # Track counts of BOTTOM categories (pants, skirt, shorts)
+        selected_dresses_count = 0
+
+        # Pass 1: Strict unique items, strict at most 1 dress, alternating standard bottoms (first time seeing each bottom cat)
+        for outfit in valid_candidates:
+            if len(final_selection) >= top_n:
+                break
+                
+            is_dress = any(item.category == ClothingCategory.DRESS for item in outfit.items)
+            
+            # Dress constraint: at most 1 dress outfit in final recommendations
+            if is_dress and selected_dresses_count >= 1:
+                continue
+
+            main_items = [
+                item.id for item in outfit.items 
+                if item.category in (ClothingCategory.DRESS, ClothingCategory.SHIRT, ClothingCategory.JACKET, ClothingCategory.PANTS, ClothingCategory.SKIRT, ClothingCategory.SHORTS)
+            ]
+            has_overlap = any(item_id in used_main_items for item_id in main_items)
+            if has_overlap:
+                continue
+
+            if not is_dress:
+                bottom_item = next((item for item in outfit.items if item.category in BOTTOM_CATEGORIES), None)
+                bottom_cat = bottom_item.category if bottom_item else None
+                # In Pass 1, only allow a bottom category if it has been selected 0 times
+                if bottom_cat and selected_bottom_cats.get(bottom_cat, 0) > 0:
+                    continue
+
+            # If we reach here, we accept it
+            final_selection.append(outfit)
+            if is_dress:
+                selected_dresses_count += 1
+            else:
+                bottom_item = next((item for item in outfit.items if item.category in BOTTOM_CATEGORIES), None)
+                bottom_cat = bottom_item.category if bottom_item else None
+                if bottom_cat:
+                    selected_bottom_cats[bottom_cat] = selected_bottom_cats.get(bottom_cat, 0) + 1
+            for item_id in main_items:
+                used_main_items.add(item_id)
+
+        # Pass 2: Strict unique items, strict at most 1 dress, relax bottom category restriction (allow minimum counts)
+        if len(final_selection) < top_n:
+            for outfit in valid_candidates:
+                if len(final_selection) >= top_n:
+                    break
+                if outfit in final_selection:
+                    continue
+
+                is_dress = any(item.category == ClothingCategory.DRESS for item in outfit.items)
+                if is_dress and selected_dresses_count >= 1:
+                    continue
+
+                main_items = [
+                    item.id for item in outfit.items 
+                    if item.category in (ClothingCategory.DRESS, ClothingCategory.SHIRT, ClothingCategory.JACKET, ClothingCategory.PANTS, ClothingCategory.SKIRT, ClothingCategory.SHORTS)
+                ]
+                has_overlap = any(item_id in used_main_items for item_id in main_items)
+                if has_overlap:
+                    continue
+
+                final_selection.append(outfit)
+                if is_dress:
+                    selected_dresses_count += 1
+                else:
+                    bottom_item = next((item for item in outfit.items if item.category in BOTTOM_CATEGORIES), None)
+                    bottom_cat = bottom_item.category if bottom_item else None
+                    if bottom_cat:
+                        selected_bottom_cats[bottom_cat] = selected_bottom_cats.get(bottom_cat, 0) + 1
+                for item_id in main_items:
+                    used_main_items.add(item_id)
+
+        # Pass 3: Relax main item overlap, strict at most 1 dress
+        if len(final_selection) < top_n:
+            for outfit in valid_candidates:
+                if len(final_selection) >= top_n:
+                    break
+                if outfit in final_selection:
+                    continue
+
+                is_dress = any(item.category == ClothingCategory.DRESS for item in outfit.items)
+                if is_dress and selected_dresses_count >= 1:
+                    continue
+
+                final_selection.append(outfit)
+                if is_dress:
+                    selected_dresses_count += 1
+                else:
+                    bottom_item = next((item for item in outfit.items if item.category in BOTTOM_CATEGORIES), None)
+                    bottom_cat = bottom_item.category if bottom_item else None
+                    if bottom_cat:
+                        selected_bottom_cats[bottom_cat] = selected_bottom_cats.get(bottom_cat, 0) + 1
+
+        # Pass 4: Fallback - absolute last resort. Fill up remaining slots with highest remaining scoring outfits.
+        # Still strictly enforce the at-most-1-dress rule!
+        if len(final_selection) < top_n:
+            for outfit in valid_candidates:
+                if len(final_selection) >= top_n:
+                    break
+                if outfit not in final_selection:
+                    is_dress = any(item.category == ClothingCategory.DRESS for item in outfit.items)
+                    if is_dress and selected_dresses_count >= 1:
+                        continue
+                    final_selection.append(outfit)
+                    if is_dress:
+                        selected_dresses_count += 1
+
+        # Sort the diverse selection by compatibility score descending
+        final_selection.sort(key=lambda o: o.score, reverse=True)
 
         return final_selection
 
