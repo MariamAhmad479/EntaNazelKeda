@@ -60,6 +60,8 @@ class FeedbackManager:
             try:
                 with open(self.feedback_path, "r", encoding="utf-8") as f:
                     self._feedback = json.load(f)
+                if not isinstance(self._feedback, list):
+                    self._feedback = []
             except (json.JSONDecodeError, IOError):
                 self._feedback = []
 
@@ -93,6 +95,9 @@ class FeedbackManager:
         if action not in ("accept", "reject"):
             raise ValueError(f"Action must be 'accept' or 'reject', got {action!r}")
 
+        # Always reload from disk first to stay in sync with other active instances
+        self._load()
+
         entry = {
             "outfit_id": outfit_id,
             "action": action,
@@ -111,6 +116,8 @@ class FeedbackManager:
 
         Returns the new weights dict, or None if not enough data.
         """
+        # Always reload from disk first to stay in sync
+        self._load()
         if len(self._feedback) < self.min_samples_to_retrain:
             return None
 
@@ -184,16 +191,19 @@ class FeedbackManager:
 
     def get_feedback_count(self) -> int:
         """Return total number of feedback entries."""
+        self._load()
         return len(self._feedback)
 
     def get_feedback_summary(self) -> Dict[str, int]:
         """Return counts of accepts and rejects."""
+        self._load()
         accepts = sum(1 for f in self._feedback if f["action"] == "accept")
         rejects = len(self._feedback) - accepts
         return {"accept": accepts, "reject": rejects, "total": len(self._feedback)}
 
     def get_all_feedback(self) -> List[Dict]:
         """Return all raw feedback entries."""
+        self._load()
         return list(self._feedback)
 
     def clear(self) -> None:

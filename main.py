@@ -1,5 +1,6 @@
 import os
 import sys
+from typing import Optional, Dict, List
 
 # Add the project root to sys.path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -139,6 +140,42 @@ class WardrobeChatbot:
             return "REJECTION"
         return None
 
+    @staticmethod
+    def _detect_acceptance(text: str) -> int | None:
+        """If user is accepting/saving an outfit, return the 1-based index (1, 2, or 3), otherwise None."""
+        t = text.lower()
+        
+        # Check for acceptance/liking keywords
+        accept_kws = ["like", "love", "save", "choose", "pick", "take", "want", "keep", "perfect", "great", "nice", "best"]
+        has_accept = any(kw in t for kw in accept_kws) or "outfit" in t or "number" in t
+        if not has_accept:
+            return None
+            
+        import re
+        # Look for numbers
+        num_match = re.search(r'\b(1|2|3|one|two|three)\b', t)
+        if num_match:
+            val = num_match.group(1)
+            if val in ("1", "one"):
+                return 1
+            if val in ("2", "two"):
+                return 2
+            if val in ("3", "three"):
+                return 3
+                
+        # Look for ordinals
+        ord_match = re.search(r'\b(first|second|third)\b', t)
+        if ord_match:
+            val = ord_match.group(1)
+            if val == "first":
+                return 1
+            if val == "second":
+                return 2
+            if val == "third":
+                return 3
+                
+        return None
+
     # ------------------------------------------------------------------
     def handle_input(self, user_input: str, gender: Optional[str] = None) -> str:
         import random, re
@@ -198,6 +235,51 @@ class WardrobeChatbot:
             # We still proceed to NLP to see if they provided weather too
 
         # ── 1. Rule-based pre-filter (runs BEFORE NLP) ───────────────
+        acc_index = self._detect_acceptance(raw_text)
+        if acc_index is not None and self.state == SHOWING_RESULTS and self.last_recommendations:
+            if 1 <= acc_index <= len(self.last_recommendations):
+                import json, os
+                outfit = self.last_recommendations[acc_index - 1]
+                outfit_id = outfit.get("outfit_id")
+                
+                # Setup saving paths
+                user_dir = os.path.dirname(self.api.wardrobe_path)
+                outfits_path = os.path.join(user_dir, "saved_outfits.json")
+                
+                saved_list = []
+                if os.path.exists(outfits_path):
+                    try:
+                        with open(outfits_path, 'r', encoding='utf-8') as f:
+                            saved_list = json.load(f)
+                    except Exception:
+                        saved_list = []
+                
+                # Check if already saved
+                if any(o.get("outfit_id") == outfit_id for o in saved_list):
+                    return f"You've already saved **Outfit #{acc_index}** ({outfit['summary']})!"
+                
+                # Add context details
+                outfit_to_save = dict(outfit)
+                outfit_to_save["context"] = f"Chat: {self.context['occasion']} & {self.context['weather_class']}"
+                saved_list.append(outfit_to_save)
+                
+                try:
+                    with open(outfits_path, 'w', encoding='utf-8') as f:
+                        json.dump(saved_list, f, indent=2)
+                    
+                    # Submit feedback to active API
+                    self.api.submit_feedback(outfit_id, "accept")
+                    self._reset_context()
+                    
+                    return (
+                        f"Awesome choice! 💾 I've successfully saved **Outfit #{acc_index}** "
+                        f"({outfit['summary']}) to your saved outfits closet.\n\n"
+                        f"I also logged this acceptance in my learning model to prefer these style elements for you! "
+                        f"What kind of outfit are we picking next?"
+                    )
+                except Exception as e:
+                    return f"I liked Outfit #{acc_index} too, but had a small issue saving it: {e}."
+
         # Catches rejection/feedback phrases the model misclassifies.
         rule_intent = self._detect_rejection(raw_text)
         if rule_intent == "REJECTION":

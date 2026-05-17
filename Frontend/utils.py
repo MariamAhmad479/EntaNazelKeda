@@ -89,7 +89,7 @@ def get_user_api(username=None):
             
     if not os.path.exists(feedback_path):
         with open(feedback_path, 'w', encoding='utf-8') as f:
-            json.dump({}, f)
+            json.dump([], f)
                 
     import sys
     if PROJECT_ROOT not in sys.path:

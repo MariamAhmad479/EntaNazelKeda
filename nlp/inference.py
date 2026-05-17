@@ -263,13 +263,42 @@ class NLPInference:
             condition     = None
 
         # ── Location Matching Override ─────────────────────────────────────────
+        def normalize_str(s: str) -> str:
+            import re
+            s = s.lower()
+            s = re.sub(r"[^\w\s]", " ", s)  # replace punctuation with space
+            return " ".join(s.split())
+
         matched_location = None
         if not self.df_locations.empty:
-            text_lower = text.lower()
+            text_norm = normalize_str(text)
+            # Strategy 1: Substring match on normalized strings
             for place in self.df_locations['place_name'].values:
-                if str(place).lower() in text_lower:
+                place_norm = normalize_str(str(place))
+                if place_norm and place_norm in text_norm:
                     matched_location = place
                     break
+            
+            # Strategy 2: If no match, try token-set containment (excluding common stop words)
+            if not matched_location:
+                stop_words = {"the", "a", "an", "and", "or", "in", "on", "at", "to", "of", "for", "with", "el"}
+                text_words = set(text_norm.split())
+                for place in self.df_locations['place_name'].values:
+                    place_norm = normalize_str(str(place))
+                    place_words = [w for w in place_norm.split() if w not in stop_words]
+                    # If all significant words of the place name are in the query
+                    if place_words and all(pw in text_words for pw in place_words):
+                        matched_location = place
+                        break
+            
+            # Strategy 3: If still no match, try no-space substring matching
+            if not matched_location:
+                text_no_space = text_norm.replace(" ", "")
+                for place in self.df_locations['place_name'].values:
+                    place_no_space = normalize_str(str(place)).replace(" ", "")
+                    if len(place_no_space) >= 5 and place_no_space in text_no_space:
+                        matched_location = place
+                        break
         
         if matched_location:
             print(f"\n[NLPInference] Detected location: {matched_location}")
