@@ -1195,6 +1195,305 @@
       "formality_level": 3,
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\data\\users\\rokayaaa\\images\\Women's Contrast Color Splicing Front Button Decoration Casual Long Sleeve Jacket.jpg"
+    },
+    {
+      "id": "c08bcde5",
+      "name": "Black Sports sandals",
+      "category": "shoes",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\download (16).jpg"
+    },
+    {
+      "id": "d8b4c1c6",
+      "name": "Blue Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\\u2661.jpg"
+    },
+    {
+      "id": "2a959796",
+      "name": "Black Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\download (28).jpg"
+    },
+    {
+      "id": "4bec47cf",
+      "name": "Brown Backpacks",
+      "category": "accessory",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\download (2).jpg"
+    },
+    {
+      "id": "54b77c4c",
+      "name": "Pink Shirts",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        192,
+        203
+      ],
+      "color_name": "pink",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\Contrast Trim Bow-embellished Long-sleeve Dress.jpg"
+    },
+    {
+      "id": "3de55bf0",
+      "name": "Black Fragrance",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\download (16).jpg"
+    },
+    {
+      "id": "d0e08b52",
+      "name": "White Shirts",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\Women's Contrast Color Splicing Front Button Decoration Casual Long Sleeve Jacket.jpg"
+    },
+    {
+      "id": "3d432996",
+      "name": "Brown Bags",
+      "category": "accessory",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\download (2).jpg"
+    },
+    {
+      "id": "eb9dcfc0",
+      "name": "White Dresses",
+      "category": "dress",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\Contrast Trim Bow-embellished Long-sleeve Dress.jpg"
+    },
+    {
+      "id": "777d8524",
+      "name": "Black Sports shoes",
+      "category": "shoes",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\download (16).jpg"
+    },
+    {
+      "id": "b60ce065",
+      "name": "White Shirts",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\Women's Contrast Color Splicing Front Button Decoration Casual Long Sleeve Jacket.jpg"
+    },
+    {
+      "id": "92512848",
+      "name": "Brown Backpacks",
+      "category": "accessory",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\download (2).jpg"
+    },
+    {
+      "id": "bd4917b7",
+      "name": "Red Innerwear vests",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\rokayaaa\\images\\download (7).jpg"
     }
   ]
 }
