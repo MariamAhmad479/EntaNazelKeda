@@ -1,0 +1,13 @@
+[
+  {
+    "outfit_id": "3bfe1b90",
+    "action": "accept",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:33:19.096369"
+  }
+]

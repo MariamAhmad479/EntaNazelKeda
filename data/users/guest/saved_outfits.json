@@ -278,5 +278,122 @@
     ],
     "summary": "PE Lia silk shirt (off white) + Tuxedo trs (grey) + Oliver Laces SB (white) + TC - wool comb (white)",
     "context": "H&M Formal at 12\u00b0C (All style)"
+  },
+  {
+    "outfit_id": "3dd07d37",
+    "score": 0.8889,
+    "breakdown": {
+      "color": 0.9,
+      "style": 1.0,
+      "formality": 1.0,
+      "similarity": 0.6555
+    },
+    "items": [
+      {
+        "id": "db7b13c7",
+        "name": "Purple Shirts",
+        "category": "shirt",
+        "color_rgb": [
+          128,
+          0,
+          128
+        ],
+        "color_name": "purple",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "warmth_level": 1,
+        "formality_level": 5,
+        "gender": "unisex",
+        "image_features": null,
+        "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\Screenshot 2026-05-18 213950.png"
+      },
+      {
+        "id": "48c79030",
+        "name": "Blue Trousers",
+        "category": "pants",
+        "color_rgb": [
+          0,
+          0,
+          255
+        ],
+        "color_name": "blue",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "warmth_level": 1,
+        "formality_level": 5,
+        "gender": "unisex",
+        "image_features": null,
+        "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\Screenshot 2026-05-18 211635.png"
+      },
+      {
+        "id": "shoes001",
+        "name": "Black Oxford Shoes",
+        "category": "shoes",
+        "color_rgb": [
+          20,
+          20,
+          20
+        ],
+        "color_name": "black",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal",
+          "business"
+        ],
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "warmth_level": 2,
+        "formality_level": 5,
+        "gender": "unisex",
+        "image_features": null,
+        "image_path": null
+      },
+      {
+        "id": "jacket001",
+        "name": "Navy Blazer",
+        "category": "jacket",
+        "color_rgb": [
+          0,
+          0,
+          80
+        ],
+        "color_name": "navy",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal",
+          "business"
+        ],
+        "seasons": [
+          "spring",
+          "autumn",
+          "winter"
+        ],
+        "warmth_level": 3,
+        "formality_level": 5,
+        "gender": "unisex",
+        "image_features": null,
+        "image_path": null
+      }
+    ],
+    "summary": "Purple Shirts (purple) + Blue Trousers (blue) + Black Oxford Shoes (black) + Navy Blazer (navy)",
+    "context": "it is hot and formal"
   }
 ]

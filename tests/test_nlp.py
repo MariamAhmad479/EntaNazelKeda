@@ -118,8 +118,9 @@ class TestGenerateSyntheticData:
 
         for record in data:
             text_lower = record["text"].lower()
-            text_has_occasion = any(w in text_lower for w in all_occ_words)
-            text_has_weather  = any(w in text_lower for w in all_wea_words)
+            text_norm = text_lower.replace("-", " ")
+            text_has_occasion = any(w.replace("-", " ") in text_norm for w in all_occ_words)
+            text_has_weather  = any(w.replace("-", " ") in text_norm for w in all_wea_words)
 
             if not text_has_occasion:
                 assert record["occasion"] is None, (
@@ -359,7 +360,7 @@ class TestNLPInferenceIntegration:
 
     def test_predict_returns_required_keys(self, infer):
         result = infer.predict("I need a formal outfit, it's freezing")
-        assert set(result.keys()) == {"occasion", "weather_class", "weather", "style"}
+        assert set(result.keys()) == {"occasion", "weather_class", "weather", "style", "intent", "confidence", "color", "piece"}
 
     def test_predict_formal_cold(self, infer):
         result = infer.predict("I need a formal outfit for a wedding, it's freezing")

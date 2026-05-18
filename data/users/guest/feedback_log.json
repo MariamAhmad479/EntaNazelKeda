@@ -185,5 +185,16 @@
       "similarity": 0.25
     },
     "timestamp": "2026-05-17T18:19:00.315051"
+  },
+  {
+    "outfit_id": "3dd07d37",
+    "action": "accept",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:28:16.979991"
   }
 ]

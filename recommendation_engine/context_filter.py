@@ -225,22 +225,31 @@ class ContextFilter:
             elif "shoe" in p_lower or "sandal" in p_lower or "boot" in p_lower or "sneaker" in p_lower or "heel" in p_lower:
                 piece_cat = ClothingCategory.SHOES
 
+        # If weather is hot (>= 23°C), do not suggest jackets at all to prevent sweat/heat issues
+        is_hot_weather = False
+        if weather is not None and weather.get("temperature") is not None:
+            if weather["temperature"] >= 23:
+                is_hot_weather = True
+
+        # Disallow jackets AND warm "layering" items (sweaters, hoodies, cardigans) in hot weather
+        # These keywords are often categorized as 'shirt' but should be excluded when hot.
+        warm_keywords = {"sweater", "sweatshirt", "hoodie", "cardigan", "fleece", "knitwear", "wool", "coat", "jacket"}
+        
+        if is_hot_weather:
+            # Purge from master result list so they don't leak into 'other_items' later
+            import re
+            result = [
+                i for i in result
+                if i.category != ClothingCategory.JACKET and 
+                not set(re.findall(r"[a-z]+", i.name.lower())).intersection(warm_keywords)
+            ]
+        
         # Partition into category slots
         shoes_items = [i for i in result if i.category in FOOTWEAR_CATEGORIES]
         dresses_items = [i for i in result if i.category in FULL_BODY_CATEGORIES]
         tops_items = [i for i in result if i.category in TOP_CATEGORIES and i.category != ClothingCategory.JACKET]
         bottoms_items = [i for i in result if i.category in BOTTOM_CATEGORIES]
-        
-        # If weather is hot (>= 25°C), do not suggest jackets at all to prevent sweat/heat issues
-        is_hot_weather = False
-        if weather is not None and weather.get("temperature") is not None:
-            if weather["temperature"] >= 25:
-                is_hot_weather = True
-                
         jackets_items = [i for i in result if i.category == ClothingCategory.JACKET]
-        if is_hot_weather:
-            jackets_items = []  # Disallow jackets completely in hot summer weather!
-        
         accessories_items = [i for i in result if i.category == ClothingCategory.ACCESSORY]
         
         # Restrict slots based on piece_cat

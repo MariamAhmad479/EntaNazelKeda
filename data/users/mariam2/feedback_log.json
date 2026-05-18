@@ -1,0 +1,189 @@
+[
+  {
+    "outfit_id": "370bd415",
+    "action": "accept",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:40:45.748818"
+  },
+  {
+    "outfit_id": "bc1b883b",
+    "action": "accept",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:43:11.491059"
+  },
+  {
+    "outfit_id": "a9927da8",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:45:12.174942"
+  },
+  {
+    "outfit_id": "33824e3a",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:52:45.858533"
+  },
+  {
+    "outfit_id": "06f4d136",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:52:45.860539"
+  },
+  {
+    "outfit_id": "1dfaccb1",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:52:45.862044"
+  },
+  {
+    "outfit_id": "9845021c",
+    "action": "accept",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:53:00.750929"
+  },
+  {
+    "outfit_id": "977d8b39",
+    "action": "accept",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:53:05.368416"
+  },
+  {
+    "outfit_id": "5d73e191",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:53:15.700696"
+  },
+  {
+    "outfit_id": "9845021c",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:53:15.701946"
+  },
+  {
+    "outfit_id": "977d8b39",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T22:53:15.703454"
+  },
+  {
+    "outfit_id": "40869a56",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T23:02:09.940853"
+  },
+  {
+    "outfit_id": "07a74203",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T23:02:09.942423"
+  },
+  {
+    "outfit_id": "7b66fe2a",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T23:02:09.944952"
+  },
+  {
+    "outfit_id": "07a52456",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T23:03:05.684654"
+  },
+  {
+    "outfit_id": "2cf3362c",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T23:03:05.686974"
+  },
+  {
+    "outfit_id": "72646b27",
+    "action": "reject",
+    "breakdown": {
+      "color": 0.25,
+      "style": 0.25,
+      "formality": 0.25,
+      "similarity": 0.25
+    },
+    "timestamp": "2026-05-18T23:03:05.690016"
+  }
+]

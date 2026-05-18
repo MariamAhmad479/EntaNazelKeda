@@ -1,0 +1,1156 @@
+{
+  "items": [
+    {
+      "id": "fbf4b164",
+      "name": "Brown Dresses",
+      "category": "dress",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 200324.png"
+    },
+    {
+      "id": "52634093",
+      "name": "Blue Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 200752.png"
+    },
+    {
+      "id": "2f9d61ac",
+      "name": "Black Jackets",
+      "category": "jacket",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "formal"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 3,
+      "formality_level": 5,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 203013.png"
+    },
+    {
+      "id": "620362d9",
+      "name": "Pink Jackets",
+      "category": "jacket",
+      "color_rgb": [
+        255,
+        192,
+        203
+      ],
+      "color_name": "pink",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 3,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 203154.png"
+    },
+    {
+      "id": "bfe0e43f",
+      "name": "Brown Jackets",
+      "category": "jacket",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 3,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 204145.png"
+    },
+    {
+      "id": "7daff152",
+      "name": "Yellow Jackets",
+      "category": "jacket",
+      "color_rgb": [
+        255,
+        255,
+        0
+      ],
+      "color_name": "yellow",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "winter"
+      ],
+      "warmth_level": 4,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 204517.png"
+    },
+    {
+      "id": "c787401e",
+      "name": "Blue Sweatshirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 3,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 204736.png"
+    },
+    {
+      "id": "f01188d3",
+      "name": "Black Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 204900.png"
+    },
+    {
+      "id": "8dcdf124",
+      "name": "White Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 205136.png"
+    },
+    {
+      "id": "ec8925ea",
+      "name": "Brown Coats",
+      "category": "jacket",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 3,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 205315.png"
+    },
+    {
+      "id": "be4befae",
+      "name": "White Dresses",
+      "category": "dress",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 205328.png"
+    },
+    {
+      "id": "309eb050",
+      "name": "Brown Coats",
+      "category": "jacket",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 3,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 205418.png"
+    },
+    {
+      "id": "9cf28bfe",
+      "name": "Grey Trousers",
+      "category": "pants",
+      "color_rgb": [
+        128,
+        128,
+        128
+      ],
+      "color_name": "grey",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 211140.png"
+    },
+    {
+      "id": "c6b61b0c",
+      "name": "Blue Trousers",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "formal"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 5,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 211635.png"
+    },
+    {
+      "id": "db8d1967",
+      "name": "Grey Trousers",
+      "category": "pants",
+      "color_rgb": [
+        128,
+        128,
+        128
+      ],
+      "color_name": "grey",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 211657.png"
+    },
+    {
+      "id": "f14b7506",
+      "name": "Yellow Trousers",
+      "category": "pants",
+      "color_rgb": [
+        255,
+        255,
+        0
+      ],
+      "color_name": "yellow",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 211734.png"
+    },
+    {
+      "id": "455be4b5",
+      "name": "White Trousers",
+      "category": "pants",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 211748.png"
+    },
+    {
+      "id": "c35ae145",
+      "name": "Black Trousers",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 211842.png"
+    },
+    {
+      "id": "8dfd01bd",
+      "name": "Blue Trousers",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 212237.png"
+    },
+    {
+      "id": "90a6e6e9",
+      "name": "Blue Trousers",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 212317.png"
+    },
+    {
+      "id": "0a12015f",
+      "name": "Blue Trousers",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 212337.png"
+    },
+    {
+      "id": "4fd44dfb",
+      "name": "Blue Trousers",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 212611.png"
+    },
+    {
+      "id": "859fef2a",
+      "name": "Pink Skirts",
+      "category": "skirt",
+      "color_rgb": [
+        255,
+        192,
+        203
+      ],
+      "color_name": "pink",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 213411.png"
+    },
+    {
+      "id": "44fca2bd",
+      "name": "White Skirts",
+      "category": "skirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 213427.png"
+    },
+    {
+      "id": "aef5a469",
+      "name": "Orange Skirts",
+      "category": "skirt",
+      "color_rgb": [
+        255,
+        165,
+        0
+      ],
+      "color_name": "orange",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 213436.png"
+    },
+    {
+      "id": "b3364237",
+      "name": "Black Track pants",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 213533.png"
+    },
+    {
+      "id": "809611e7",
+      "name": "Blue Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 213714.png"
+    },
+    {
+      "id": "737481f4",
+      "name": "White Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "winter"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 213723.png"
+    },
+    {
+      "id": "02077925",
+      "name": "Brown Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 213738.png"
+    },
+    {
+      "id": "b457de56",
+      "name": "Purple Shirts",
+      "category": "shirt",
+      "color_rgb": [
+        128,
+        0,
+        128
+      ],
+      "color_name": "purple",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "formal"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 1,
+      "formality_level": 5,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 213950.png"
+    },
+    {
+      "id": "6eed96c9",
+      "name": "White Jackets",
+      "category": "jacket",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 3,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214005.png"
+    },
+    {
+      "id": "39b0e6b3",
+      "name": "Black Cardigan",
+      "category": "jacket",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 3,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214122.png"
+    },
+    {
+      "id": "bdb2a4f0",
+      "name": "Orange Sweaters",
+      "category": "jacket",
+      "color_rgb": [
+        255,
+        165,
+        0
+      ],
+      "color_name": "orange",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "formal"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 3,
+      "formality_level": 4,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214135.png"
+    },
+    {
+      "id": "cacffc67",
+      "name": "Cream Shorts",
+      "category": "shorts",
+      "color_rgb": [
+        128,
+        128,
+        128
+      ],
+      "color_name": "cream",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214144.png"
+    },
+    {
+      "id": "beaacb30",
+      "name": "Brown Jackets",
+      "category": "jacket",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 3,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214205.png"
+    },
+    {
+      "id": "d52626fd",
+      "name": "White Cardigan",
+      "category": "jacket",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 3,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214319.png"
+    },
+    {
+      "id": "a5a117f3",
+      "name": "Grey Sweaters",
+      "category": "jacket",
+      "color_rgb": [
+        128,
+        128,
+        128
+      ],
+      "color_name": "grey",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 3,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214438.png"
+    },
+    {
+      "id": "4abe1054",
+      "name": "Yellow Sweaters",
+      "category": "jacket",
+      "color_rgb": [
+        255,
+        255,
+        0
+      ],
+      "color_name": "yellow",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "formal"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 3,
+      "formality_level": 4,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214450.png"
+    },
+    {
+      "id": "be8e353c",
+      "name": "Pink Sweatshirts",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        192,
+        203
+      ],
+      "color_name": "pink",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 3,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214513.png"
+    },
+    {
+      "id": "95fda22c",
+      "name": "Black Sweaters",
+      "category": "jacket",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "formal"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 3,
+      "formality_level": 4,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214536.png"
+    },
+    {
+      "id": "564f1d8f",
+      "name": "White Tshirts",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214847.png"
+    },
+    {
+      "id": "f0036d5d",
+      "name": "Beige Casual shoes",
+      "category": "shoes",
+      "color_rgb": [
+        245,
+        245,
+        220
+      ],
+      "color_name": "beige",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214928.png"
+    },
+    {
+      "id": "827b73f4",
+      "name": "White Sports shoes",
+      "category": "shoes",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 215047.png"
+    },
+    {
+      "id": "ef38cc0b",
+      "name": "Beige Casual shoes",
+      "category": "shoes",
+      "color_rgb": [
+        245,
+        245,
+        220
+      ],
+      "color_name": "beige",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 215114.png"
+    },
+    {
+      "id": "678da98a",
+      "name": "Brown Casual shoes",
+      "category": "shoes",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 215135.png"
+    },
+    {
+      "id": "3e8c14ca",
+      "name": "Blue Casual shoes",
+      "category": "shoes",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 215147.png"
+    },
+    {
+      "id": "0931f72b",
+      "name": "Black Casual shoes",
+      "category": "shoes",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 215209.png"
+    },
+    {
+      "id": "5afacbf2",
+      "name": "Black Sports shoes",
+      "category": "shoes",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 1,
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 215939.png"
+    }
+  ]
+}

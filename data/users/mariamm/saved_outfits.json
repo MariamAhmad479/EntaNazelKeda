@@ -1,0 +1,112 @@
+[
+  {
+    "outfit_id": "3bfe1b90",
+    "score": 0.7172,
+    "breakdown": {
+      "color": 0.9,
+      "style": 1.0,
+      "formality": 0.3876,
+      "similarity": 0.5811
+    },
+    "items": [
+      {
+        "id": "b457de56",
+        "name": "Purple Shirts",
+        "category": "shirt",
+        "color_rgb": [
+          128,
+          0,
+          128
+        ],
+        "color_name": "purple",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "warmth_level": 1,
+        "formality_level": 5,
+        "gender": "unisex",
+        "image_features": null,
+        "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 213950.png"
+      },
+      {
+        "id": "c6b61b0c",
+        "name": "Blue Trousers",
+        "category": "pants",
+        "color_rgb": [
+          0,
+          0,
+          255
+        ],
+        "color_name": "blue",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "warmth_level": 1,
+        "formality_level": 5,
+        "gender": "unisex",
+        "image_features": null,
+        "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 211635.png"
+      },
+      {
+        "id": "3e8c14ca",
+        "name": "Blue Casual shoes",
+        "category": "shoes",
+        "color_rgb": [
+          0,
+          0,
+          255
+        ],
+        "color_name": "blue",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "casual"
+        ],
+        "seasons": [
+          "summer"
+        ],
+        "warmth_level": 1,
+        "formality_level": 2,
+        "gender": "unisex",
+        "image_features": null,
+        "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 215147.png"
+      },
+      {
+        "id": "95fda22c",
+        "name": "Black Sweaters",
+        "category": "jacket",
+        "color_rgb": [
+          0,
+          0,
+          0
+        ],
+        "color_name": "black",
+        "pattern": "solid",
+        "style": "classic",
+        "occasions": [
+          "formal"
+        ],
+        "seasons": [
+          "autumn"
+        ],
+        "warmth_level": 3,
+        "formality_level": 4,
+        "gender": "unisex",
+        "image_features": null,
+        "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\mariamm\\images\\Screenshot 2026-05-18 214536.png"
+      }
+    ],
+    "summary": "Purple Shirts (purple) + Blue Trousers (blue) + Blue Casual shoes (blue) + Black Sweaters (black)",
+    "context": "hot"
+  }
+]

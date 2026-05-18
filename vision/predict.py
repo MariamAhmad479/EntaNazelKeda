@@ -47,7 +47,7 @@ YOLO_ALLOWED_ARTICLES = {
         "Cardigan", "Sweaters", "Shrug"
     },
     "jacket": {
-        "Jackets", "Blazers", "Sweatshirts", "Coats"
+        "Jackets", "Blazers", "Coats"
     },
     "vest": {
         "Waistcoat", "Jackets"
@@ -111,6 +111,21 @@ ACCESSORY_ARTICLE_TYPES = {
     "Belts",
     "Scarves",
 }
+
+YOLO_DIRECT_MAP = {
+    "jacket": "Jackets",
+    "coat": "Coats",
+    "dress": "Dresses",
+    "pants": "Trousers",
+    "shorts": "Shorts",
+    "skirt": "Skirts",
+    "jumpsuit": "Jumpsuit",
+    "sweater": "Sweaters",
+    "cardigan": "Cardigan",
+    "vest": "Waistcoat",
+    "shirt_blouse": "Shirts",
+    "top_tshirt_sweatshirt": "Tshirts",
+    }
 
 
 def remove_background_make_white(image):
@@ -187,6 +202,13 @@ def apply_yolo_family_filter(result, article_probs, image_source):
         return result
 
     allowed_articles = YOLO_ALLOWED_ARTICLES[yolo_class]
+
+    if yolo_result.get("yoloConfidence", 0) >= 0.80:
+        result["articleType"] = YOLO_DIRECT_MAP[yolo_class]
+        result["articleTypeConfidence"] = yolo_result.get("yoloConfidence", 0)
+
+    if yolo_class in YOLO_SUBCATEGORY_MAP:
+        result["subCategory"] = YOLO_SUBCATEGORY_MAP[yolo_class]
 
     best_article, best_confidence = choose_best_allowed_article(
         article_probs=article_probs,
@@ -312,6 +334,14 @@ def predict_and_clean_item(image, use_background_removal=False, yolo_class=None)
 
     result = apply_yolo_family_filter(result, article_probs, image_source)
     result = fix_prediction(result)
+
+
+    print("\n--- Prediction Results ---")
+
+    for key, value in result.items():
+        print(f"{key}: {value}")
+
+    print("--------------------------\n")
 
     return result, cleaned_image
 
