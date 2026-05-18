@@ -32,6 +32,53 @@ def map_color_to_rgb(color_name):
     }
     return color_map.get(color_name.lower(), [128, 128, 128])
 
+def infer_warmth(season, article_type, category):
+    """Infer warmth level (1-5) based on season and article type."""
+    art_lower = article_type.lower()
+    season_lower = season.lower() if season else ""
+
+    # Heavy outerwear
+    if any(word in art_lower for word in ["jacket", "coat", "sweater", "sweatshirt", "hoodie", "blazer", "cardigan"]):
+        if season_lower == "winter":
+            return 4
+        return 3
+
+    # Light items
+    if any(word in art_lower for word in ["tshirt", "shirt", "top", "blouse", "tank", "shorts", "sandal", "flip flop"]):
+        return 1
+
+    # Seasonal adjustment
+    if season_lower == "winter":
+        return 3
+    if season_lower in ["fall", "autumn", "spring"]:
+        return 2
+    return 1  # summer default
+
+def infer_formality(usage, article_type):
+    """Infer formality level (1-5) based on usage and article type."""
+    usage_lower = usage.lower()
+    art_lower = article_type.lower()
+
+    if usage_lower == "formal":
+        if any(word in art_lower for word in ["shirt", "trouser", "pants", "blazer", "jacket", "heels"]):
+            return 5
+        return 4
+    if usage_lower == "party":
+        if any(word in art_lower for word in ["dress", "heels"]):
+            return 4
+        return 3
+    if usage_lower in ["sport", "sports"]:
+        return 1
+    if usage_lower == "ethnic":
+        return 3
+
+    # Casual
+    if any(word in art_lower for word in ["tshirt", "shorts", "flip flop", "sandal"]):
+        return 1
+    if any(word in art_lower for word in ["shirt", "pants", "jeans", "casual shoes"]):
+        return 2
+    return 2
+
 def map_prediction_to_item(pred, filename, image):
     # Expect the CNN to return 'baseColour' now
     color_name = pred.get("baseColour", "black").lower()
@@ -97,6 +144,10 @@ def map_prediction_to_item(pred, filename, image):
     elif usage_str == "ethnic":
         item_dict["occasions"] = ["formal"]
         
+    # Dynamically infer warmth and formality levels
+    item_dict["warmth_level"] = infer_warmth(season_str, art_str, item_dict.get("category", ""))
+    item_dict["formality_level"] = infer_formality(usage_str, art_str)
+    
     return item_dict
 
 def main():

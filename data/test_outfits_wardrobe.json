@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "id": "72137901",
+      "id": "becb9c6e",
       "name": "Uploaded Screenshot 2026-05-13 193825.png",
       "category": "shorts",
       "color_rgb": [
@@ -26,11 +26,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-13 193825.png"
     },
     {
-      "id": "cbdf0598",
+      "id": "691a7ecc",
       "name": "Uploaded Screenshot 2026-05-13 195736.png",
       "category": "dress",
       "color_rgb": [
@@ -55,13 +56,14 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-13 195736.png"
     },
     {
-      "id": "1a16859e",
+      "id": "49067b48",
       "name": "Uploaded Screenshot 2026-05-13 195754.png",
-      "category": "skirt",
+      "category": "shirt",
       "color_rgb": [
         0,
         0,
@@ -84,11 +86,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-13 195754.png"
     },
     {
-      "id": "49135095",
+      "id": "4c21177a",
       "name": "Uploaded Screenshot 2026-05-15 223429.png",
       "category": "shirt",
       "color_rgb": [
@@ -113,11 +116,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223429.png"
     },
     {
-      "id": "524a0015",
+      "id": "e2033c5b",
       "name": "Uploaded Screenshot 2026-05-15 223437.png",
       "category": "shirt",
       "color_rgb": [
@@ -142,13 +146,14 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223437.png"
     },
     {
-      "id": "896a48ba",
+      "id": "3ea6882a",
       "name": "Uploaded Screenshot 2026-05-15 223442.png",
-      "category": "pants",
+      "category": "accessory",
       "color_rgb": [
         0,
         0,
@@ -171,11 +176,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223442.png"
     },
     {
-      "id": "4842eefe",
+      "id": "4b0fa3ac",
       "name": "Uploaded Screenshot 2026-05-15 223452.png",
       "category": "shirt",
       "color_rgb": [
@@ -200,13 +206,14 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223452.png"
     },
     {
-      "id": "0acf77c1",
+      "id": "071f1166",
       "name": "Uploaded Screenshot 2026-05-15 223501.png",
-      "category": "shirt",
+      "category": "accessory",
       "color_rgb": [
         0,
         0,
@@ -229,13 +236,14 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223501.png"
     },
     {
-      "id": "908a412a",
+      "id": "1a85b2b8",
       "name": "Uploaded Screenshot 2026-05-15 223509.png",
-      "category": "shirt",
+      "category": "accessory",
       "color_rgb": [
         0,
         0,
@@ -258,13 +266,14 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223509.png"
     },
     {
-      "id": "5a30a8e5",
+      "id": "c4f049f1",
       "name": "Uploaded Screenshot 2026-05-15 223534.png",
-      "category": "pants",
+      "category": "skirt",
       "color_rgb": [
         0,
         0,
@@ -287,11 +296,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223534.png"
     },
     {
-      "id": "06652593",
+      "id": "480b551a",
       "name": "Uploaded Screenshot 2026-05-15 223545.png",
       "category": "pants",
       "color_rgb": [
@@ -316,13 +326,14 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223545.png"
     },
     {
-      "id": "eadf2830",
+      "id": "42e9d86d",
       "name": "Uploaded Screenshot 2026-05-15 223553.png",
-      "category": "accessory",
+      "category": "pants",
       "color_rgb": [
         0,
         0,
@@ -345,11 +356,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223553.png"
     },
     {
-      "id": "070bdd44",
+      "id": "2ff125a3",
       "name": "Uploaded Screenshot 2026-05-15 223605.png",
       "category": "accessory",
       "color_rgb": [
@@ -374,11 +386,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223605.png"
     },
     {
-      "id": "b9521f5b",
+      "id": "bae9b57c",
       "name": "Uploaded Screenshot 2026-05-15 223623.png",
       "category": "accessory",
       "color_rgb": [
@@ -403,13 +416,14 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223623.png"
     },
     {
-      "id": "2d1c2538",
+      "id": "20374d22",
       "name": "Uploaded Screenshot 2026-05-15 223642.png",
-      "category": "pants",
+      "category": "accessory",
       "color_rgb": [
         0,
         0,
@@ -432,11 +446,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223642.png"
     },
     {
-      "id": "a15a2504",
+      "id": "28a96003",
       "name": "Uploaded Screenshot 2026-05-15 223647.png",
       "category": "pants",
       "color_rgb": [
@@ -461,11 +476,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223647.png"
     },
     {
-      "id": "7da66fe9",
+      "id": "0d8262f1",
       "name": "Uploaded Screenshot 2026-05-15 223656.png",
       "category": "pants",
       "color_rgb": [
@@ -490,13 +506,14 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223656.png"
     },
     {
-      "id": "579ec6cf",
+      "id": "cf74ffb0",
       "name": "Uploaded Screenshot 2026-05-15 223700.png",
-      "category": "accessory",
+      "category": "pants",
       "color_rgb": [
         0,
         0,
@@ -519,11 +536,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223700.png"
     },
     {
-      "id": "763f61a4",
+      "id": "9aab9e80",
       "name": "Uploaded Screenshot 2026-05-15 223708.png",
       "category": "jacket",
       "color_rgb": [
@@ -548,41 +566,13 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223708.png"
     },
     {
-      "id": "49d99d6f",
+      "id": "749e71aa",
       "name": "Uploaded Screenshot 2026-05-15 223718.png",
-      "category": "shirt",
-      "color_rgb": [
-        0,
-        0,
-        0
-      ],
-      "color_name": "black",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": [
-        "casual",
-        "formal",
-        "sport",
-        "party"
-      ],
-      "seasons": [
-        "summer",
-        "winter",
-        "spring",
-        "autumn"
-      ],
-      "warmth_level": 2,
-      "formality_level": 3,
-      "image_features": null,
-      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223718.png"
-    },
-    {
-      "id": "8940a95f",
-      "name": "Uploaded Screenshot 2026-05-15 223731.png",
       "category": "accessory",
       "color_rgb": [
         0,
@@ -606,13 +596,44 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223718.png"
+    },
+    {
+      "id": "01f87dbe",
+      "name": "Uploaded Screenshot 2026-05-15 223731.png",
+      "category": "shoes",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual",
+        "formal",
+        "sport",
+        "party"
+      ],
+      "seasons": [
+        "summer",
+        "winter",
+        "spring",
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223731.png"
     },
     {
-      "id": "903815a4",
+      "id": "248ad434",
       "name": "Uploaded Screenshot 2026-05-15 223736.png",
-      "category": "shirt",
+      "category": "accessory",
       "color_rgb": [
         0,
         0,
@@ -635,13 +656,14 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223736.png"
     },
     {
-      "id": "30972462",
+      "id": "494c5e2b",
       "name": "Uploaded Screenshot 2026-05-15 223743.png",
-      "category": "shirt",
+      "category": "accessory",
       "color_rgb": [
         0,
         0,
@@ -664,11 +686,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223743.png"
     },
     {
-      "id": "e3fea6ba",
+      "id": "b14bf271",
       "name": "Uploaded Screenshot 2026-05-15 223801.png",
       "category": "shorts",
       "color_rgb": [
@@ -693,11 +716,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\Screenshot 2026-05-15 223801.png"
     },
     {
-      "id": "4a41153e",
+      "id": "8acf855b",
       "name": "Uploaded WhatsApp Image 2026-05-15 at 11.54.51 PM.jpeg",
       "category": "pants",
       "color_rgb": [
@@ -722,11 +746,12 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\WhatsApp Image 2026-05-15 at 11.54.51 PM.jpeg"
     },
     {
-      "id": "8dc5da42",
+      "id": "b34b5ad7",
       "name": "Uploaded WhatsApp Image 2026-05-15 at 11.55.22 PM.jpeg",
       "category": "shirt",
       "color_rgb": [
@@ -751,6 +776,7 @@
       ],
       "warmth_level": 2,
       "formality_level": 3,
+      "gender": "unisex",
       "image_features": null,
       "image_path": "C:\\Users\\judye\\OneDrive\\Desktop\\uni\\Year 3\\Term 2\\ML Project\\outfits\\WhatsApp Image 2026-05-15 at 11.55.22 PM.jpeg"
     }
