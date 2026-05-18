@@ -215,6 +215,15 @@ class OutfitGenerator:
             seen_outfits.add(outfit_key)
             valid_candidates.append(outfit)
 
+        # Helper to check if an outfit has more than 2 items repeated with any already selected outfit
+        def _has_too_much_overlap(outfit: Outfit, selected_outfits: List[Outfit]) -> bool:
+            outfit_item_ids = {item.id for item in outfit.items}
+            for selected in selected_outfits:
+                selected_item_ids = {item.id for item in selected.items}
+                if len(outfit_item_ids.intersection(selected_item_ids)) > 2:
+                    return True
+            return False
+
         # ── Smart Multi-Pass Greedy Diversity Reranker ──
         final_selection = []
         used_main_items = set()  # Track unique dresses, shirts, jackets, pants, skirts, shorts
@@ -230,6 +239,9 @@ class OutfitGenerator:
             
             # Dress constraint: at most 1 dress outfit in final recommendations
             if is_dress and selected_dresses_count >= 1:
+                continue
+
+            if _has_too_much_overlap(outfit, final_selection):
                 continue
 
             main_items = [
@@ -271,6 +283,9 @@ class OutfitGenerator:
                 if is_dress and selected_dresses_count >= 1:
                     continue
 
+                if _has_too_much_overlap(outfit, final_selection):
+                    continue
+
                 main_items = [
                     item.id for item in outfit.items 
                     if item.category in (ClothingCategory.DRESS, ClothingCategory.SHIRT, ClothingCategory.JACKET, ClothingCategory.PANTS, ClothingCategory.SKIRT, ClothingCategory.SHORTS)
@@ -302,6 +317,9 @@ class OutfitGenerator:
                 if is_dress and selected_dresses_count >= 1:
                     continue
 
+                if _has_too_much_overlap(outfit, final_selection):
+                    continue
+
                 final_selection.append(outfit)
                 if is_dress:
                     selected_dresses_count += 1
@@ -321,6 +339,10 @@ class OutfitGenerator:
                     is_dress = any(item.category == ClothingCategory.DRESS for item in outfit.items)
                     if is_dress and selected_dresses_count >= 1:
                         continue
+                    
+                    if _has_too_much_overlap(outfit, final_selection):
+                        continue
+
                     final_selection.append(outfit)
                     if is_dress:
                         selected_dresses_count += 1

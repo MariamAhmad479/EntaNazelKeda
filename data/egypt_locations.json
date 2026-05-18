@@ -1,0 +1,1118 @@
+[
+  {
+    "place_name": "Cairo",
+    "governorate": "Cairo",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Cairo, Egypt",
+    "lat": 30.044388,
+    "lng": 31.235726
+  },
+  {
+    "place_name": "Zamalek",
+    "governorate": "Cairo",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "Zamalek, Cairo, 11561, Egypt",
+    "lat": 30.062993,
+    "lng": 31.219634
+  },
+  {
+    "place_name": "Maadi",
+    "governorate": "Cairo",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "Maadi, 70, Street 14, Ma‘adi Al Khahiri, El Faroukiya, Cairo, 11728, Egypt",
+    "lat": 29.960331,
+    "lng": 31.263055
+  },
+  {
+    "place_name": "Heliopolis",
+    "governorate": "Cairo",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "Heliopolis, Cairo, 11757, Egypt",
+    "lat": 30.100599,
+    "lng": 31.332914
+  },
+  {
+    "place_name": "Nasr City",
+    "governorate": "Cairo",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "Nasr City, Cairo, 11765, Egypt",
+    "lat": 30.052118,
+    "lng": 31.342205
+  },
+  {
+    "place_name": "Downtown Cairo",
+    "governorate": "Cairo",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "downtown, Wasat Al Balad Street, Al Qobba, Hadaiq el Qubbah, Cairo, 11663, Egypt",
+    "lat": 30.088761,
+    "lng": 31.28982
+  },
+  {
+    "place_name": "Mohandessin",
+    "governorate": "Cairo",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "Engineers Corp Village, Alexandria, Egypt",
+    "lat": 31.017911,
+    "lng": 29.621606
+  },
+  {
+    "place_name": "Garden City Cairo",
+    "governorate": "Cairo",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "Garden City, Al-Sayyida Zeinab, Cairo, 11241, Egypt",
+    "lat": 30.034819,
+    "lng": 31.2315
+  },
+  {
+    "place_name": "New Cairo",
+    "governorate": "Cairo",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "New Cairo City, Cairo, Egypt",
+    "lat": 30.027769,
+    "lng": 31.475683
+  },
+  {
+    "place_name": "Khan el-Khalili",
+    "governorate": "Cairo",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Khan El Khalili, Islamic Cairo, Cairo, 11261, Egypt",
+    "lat": 30.048938,
+    "lng": 31.261338
+  },
+  {
+    "place_name": "Cairo Tower",
+    "governorate": "Cairo",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Cairo Tower, Al Borg Street, Gezira, Cairo, 11111, Egypt",
+    "lat": 30.046014,
+    "lng": 31.224313
+  },
+  {
+    "place_name": "City Stars Mall",
+    "governorate": "Cairo",
+    "category": "shopping_mall",
+    "occasion": "casual",
+    "address": "City Stars Mall, Al Imdad W Al Tamwin Street, Masaken Al Mohandeseen, Nasr City, Cairo, 11391, Egypt",
+    "lat": 30.073268,
+    "lng": 31.345869
+  },
+  {
+    "place_name": "Mall of Egypt",
+    "governorate": "Cairo",
+    "category": "shopping_mall",
+    "occasion": "casual",
+    "address": "Mall of Egypt, Educational City Road, Rayhana Compound, Ash Sheikh Zayed, Giza, 12573, Egypt",
+    "lat": 29.972133,
+    "lng": 31.017064
+  },
+  {
+    "place_name": "Al-Azhar Mosque",
+    "governorate": "Cairo",
+    "category": "mosque",
+    "occasion": "formal",
+    "address": "El Azhar Mosque, Darb Al Atrak, Al Ghoureyya, El-Ghuriyya, Cairo, 11675, Egypt",
+    "lat": 30.045754,
+    "lng": 31.262677
+  },
+  {
+    "place_name": "Muhammad Ali Mosque",
+    "governorate": "Cairo",
+    "category": "mosque",
+    "occasion": "formal",
+    "address": "Mosque of Muhammad Ali, Salah Al Din Street, Al Mahgar, El Giyushi, Cairo, 11655, Egypt",
+    "lat": 30.02907,
+    "lng": 31.259828
+  },
+  {
+    "place_name": "Al-Azhar Park",
+    "governorate": "Cairo",
+    "category": "park",
+    "occasion": "casual",
+    "address": "Al Azhar Park, El-Darb El-Ahmar, Cairo, Egypt",
+    "lat": 30.0401,
+    "lng": 31.26408
+  },
+  {
+    "place_name": "Cairo Jazz Club",
+    "governorate": "Cairo",
+    "category": "night_club",
+    "occasion": "party",
+    "address": "Cairo Jazz Club, 26th July Street, El Agouza, Giza, 12411, Egypt",
+    "lat": 30.062127,
+    "lng": 31.211607
+  },
+  {
+    "place_name": "Four Seasons Cairo",
+    "governorate": "Cairo",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Four Seasons Hotel Cairo at Nile Plaza, 1089, Kornish Al Nil Street, Garden City, Al Manyal, Cairo, 11519, Egypt",
+    "lat": 30.036227,
+    "lng": 31.229373
+  },
+  {
+    "place_name": "Kempinski Nile Hotel",
+    "governorate": "Cairo",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Kempinski Nile Hotel Garden City Cairo, 12, Ahmed Pasha Street, Garden City, Bab al Luq, Cairo, 11241, Egypt",
+    "lat": 30.038722,
+    "lng": 31.23085
+  },
+  {
+    "place_name": "Cairo International Stadium",
+    "governorate": "Cairo",
+    "category": "stadium",
+    "occasion": "sport",
+    "address": "Cairo International Stadium, Al Aistad Street, Qesm Than Madinet Nasr, Cairo, 11153, Egypt",
+    "lat": 30.069031,
+    "lng": 31.31221
+  },
+  {
+    "place_name": "American University Cairo",
+    "governorate": "Cairo",
+    "category": "university",
+    "occasion": "formal",
+    "address": "American University, Al Tesein Southern Street, Second Sector, Lotus Districts, Cairo, 11865, Egypt",
+    "lat": 30.025356,
+    "lng": 31.490673
+  },
+  {
+    "place_name": "Cairo University",
+    "governorate": "Cairo",
+    "category": "university",
+    "occasion": "formal",
+    "address": "Cairo University, Badr Street, Been Al-Sarayat, Giza, 12549, Egypt",
+    "lat": 30.026812,
+    "lng": 31.205919
+  },
+  {
+    "place_name": "Giza",
+    "governorate": "Giza",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Giza, 12524, Egypt",
+    "lat": 29.987075,
+    "lng": 31.211806
+  },
+  {
+    "place_name": "Dokki",
+    "governorate": "Giza",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "Dokki, Giza, 12611, Egypt",
+    "lat": 30.038895,
+    "lng": 31.212556
+  },
+  {
+    "place_name": "6th of October City",
+    "governorate": "Giza",
+    "category": "city",
+    "occasion": "casual",
+    "address": "6th of October, Giza, 12591, Egypt",
+    "lat": 29.972346,
+    "lng": 30.940921
+  },
+  {
+    "place_name": "Sheikh Zayed City",
+    "governorate": "Giza",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Sheikh Zayed, Giza, 12588, Egypt",
+    "lat": 30.048347,
+    "lng": 30.983224
+  },
+  {
+    "place_name": "Sphinx",
+    "governorate": "Giza",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "The Great Sphinx, Abou Al Houl Al Syahi Street, Nazlet al Batran, Giza, 12125, Egypt",
+    "lat": 29.975281,
+    "lng": 31.137512
+  },
+  {
+    "place_name": "Dream Park",
+    "governorate": "Giza",
+    "category": "park",
+    "occasion": "casual",
+    "address": "Dream Park, Studio Dream Street, Al-Ashgar Suburb, Sheikh Zayed, Giza, 94501, Egypt",
+    "lat": 29.96704,
+    "lng": 31.059874
+  },
+  {
+    "place_name": "Marriott Mena House",
+    "governorate": "Giza",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Marriott Mena House Golf Course, 6, Mina Alley, Kom al Akhdar, Cairo, Giza, 12557, Egypt",
+    "lat": 29.983105,
+    "lng": 31.137271
+  },
+  {
+    "place_name": "Alexandria",
+    "governorate": "Alexandria",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Alexandria, 21519, Egypt",
+    "lat": 31.199181,
+    "lng": 29.895172
+  },
+  {
+    "place_name": "Bibliotheca Alexandrina",
+    "governorate": "Alexandria",
+    "category": "museum",
+    "occasion": "formal",
+    "address": "Bibliotheca Alexandrina, Al Zarkshy Street, Shatby, Alexandria, 21526, Egypt",
+    "lat": 31.208661,
+    "lng": 29.908933
+  },
+  {
+    "place_name": "Qaitbay Citadel",
+    "governorate": "Alexandria",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Citadel of Qaitbay, Qaitbay Citadel Street, Al Sayala East, Alexandria, 21556, Egypt",
+    "lat": 31.213679,
+    "lng": 29.885413
+  },
+  {
+    "place_name": "Stanley Beach",
+    "governorate": "Alexandria",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Stanley Beach, Alexandria, Egypt",
+    "lat": 31.234792,
+    "lng": 29.950007
+  },
+  {
+    "place_name": "San Stefano Mall",
+    "governorate": "Alexandria",
+    "category": "shopping_mall",
+    "occasion": "casual",
+    "address": "San Stefano Mall, Abd Al Salam Aref Street, Fleming, Alexandria, 21599, Egypt",
+    "lat": 31.245506,
+    "lng": 29.966674
+  },
+  {
+    "place_name": "Alexandria National Museum",
+    "governorate": "Alexandria",
+    "category": "museum",
+    "occasion": "formal",
+    "address": "Alexandria National Museum, Gaafar Al Sadeq Street, Shatby, Alexandria, 21526, Egypt",
+    "lat": 31.20114,
+    "lng": 29.913147
+  },
+  {
+    "place_name": "Sidi Gaber",
+    "governorate": "Alexandria",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "Sidi Gaber, Alexandria, Egypt",
+    "lat": 31.223845,
+    "lng": 29.93724
+  },
+  {
+    "place_name": "Smouha",
+    "governorate": "Alexandria",
+    "category": "neighbourhood",
+    "occasion": "casual",
+    "address": "Smouha City, 7, Hilton Street, Alexandria, 21615, Egypt",
+    "lat": 31.210762,
+    "lng": 29.967035
+  },
+  {
+    "place_name": "Miami Beach Alexandria",
+    "governorate": "Alexandria",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Miami Beach, Miami, Al Mandarah, Alexandria, Egypt",
+    "lat": 31.270561,
+    "lng": 29.990039
+  },
+  {
+    "place_name": "Luxor",
+    "governorate": "Luxor",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Luxor, 85951, Egypt",
+    "lat": 25.702096,
+    "lng": 32.647186
+  },
+  {
+    "place_name": "Karnak Temple",
+    "governorate": "Luxor",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Karnak Temple Square, Old Karnak, Luxor, 81693, Egypt",
+    "lat": 25.720434,
+    "lng": 32.654135
+  },
+  {
+    "place_name": "Luxor Temple",
+    "governorate": "Luxor",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Luxor Temple, Kornish Al Nile Street, Luxor City, Luxor, 85951, Egypt",
+    "lat": 25.699525,
+    "lng": 32.639069
+  },
+  {
+    "place_name": "Valley of the Kings",
+    "governorate": "Luxor",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Valley of the Kings, Sheikh Abd el-Qurna, New Al Qarnh City, Luxor, Egypt",
+    "lat": 25.74049,
+    "lng": 32.601758
+  },
+  {
+    "place_name": "Hatshepsut Temple",
+    "governorate": "Luxor",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Mortuary Temple of Hatshepsut, Maabad Hatshebsout Road, Sheikh Abd el-Qurna, New Al Qarnh City, Luxor, 85958, Egypt",
+    "lat": 25.737841,
+    "lng": 32.607672
+  },
+  {
+    "place_name": "Luxor Museum",
+    "governorate": "Luxor",
+    "category": "museum",
+    "occasion": "formal",
+    "address": "Luxor Museum, Museum Luxor Street, Luxor City, Luxor, 81693, Egypt",
+    "lat": 25.707663,
+    "lng": 32.644489
+  },
+  {
+    "place_name": "Colossi of Memnon",
+    "governorate": "Luxor",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Colossi of Memnon, Tamthal Mamnoon Street, Al-Gezira, Al Baairat Village, Al-Qarnah, Luxor, 85958, Egypt",
+    "lat": 25.720495,
+    "lng": 32.610441
+  },
+  {
+    "place_name": "Winter Palace Hotel",
+    "governorate": "Luxor",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Sofitel Winter Palace hotel, Kornish Al Nile Street, Luxor City, Luxor, 85951, Egypt",
+    "lat": 25.696615,
+    "lng": 32.637086
+  },
+  {
+    "place_name": "Sofitel Winter Palace",
+    "governorate": "Luxor",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Sofitel Winter Palace, Kornish Al Nile Street, Luxor City, Luxor, 85951, Egypt",
+    "lat": 25.696239,
+    "lng": 32.63801
+  },
+  {
+    "place_name": "Aswan",
+    "governorate": "Aswan",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Aswan, 81511, Egypt",
+    "lat": 24.091071,
+    "lng": 32.897306
+  },
+  {
+    "place_name": "Philae Temple",
+    "governorate": "Aswan",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Philae Temple, 25, Shash, Aswan, 81531, Egypt",
+    "lat": 24.025255,
+    "lng": 32.884189
+  },
+  {
+    "place_name": "Abu Simbel",
+    "governorate": "Aswan",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Abu Simbel Temples, Al Maabd Street, Abu Simbel City, Aswan, 81525, Egypt",
+    "lat": 22.33712,
+    "lng": 31.625797
+  },
+  {
+    "place_name": "Nubian Museum",
+    "governorate": "Aswan",
+    "category": "museum",
+    "occasion": "formal",
+    "address": "Nubian Museum, Al Fanadq Street, Nagaa Al Mahata, Aswan, 81529, Egypt",
+    "lat": 24.079486,
+    "lng": 32.889153
+  },
+  {
+    "place_name": "Aswan High Dam",
+    "governorate": "Aswan",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Aswan High Dam, Sahara City, Aswan, Egypt",
+    "lat": 23.97041,
+    "lng": 32.874896
+  },
+  {
+    "place_name": "Movenpick Aswan",
+    "governorate": "Aswan",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Mövenpick Resort Aswan, loop from Nubialin, Siou, Aswan, 81511, Egypt",
+    "lat": 24.093294,
+    "lng": 32.891524
+  },
+  {
+    "place_name": "Sofitel Legend Cataract Aswan",
+    "governorate": "Aswan",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Sofitel Legend Old Cataract Aswan Hotel, 81511, Al Fanadq Street, Taqouk Mountain, Aswan, 81529, Egypt",
+    "lat": 24.082311,
+    "lng": 32.887792
+  },
+  {
+    "place_name": "Elephantine Island",
+    "governorate": "Aswan",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Elephantine Island, Koti, Aswan, Egypt",
+    "lat": 24.091055,
+    "lng": 32.890111
+  },
+  {
+    "place_name": "Hurghada",
+    "governorate": "Hurghada",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Hurghada, Red Sea, 84512, Egypt",
+    "lat": 27.222556,
+    "lng": 33.830706
+  },
+  {
+    "place_name": "El Gouna",
+    "governorate": "Hurghada",
+    "category": "city",
+    "occasion": "casual",
+    "address": "El Gouna, Red Sea, 84513, Egypt",
+    "lat": 27.398927,
+    "lng": 33.674156
+  },
+  {
+    "place_name": "Hurghada Marina",
+    "governorate": "Hurghada",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Port Hurghada, Al Shohda Street, Al Mina', Marina Hurghada, Hurghada, Red Sea, 84532, Egypt",
+    "lat": 27.228695,
+    "lng": 33.843517
+  },
+  {
+    "place_name": "Hurghada Grand Aquarium",
+    "governorate": "Hurghada",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Hurghada Grand Aquarium, Al Nasr Street, Intercontinental District, New Town, Hurghada, Red Sea, 84517, Egypt",
+    "lat": 27.13399,
+    "lng": 33.821782
+  },
+  {
+    "place_name": "Sindbad Beach Hurghada",
+    "governorate": "Hurghada",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Sindbad Beach Resort, El Kawther, Hurghada, Red Sea, Egypt",
+    "lat": 27.189673,
+    "lng": 33.830219
+  },
+  {
+    "place_name": "Senzo Mall Hurghada",
+    "governorate": "Hurghada",
+    "category": "shopping_mall",
+    "occasion": "casual",
+    "address": "Senzo Mall, Alf Leila W Leila Square, Hurghada, Red Sea, Egypt",
+    "lat": 27.096899,
+    "lng": 33.8229
+  },
+  {
+    "place_name": "Titanic Palace Hurghada",
+    "governorate": "Hurghada",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Titanic Palace Hotel, Sahl Hashish Road, Sahl Hasheesh, Hurghada, Red Sea, Egypt",
+    "lat": 27.091235,
+    "lng": 33.849171
+  },
+  {
+    "place_name": "Makadi Bay",
+    "governorate": "Hurghada",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Makadi Bay, Red Sea, 84651, Egypt",
+    "lat": 26.9793,
+    "lng": 33.907701
+  },
+  {
+    "place_name": "Soma Bay",
+    "governorate": "Hurghada",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Soma Bay, Safaga, Red Sea, Egypt",
+    "lat": 26.835371,
+    "lng": 33.942062
+  },
+  {
+    "place_name": "Sharm el-Sheikh",
+    "governorate": "Sharm el-Sheikh",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Sharm El Sheikh, Ras Umm Sid, South Sinai, 46619, Egypt",
+    "lat": 27.864442,
+    "lng": 34.295447
+  },
+  {
+    "place_name": "Dahab",
+    "governorate": "Sharm el-Sheikh",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Dahab, South Sinai, 45214, Egypt",
+    "lat": 28.496363,
+    "lng": 34.514565
+  },
+  {
+    "place_name": "Naama Bay",
+    "governorate": "Sharm el-Sheikh",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Naama Bay, Sharm El Sheikh, Ras Umm Sid, South Sinai, 46911, Egypt",
+    "lat": 27.913257,
+    "lng": 34.32666
+  },
+  {
+    "place_name": "Ras Mohammed Park",
+    "governorate": "Sharm el-Sheikh",
+    "category": "park",
+    "occasion": "casual",
+    "address": "Ras Muhammad National Park, Sharm El Sheikh, Ras Umm Sid, South Sinai, Egypt",
+    "lat": 27.74959,
+    "lng": 34.235877
+  },
+  {
+    "place_name": "Sharks Bay Sharm",
+    "governorate": "Sharm el-Sheikh",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Egypt Hall, Al Sheikh Zaid Street, Al Nabq, Shark's Bay, Sharm El Sheikh, Ras Umm Sid, South Sinai, 46921, Egypt",
+    "lat": 27.963863,
+    "lng": 34.393756
+  },
+  {
+    "place_name": "Four Seasons Sharm",
+    "governorate": "Sharm el-Sheikh",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Four Seasons Sharm, Al Sheikh Zaid Street, Al Nabq, Shark's Bay, Sharm El Sheikh, Ras Umm Sid, South Sinai, 46921, Egypt",
+    "lat": 27.956583,
+    "lng": 34.392721
+  },
+  {
+    "place_name": "Savoy Sharm el-Sheikh",
+    "governorate": "Sharm el-Sheikh",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Savoy, Al Sheikh Zaid Street, Al Nabq, Shark's Bay, Sharm El Sheikh, South Sinai, 46628, Egypt",
+    "lat": 27.961422,
+    "lng": 34.395859
+  },
+  {
+    "place_name": "Farsha Cafe Sharm",
+    "governorate": "Sharm el-Sheikh",
+    "category": "cafe",
+    "occasion": "casual",
+    "address": "Farsha cafe, Al Bahr Street, Hadabat Om Al Sayed, Hadaba, Sharm El Sheikh, Ras Umm Sid, South Sinai, 46619, Egypt",
+    "lat": 27.849781,
+    "lng": 34.307552
+  },
+  {
+    "place_name": "Arish",
+    "governorate": "Arish",
+    "category": "city",
+    "occasion": "casual",
+    "address": "El Arish, North Sinai, Egypt",
+    "lat": 31.123641,
+    "lng": 33.798352
+  },
+  {
+    "place_name": "Ismailia",
+    "governorate": "Ismailia",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Al Ismailiya, 41544, Egypt",
+    "lat": 30.604377,
+    "lng": 32.277082
+  },
+  {
+    "place_name": "Suez",
+    "governorate": "Suez",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Suez, 43515, Egypt",
+    "lat": 29.974498,
+    "lng": 32.537086
+  },
+  {
+    "place_name": "Suez Canal",
+    "governorate": "Suez",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Suez Canal, Al Ismailiya, Egypt",
+    "lat": 30.605277,
+    "lng": 32.3331
+  },
+  {
+    "place_name": "Port Said",
+    "governorate": "Port Said",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Port Said, 42531, Egypt",
+    "lat": 31.263235,
+    "lng": 32.305505
+  },
+  {
+    "place_name": "Mansoura",
+    "governorate": "Mansoura",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Mansoura University, Gaafar Street, First Mit Talkha, El Mansura, Ad Dakahliya, 35516, Egypt",
+    "lat": 31.040777,
+    "lng": 31.35813
+  },
+  {
+    "place_name": "Mansoura University",
+    "governorate": "Mansoura",
+    "category": "university",
+    "occasion": "formal",
+    "address": "Mansoura University, Al Gemhoureya Street, First Mit Talkha, Talkha, Ad Dakahliya, 35516, Egypt",
+    "lat": 31.040777,
+    "lng": 31.35813
+  },
+  {
+    "place_name": "Tanta",
+    "governorate": "Tanta",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Tanta, Gharbia, Egypt",
+    "lat": 30.783367,
+    "lng": 30.998254
+  },
+  {
+    "place_name": "Zagazig",
+    "governorate": "Zagazig",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Zagazig, Sharqia Governorate, 44512, Egypt",
+    "lat": 30.585343,
+    "lng": 31.503513
+  },
+  {
+    "place_name": "Zagazig University",
+    "governorate": "Zagazig",
+    "category": "university",
+    "occasion": "formal",
+    "address": "Zagazig University, Ibn Sinai Street, Al Eshara, Zagazig, Sharqia Governorate, 44519, Egypt",
+    "lat": 30.588607,
+    "lng": 31.48193
+  },
+  {
+    "place_name": "Banha",
+    "governorate": "Banha",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Banha, Al Qalyubiya, 13512, Egypt",
+    "lat": 30.462497,
+    "lng": 31.184063
+  },
+  {
+    "place_name": "Shibin El Kom",
+    "governorate": "Menofia",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Shibin El Kawm, Monufia Governorate, 32514, Egypt",
+    "lat": 30.554511,
+    "lng": 31.009792
+  },
+  {
+    "place_name": "Kafr el-Sheikh",
+    "governorate": "Kafr el-Sheikh",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Kafr El Sheikh, Egypt",
+    "lat": 31.381477,
+    "lng": 30.851357
+  },
+  {
+    "place_name": "Damietta",
+    "governorate": "Damietta",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Damietta, 34511, Egypt",
+    "lat": 31.416743,
+    "lng": 31.821366
+  },
+  {
+    "place_name": "New Damietta",
+    "governorate": "Damietta",
+    "category": "city",
+    "occasion": "casual",
+    "address": "New Damietta, Damietta, 34517, Egypt",
+    "lat": 31.43645,
+    "lng": 31.678142
+  },
+  {
+    "place_name": "Damanhur",
+    "governorate": "Beheira",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Damanhur, Beheira Governorate, 22511, Egypt",
+    "lat": 31.037498,
+    "lng": 30.471062
+  },
+  {
+    "place_name": "Shebin el-Kom",
+    "governorate": "Monufia",
+    "category": "city",
+    "occasion": "casual",
+    "address": "The Regional Ring Road, Shibin El Kawm, Monufia Governorate, 32821, Egypt",
+    "lat": 30.419692,
+    "lng": 31.079649
+  },
+  {
+    "place_name": "Beni Suef",
+    "governorate": "Beni Suef",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Bani Sweif, Egypt",
+    "lat": 28.838269,
+    "lng": 30.854477
+  },
+  {
+    "place_name": "Fayoum",
+    "governorate": "Fayoum",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Faiyum, Egypt",
+    "lat": 29.340737,
+    "lng": 30.620105
+  },
+  {
+    "place_name": "Wadi El Rayan",
+    "governorate": "Fayoum",
+    "category": "park",
+    "occasion": "casual",
+    "address": "Wadi Hitan, Wadi Al Rayan Road, Hatem Et Taei, Youssef Al Sediq City, Faiyum, Egypt",
+    "lat": 29.196077,
+    "lng": 30.338763
+  },
+  {
+    "place_name": "Lake Qarun",
+    "governorate": "Fayoum",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Lake Qaroun, Faiyum, Egypt",
+    "lat": 29.470666,
+    "lng": 30.623951
+  },
+  {
+    "place_name": "Minya",
+    "governorate": "Minya",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Al Minya, Egypt",
+    "lat": 28.21254,
+    "lng": 30.912374
+  },
+  {
+    "place_name": "Asyut",
+    "governorate": "Asyut",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Asyut, Egypt",
+    "lat": 27.183282,
+    "lng": 31.185384
+  },
+  {
+    "place_name": "Asyut University",
+    "governorate": "Asyut",
+    "category": "university",
+    "occasion": "formal",
+    "address": "Asyut University, Teraa Al Ibrahimeya Street, Al Sharikat, Asyut, 71516, Egypt",
+    "lat": 27.187884,
+    "lng": 31.170102
+  },
+  {
+    "place_name": "Sohag",
+    "governorate": "Sohag",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Suhaj, Egypt",
+    "lat": 26.762463,
+    "lng": 32.090994
+  },
+  {
+    "place_name": "Qena",
+    "governorate": "Qena",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Qena, Egypt",
+    "lat": 26.240827,
+    "lng": 32.908424
+  },
+  {
+    "place_name": "Dendera Temple",
+    "governorate": "Qena",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Dendera Temple Complex, Al Taramash, Dandara Road, Dendera, New Valley, Egypt",
+    "lat": 26.143409,
+    "lng": 32.67077
+  },
+  {
+    "place_name": "Mersa Matruh",
+    "governorate": "Matruh",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Matruh, Egypt",
+    "lat": 29.787638,
+    "lng": 27.427041
+  },
+  {
+    "place_name": "Agiba Beach",
+    "governorate": "Matruh",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Agiba Beach, Matruh, Egypt",
+    "lat": 31.414285,
+    "lng": 27.006235
+  },
+  {
+    "place_name": "Cleopatra Beach Matruh",
+    "governorate": "Matruh",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Cleopatra Beach, Shatiea Al Ghram Road, Marsa Matruh, Matruh, 51511, Egypt",
+    "lat": 31.373811,
+    "lng": 27.190603
+  },
+  {
+    "place_name": "Kharga",
+    "governorate": "New Valley",
+    "category": "city",
+    "occasion": "casual",
+    "address": "Al Kharja Oases, New Valley, 72511, Egypt",
+    "lat": 25.452258,
+    "lng": 30.541601
+  },
+  {
+    "place_name": "Siwa Oasis",
+    "governorate": "New Valley",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Siwa Oasis, Matruh, Egypt",
+    "lat": 29.215498,
+    "lng": 25.468973
+  },
+  {
+    "place_name": "Mount Sinai",
+    "governorate": "Sinai",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Mount Sinai, Saint Catherine, South Sinai, 46616, Egypt",
+    "lat": 28.538809,
+    "lng": 33.975184
+  },
+  {
+    "place_name": "New Administrative Capital",
+    "governorate": "Cairo",
+    "category": "city",
+    "occasion": "casual",
+    "address": "New Administrative Capital, Cairo, 11845, Egypt",
+    "lat": 30.023829,
+    "lng": 31.754946
+  },
+  {
+    "place_name": "The Egyptian Museum",
+    "governorate": "Cairo",
+    "category": "museum",
+    "occasion": "formal",
+    "address": "Tahrir Square, Cairo, Egypt",
+    "lat": 30.0478,
+    "lng": 31.2336
+  },
+  {
+    "place_name": "Giza Pyramids Complex",
+    "governorate": "Giza",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Al Haram, Giza, Egypt",
+    "lat": 29.9773,
+    "lng": 31.1325
+  },
+  {
+    "place_name": "Solar Boat Museum",
+    "governorate": "Giza",
+    "category": "museum",
+    "occasion": "formal",
+    "address": "Giza Pyramid Complex, Egypt",
+    "lat": 29.9769,
+    "lng": 31.1241
+  },
+  {
+    "place_name": "Montaza Palace",
+    "governorate": "Alexandria",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Montaza, Alexandria, Egypt",
+    "lat": 31.2842,
+    "lng": 30.0167
+  },
+  {
+    "place_name": "Montaza Beach",
+    "governorate": "Alexandria",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Montaza, Alexandria, Egypt",
+    "lat": 31.2856,
+    "lng": 30.0198
+  },
+  {
+    "place_name": "Mosque of Abu al-Abbas",
+    "governorate": "Alexandria",
+    "category": "mosque",
+    "occasion": "formal",
+    "address": "El Anfushi, Alexandria, Egypt",
+    "lat": 31.2021,
+    "lng": 29.8912
+  },
+  {
+    "place_name": "Roastery Cafe Alexandria",
+    "governorate": "Alexandria",
+    "category": "cafe",
+    "occasion": "casual",
+    "address": "San Stefano, Alexandria, Egypt",
+    "lat": 31.2234,
+    "lng": 29.9398
+  },
+  {
+    "place_name": "Agami Beach",
+    "governorate": "Alexandria",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Agami, Alexandria, Egypt",
+    "lat": 30.9564,
+    "lng": 29.7312
+  },
+  {
+    "place_name": "Ferial Garden Aswan",
+    "governorate": "Aswan",
+    "category": "park",
+    "occasion": "casual",
+    "address": "Corniche El Nile, Aswan, Egypt",
+    "lat": 24.0901,
+    "lng": 32.8967
+  },
+  {
+    "place_name": "Steigenberger Aldau",
+    "governorate": "Hurghada",
+    "category": "hotel",
+    "occasion": "business",
+    "address": "Hurghada, Red Sea, Egypt",
+    "lat": 27.2034,
+    "lng": 33.8312
+  },
+  {
+    "place_name": "Arish Beach",
+    "governorate": "Arish",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "El Arish, North Sinai, Egypt",
+    "lat": 31.1244,
+    "lng": 33.8239
+  },
+  {
+    "place_name": "Port Said Corniche",
+    "governorate": "Port Said",
+    "category": "park",
+    "occasion": "casual",
+    "address": "Corniche, Port Said, Egypt",
+    "lat": 31.2611,
+    "lng": 32.3049
+  },
+  {
+    "place_name": "Tanta Mosque",
+    "governorate": "Tanta",
+    "category": "mosque",
+    "occasion": "formal",
+    "address": "Tanta, Gharbia, Egypt",
+    "lat": 30.7872,
+    "lng": 30.9988
+  },
+  {
+    "place_name": "Damietta Beach",
+    "governorate": "Damietta",
+    "category": "beach",
+    "occasion": "casual",
+    "address": "Damietta, Egypt",
+    "lat": 31.4178,
+    "lng": 31.8214
+  },
+  {
+    "place_name": "Beni Hassan Tombs",
+    "governorate": "Minya",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Beni Hasan, Minya, Egypt",
+    "lat": 27.9233,
+    "lng": 30.8892
+  },
+  {
+    "place_name": "Abydos Temple",
+    "governorate": "Sohag",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Abydos, Sohag, Egypt",
+    "lat": 26.1841,
+    "lng": 31.9194
+  },
+  {
+    "place_name": "Saint Catherine Monastery",
+    "governorate": "Sinai",
+    "category": "tourist_attraction",
+    "occasion": "casual",
+    "address": "Saint Catherine, South Sinai, Egypt",
+    "lat": 28.5563,
+    "lng": 33.9759
+  },
+  {
+    "place_name": "Ismailia Lake",
+    "governorate": "Ismailia",
+    "category": "park",
+    "occasion": "casual",
+    "address": "Lake Timsah, Ismailia, Egypt",
+    "lat": 30.5775,
+    "lng": 32.2794
+  }
+]

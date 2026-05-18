@@ -33,7 +33,14 @@ import torch.nn.functional as F
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from nlp.dataset import OCCASIONS, WEATHER_CLASSES, STYLES, INTENT_CLASSES
-from recommendation_engine.location_weather import load_locations, get_location_details, map_category_to_occasion, fetch_realtime_weather
+from recommendation_engine.location_weather import (
+    get_location_details,
+    map_category_to_occasion,
+    fetch_realtime_weather,
+    get_all_place_names,
+    _load_locations,
+    _LOCATIONS,
+)
 
 OCCASION_CONF_THRESH = 0.30
 WEATHER_CONF_THRESH  = 0.30
@@ -195,9 +202,9 @@ class NLPInference:
         self.idx2style    = {i: s for i, s in enumerate(STYLES)}
         self.idx2intent   = {i: c for i, c in enumerate(INTENT_CLASSES)}
 
-        # Load locations for substring matching
-        csv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "egypt_places_dummy.csv")
-        self.df_locations = load_locations(csv_path)
+        # Pre-load location list for fast substring matching
+        _load_locations()  # ensures _LOCATIONS cache is warm
+        self._place_names = get_all_place_names()  # sorted list of 124+ names
 
     # ── Core prediction ───────────────────────────────────────────────────────
 
@@ -215,6 +222,7 @@ class NLPInference:
             "confidence":    {"occasion": float|None, "weather": float|None, "style": float|None},
         }
         """
+        import re  # ensure re is in local scope for the whole method
         explicit_temp = _extract_explicit_temperature(text)
 
         i_lg, o_lg, w_lg, s_lg = self._backend.logits(text)
@@ -263,65 +271,91 @@ class NLPInference:
             condition     = None
 
         # ── Location Matching Override ─────────────────────────────────────────
-        def normalize_str(s: str) -> str:
-            import re
+        # Strategy: match any place name in the user's text, then resolve live weather.
+        # Works for ALL Egyptian places — the 124-entry local list is checked first
+        # (instant, offline), then Nominatim geocodes anything else live.
+
+        def _normalize(s: str) -> str:
+            import re as _re
             s = s.lower()
-            s = re.sub(r"[^\w\s]", " ", s)  # replace punctuation with space
+            s = _re.sub(r"[^\w\s]", " ", s)
             return " ".join(s.split())
 
-        matched_location = None
-        if not self.df_locations.empty:
-            text_norm = normalize_str(text)
-            # Strategy 1: Substring match on normalized strings
-            for place in self.df_locations['place_name'].values:
-                place_norm = normalize_str(str(place))
-                if place_norm and place_norm in text_norm:
-                    matched_location = place
+        matched_location_name = None
+        text_norm  = _normalize(text)
+        text_words = set(text_norm.split())
+        stop_words = {"the", "a", "an", "and", "or", "in", "on", "at", "to", "of",
+                      "for", "with", "el", "al", "is", "it", "i", "my", "me"}
+
+        # Strategy 1: substring match against the pre-built 124-place list
+        for place in self._place_names:
+            place_norm = _normalize(place)
+            if place_norm and place_norm in text_norm:
+                matched_location_name = place
+                break
+
+        # Strategy 2: token-set containment (all significant words present)
+        if not matched_location_name:
+            for place in self._place_names:
+                place_norm  = _normalize(place)
+                place_words = [w for w in place_norm.split() if w not in stop_words]
+                if len(place_words) >= 2 and all(pw in text_words for pw in place_words):
+                    matched_location_name = place
                     break
-            
-            # Strategy 2: If no match, try token-set containment (excluding common stop words)
-            if not matched_location:
-                stop_words = {"the", "a", "an", "and", "or", "in", "on", "at", "to", "of", "for", "with", "el"}
-                text_words = set(text_norm.split())
-                for place in self.df_locations['place_name'].values:
-                    place_norm = normalize_str(str(place))
-                    place_words = [w for w in place_norm.split() if w not in stop_words]
-                    # If all significant words of the place name are in the query
-                    if place_words and all(pw in text_words for pw in place_words):
-                        matched_location = place
-                        break
-            
-            # Strategy 3: If still no match, try no-space substring matching
-            if not matched_location:
-                text_no_space = text_norm.replace(" ", "")
-                for place in self.df_locations['place_name'].values:
-                    place_no_space = normalize_str(str(place)).replace(" ", "")
-                    if len(place_no_space) >= 5 and place_no_space in text_no_space:
-                        matched_location = place
-                        break
-        
-        if matched_location:
-            print(f"\n[NLPInference] Detected location: {matched_location}")
-            loc_details = get_location_details(self.df_locations, matched_location)
-            cat = loc_details.get("category", "")
-            lat = loc_details.get("lat", 30.0444)
-            lng = loc_details.get("lng", 31.2357)
-            
-            # Override occasion and weather using the realtime API
-            occasion = map_category_to_occasion(cat)
-            api_weather = fetch_realtime_weather(lat, lng)
-            temperature = api_weather["temperature"]
-            condition = api_weather["condition"]
-            weather_class = _temp_to_class(temperature)
-            
-            # Force the intent to OUTFIT_REQUEST so the dialogue manager doesn't ignore it
-            intent = "OUTFIT_REQUEST"
-            i_conf_v = 1.0
-            
-            print(f"               Mapped to Occasion: {occasion}, Temp: {temperature}C")
+
+        # Strategy 3: no-space substring (catches "karnaktemple" style typos)
+        if not matched_location_name:
+            text_no_sp = text_norm.replace(" ", "")
+            for place in self._place_names:
+                p_no_sp = _normalize(place).replace(" ", "")
+                if len(p_no_sp) >= 6 and p_no_sp in text_no_sp:
+                    matched_location_name = place
+                    break
+
+        # Strategy 4: live Nominatim lookup for ANY place not in the pre-built list.
+        # We try to detect an unknown place name by checking if the text contains
+        # a capitalized proper-noun sequence that reads like a place.
+        if not matched_location_name:
+            # Extract capitalized sequences (likely place names) from the raw text
+            cap_sequences = re.findall(
+                r'\b([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+){0,4})\b', text
+            )
+            for candidate in cap_sequences:
+                # Skip generic words that aren't place names
+                skip = {"I", "The", "My", "Hi", "Hey", "Ok", "Okay", "Please",
+                        "Can", "Could", "Would", "Should", "What", "Where",
+                        "Help", "Want", "Need", "Going", "Outfit"}
+                if candidate in skip or len(candidate) < 4:
+                    continue
+                # Try to resolve it live via Nominatim
+                loc_try = get_location_details(candidate)
+                if loc_try is not None:
+                    matched_location_name = candidate
+                    break
+
+        if matched_location_name:
+            loc_details = get_location_details(matched_location_name)
+            if loc_details:
+                cat = loc_details.get("category", "city")
+                lat = loc_details.get("lat", 30.0444)
+                lng = loc_details.get("lng", 31.2357)
+
+                # Override occasion and fetch REAL weather for that exact location
+                occasion     = map_category_to_occasion(cat)
+                api_weather  = fetch_realtime_weather(lat, lng)
+                temperature  = api_weather["temperature"]
+                condition    = api_weather["condition"]
+                weather_class = _temp_to_class(temperature)
+
+                # Force intent so the dialogue manager acts on this
+                intent   = "OUTFIT_REQUEST"
+                i_conf_v = 1.0
+
+                print(f"[NLPInference] Location detected: '{matched_location_name}' "
+                      f"-> occasion={occasion}, temp={temperature}C, condition={condition}")
 
         # ── Keyword Matching Fallback Override ─────────────────────────────────
-        if not matched_location:
+        if not matched_location_name:
             import re
             text_lower = text.lower()
             

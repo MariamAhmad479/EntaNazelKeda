@@ -210,12 +210,23 @@ class RecommendationAPI:
         if not items:
             return []
         filtered = self._filter.filter_items(items, occasion=occasion, weather=weather, style=style, gender=gender, color=color, piece=piece)
-        outfits = self._generator.generate(filtered, top_n=top_n)
         
-        # Progressive fallback: if no outfits were found but filtered items exist,
-        # try generating again with a relaxed compatibility threshold
-        if not outfits and filtered:
-            outfits = self._generator.generate(filtered, top_n=top_n, min_score=0.20)
+        if style is not None:
+            # Choose top 10 compatible outfits
+            outfits = self._generator.generate(filtered, top_n=10)
+            if not outfits and filtered:
+                outfits = self._generator.generate(filtered, top_n=10, min_score=0.20)
+            
+            # Randomly select 3 outfits from the top 10
+            import random
+            if len(outfits) > 3:
+                outfits = random.sample(outfits, 3)
+            # Sort by compatibility score descending to keep them ordered nicely
+            outfits.sort(key=lambda o: o.score, reverse=True)
+        else:
+            outfits = self._generator.generate(filtered, top_n=top_n)
+            if not outfits and filtered:
+                outfits = self._generator.generate(filtered, top_n=top_n, min_score=0.20)
             
         return [o.to_dict() for o in outfits]
 
