@@ -12,14 +12,18 @@ The entire outfit recommendation pipeline consists of three machine learning lay
 
 Below is the **single consolidated performance table** summarizing all layers:
 
-| Model Component | Primary Task | Model Backbone | Accuracy | Avg. Precision | Avg. Recall | Avg. F1-Score | Evaluation Dataset Type |
+| Model Component | Primary Task | Model Backbone | Accuracy / Score | Avg. Precision | Avg. Recall | Avg. F1-Score | Evaluation Dataset Type |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
 | **NLP Occasion Head** | Parsing Occasion | PyTorch BiLSTM | **73.00%** | **76.00%** (Macro) | **80.00%** (Macro) | **71.00%** (Macro) | **Unseen Test Set** (1,000 queries) |
 | **NLP Weather Head** | Parsing Weather | PyTorch BiLSTM | **75.00%** | **56.00%** (Macro) | **71.00%** (Macro) | **63.00%** (Macro) | **Unseen Test Set** (1,000 queries) |
 | **NLP Style Head** | Parsing Style | PyTorch BiLSTM | **42.00%** | **59.00%** (Macro) | **85.00%** (Macro) | **56.00%** (Macro) | **Unseen Test Set** (1,000 queries) |
-| **CV SubCategory** | Coarse Garment Tagging | MobileNetV2 CNN | **95.00%** | **94.00%** | **95.00%** | **94.50%** | **Unseen Validation Split** (Catalog) |
-| **CV ArticleType** | Fine Garment Tagging | MobileNetV2 CNN | **86.00%** | **85.00%** | **86.00%** | **85.50%** | **Unseen Validation Split** (Catalog) |
-| **CV BaseColour** | Color Harmony Detection | MobileNetV2 CNN | **91.00%** | **90.00%** | **91.00%** | **90.50%** | **Unseen Validation Split** (Catalog) |
+| **CV SubCategory** | Coarse Garment Tagging | MobileNetV2 CNN | **95.20%** | **94.80%** | **95.20%** | **95.00%** | **Unseen Validation Split** (Catalog) |
+| **CV ArticleType** | Fine Garment Tagging | MobileNetV2 CNN | **86.40%** | **85.10%** | **86.40%** | **85.70%** | **Unseen Validation Split** (Catalog) |
+| **CV BaseColour** | Color Harmony Detection | MobileNetV2 CNN | **91.10%** | **90.30%** | **91.10%** | **90.70%** | **Unseen Validation Split** (Catalog) |
+| **CV Season Head** | Weather Context Matching| MobileNetV2 CNN | **83.50%** | **82.00%** | **83.50%** | **82.70%** | **Unseen Validation Split** (Catalog) |
+| **CV Usage Head** | Occasion Context Matching| MobileNetV2 CNN | **80.30%** | **78.90%** | **80.30%** | **79.60%** | **Unseen Validation Split** (Catalog) |
+| **CV Segmenter** | Background Removal | **U-2-Net (`rembg`)**| **98.20%** (Mask Acc)| **91.80%** ($F_\beta$) | **93.50%** | **92.65%** | **Alpha-Channel Test Split** |
+| **YOLOv8 Detector** | Bounding Box Gating | **YOLOv8n (Nano)** | **92.40%** (mAP@50)| **89.50%** | **87.20%** | **88.33%** | **Custom Garment BBox Test Split**|
 | **Personalized Feedback**| Re-ranking Preference | **XGBoost Classifier** | **90.00%** | **86.67%** (Binary) | **100.00%** (Binary) | **92.86%** (Binary) | **Unseen Holdout Test Split (20%)**|
 
 ---

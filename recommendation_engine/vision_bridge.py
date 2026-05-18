@@ -60,8 +60,9 @@ ARTICLE_TYPE_MAP: Dict[str, ClothingCategory] = {
     # Outerwear → jacket
     "Blazers": ClothingCategory.JACKET,
     "Jackets": ClothingCategory.JACKET,
-    "Sweatshirts": ClothingCategory.JACKET,
-    "Sweaters": ClothingCategory.JACKET,
+    # Tops → shirt
+    "Sweatshirts": ClothingCategory.SHIRT,
+    "Sweaters": ClothingCategory.SHIRT,
     # Everything else → accessory
 }
 

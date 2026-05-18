@@ -64,35 +64,19 @@ with col_form:
     occasions = ["Casual", "Formal", "Business", "Sport", "Party", "Outdoor"]
     selected_occasion = st.selectbox("What is the occasion?", occasions)
     
-    # Weather Seasons Mapping
-    WEATHER_SEASONS = {
-        "☀️ Summer (Hot, ≥ 25°C)": 30,
-        "🌸 Spring (Mild, 16–24°C)": 20,
-        "🍁 Autumn (Chilly, 6–15°C)": 12,
-        "❄️ Winter (Freezing, ≤ 5°C)": 3
-    }
+    # Weather Temperature Slider & Seasons Mapping
+    selected_temp = st.slider("Select Temperature (°C):", min_value=-5, max_value=45, value=20, step=1)
     
-    # Initialize session state for selected weather index
-    if "selected_season" not in st.session_state:
-        st.session_state["selected_season"] = "🌸 Spring (Mild, 16–24°C)"
-        
-    col_season, col_rand = st.columns([2.5, 1.5])
-    with col_season:
-        selected_season = st.selectbox(
-            "Select Season Context:",
-            list(WEATHER_SEASONS.keys()),
-            index=list(WEATHER_SEASONS.keys()).index(st.session_state["selected_season"])
-        )
-        st.session_state["selected_season"] = selected_season
-    with col_rand:
-        st.markdown("<div style='margin-top: 28px;'></div>", unsafe_allow_html=True)
-        if st.button("🎲 Randomize", help="Select a random season context!", key="randomize_weather_btn"):
-            import random
-            random_season = random.choice(list(WEATHER_SEASONS.keys()))
-            st.session_state["selected_season"] = random_season
-            st.rerun()
-            
-    selected_temp = WEATHER_SEASONS[selected_season]
+    if selected_temp >= 25:
+        season_icon, season_name = "☀️", "Summer (Hot, ≥ 25°C)"
+    elif 16 <= selected_temp <= 24:
+        season_icon, season_name = "🌸", "Spring (Mild, 16-24°C)"
+    elif 6 <= selected_temp <= 15:
+        season_icon, season_name = "🍁", "Autumn (Chilly, 6-15°C)"
+    else:
+        season_icon, season_name = "❄️", "Winter (Freezing, ≤ 5°C)"
+
+    st.markdown(f"<div style='font-size: 13px; font-weight: 600; color: #8a5e1a; background: rgba(200,146,42,0.08); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(200,146,42,0.15); margin-bottom: 12px;'>Season context mapped dynamically: {season_icon} {season_name}</div>", unsafe_allow_html=True)
     
     styles = ["All", "Classic", "Streetwear", "Minimalist", "Preppy", "Athletic", "Bohemian"]
     selected_style = st.selectbox("Preferred Style Tag:", styles)

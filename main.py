@@ -545,14 +545,26 @@ class WardrobeChatbot:
         self.last_recommendations = selected
         self.previous_recommendations = list(selected)
 
-        for i, outfit in enumerate(selected, 1):
-            response += f"\nOutfit #{i} (Score: {outfit['score']:.2f})\n"
-            response += f"  Summary: {outfit['summary']}\n"
-            for item in outfit["items"]:
-                img = item.get("image_path")
-                src = f"  [img: {os.path.basename(img)}]" if img else ""
-                wlvl = item.get("warmth_level", "?")
-                response += f"    - {item['name']} ({item['color_name']} {item['category']}) warmth={wlvl}{src}\n"
+        # Build clean conversational response for Streamlit UI
+        mode_label = "H&M Global Store" if self.shop_mode else "personal wardrobe"
+        wea_label = f" for {wea_cls.lower()} weather" if wea_cls else ""
+        
+        if not is_retry:
+            response = f"I've selected the {len(selected)} best compatible outfits from your {mode_label}{wea_label} matching a **{occ}** style. You can review and save them directly below! 👇"
+        else:
+            response = f"No problem! I've refreshed my selection and found {len(selected)} new alternative options from your {mode_label}{wea_label}. Check them out below! 👇"
+
+        # If running from a terminal script (no Streamlit GUI active), append the text representation
+        if "streamlit" not in sys.modules:
+            response += "\n\n* Terminal Recommendations List:"
+            for i, outfit in enumerate(selected, 1):
+                response += f"\nOutfit #{i} (Score: {outfit['score']:.2f})\n"
+                response += f"  Summary: {outfit['summary']}\n"
+                for item in outfit["items"]:
+                    img = item.get("image_path")
+                    src = f"  [img: {os.path.basename(img)}]" if img else ""
+                    wlvl = item.get("warmth_level", "?")
+                    response += f"    - {item['name']} ({item['color_name']} {item['category']}) warmth={wlvl}{src}\n"
 
         return response
 

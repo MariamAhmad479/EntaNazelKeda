@@ -19,20 +19,20 @@ from .data_models import ClothingItem, Occasion, Season, Style
 # ---------------------------------------------------------------------------
 
 def _temperature_to_warmth_range(temp_celsius: float) -> tuple:
-    """Map temperature to a (min_warmth, max_warmth) range.
+    """Map temperature to a (min_warmth, max_warmth) range adjusted for Egypt's climate.
 
     | Temp (°C)  | Warmth range | Typical season   |
     |------------|-------------|------------------|
-    | ≤ 5        | 4 – 5       | Winter           |
-    | 6 – 15     | 3 – 4       | Autumn / Spring  |
-    | 16 – 24    | 2 – 3       | Spring / Autumn  |
-    | ≥ 25       | 1 – 2       | Summer           |
+    | ≤ 12       | 4 – 5       | Winter           |
+    | 13 – 20    | 3 – 4       | Autumn / Spring  |
+    | 21 – 27    | 2 – 3       | Spring / Autumn  |
+    | ≥ 28       | 1 – 2       | Summer           |
     """
-    if temp_celsius <= 5:
+    if temp_celsius <= 12:
         return (4, 5)
-    elif temp_celsius <= 15:
+    elif temp_celsius <= 20:
         return (3, 4)
-    elif temp_celsius <= 24:
+    elif temp_celsius <= 27:
         return (2, 3)
     else:
         return (1, 2)
@@ -40,11 +40,11 @@ def _temperature_to_warmth_range(temp_celsius: float) -> tuple:
 
 def _temperature_to_seasons(temp_celsius: float) -> List[Season]:
     """Map temperature to likely seasons."""
-    if temp_celsius <= 5:
+    if temp_celsius <= 12:
         return [Season.WINTER]
-    elif temp_celsius <= 15:
+    elif temp_celsius <= 20:
         return [Season.AUTUMN, Season.SPRING]
-    elif temp_celsius <= 24:
+    elif temp_celsius <= 27:
         return [Season.SPRING, Season.AUTUMN]
     else:
         return [Season.SUMMER]
@@ -230,7 +230,17 @@ class ContextFilter:
         dresses_items = [i for i in result if i.category in FULL_BODY_CATEGORIES]
         tops_items = [i for i in result if i.category in TOP_CATEGORIES and i.category != ClothingCategory.JACKET]
         bottoms_items = [i for i in result if i.category in BOTTOM_CATEGORIES]
+        
+        # If weather is hot (>= 25°C), do not suggest jackets at all to prevent sweat/heat issues
+        is_hot_weather = False
+        if weather is not None and weather.get("temperature") is not None:
+            if weather["temperature"] >= 25:
+                is_hot_weather = True
+                
         jackets_items = [i for i in result if i.category == ClothingCategory.JACKET]
+        if is_hot_weather:
+            jackets_items = []  # Disallow jackets completely in hot summer weather!
+        
         accessories_items = [i for i in result if i.category == ClothingCategory.ACCESSORY]
         
         # Restrict slots based on piece_cat

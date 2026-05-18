@@ -69,7 +69,7 @@ def extract_category(product_group, product_type, name, desc):
         return 'dress'
         
     # Check jacket/outerwear
-    if any(x in pt or x in nm or x in ds for x in ['jacket', 'coat', 'hoodie', 'blazer', 'cardigan', 'sweater', 'sweatshirt', 'trench', 'parka', 'outerwear', 'poncho', 'anorak', 'waistcoat']):
+    if any(x in pt or x in nm or x in ds for x in ['jacket', 'coat', 'blazer', 'trench', 'parka', 'outerwear', 'poncho', 'anorak']):
         return 'jacket'
         
     # Check shorts
@@ -85,7 +85,7 @@ def extract_category(product_group, product_type, name, desc):
         return 'pants'
         
     # Check shirt/top
-    if pg == 'garment upper body' or any(x in pt or x in nm or x in ds for x in ['shirt', 'tshirt', 't-shirt', 'top', 'blouse', 'camisole', 'tank', 'vest', 'pullover', 'jersey', 'cardigan']):
+    if pg == 'garment upper body' or any(x in pt or x in nm or x in ds for x in ['shirt', 'tshirt', 't-shirt', 'top', 'blouse', 'camisole', 'tank', 'vest', 'pullover', 'jersey', 'cardigan', 'sweater', 'sweatshirt', 'hoodie', 'waistcoat']):
         return 'shirt'
         
     if pg == 'accessories' or pg == 'bags' or pg == 'items':
