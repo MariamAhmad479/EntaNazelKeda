@@ -1,420 +1,1067 @@
 {
   "items": [
     {
-      "id": "shirt001",
-      "name": "White Oxford Shirt",
-      "category": "shirt",
-      "color_rgb": [255, 255, 255],
-      "color_name": "white",
-      "pattern": "solid",
-      "style": "classic",
-      "occasions": ["formal", "business", "casual"],
-      "seasons": ["spring", "summer", "autumn", "winter"],
-      "warmth_level": 2,
-      "formality_level": 4
-    },
-    {
-      "id": "shirt002",
-      "name": "Navy Blue Polo",
-      "category": "shirt",
-      "color_rgb": [0, 0, 128],
-      "color_name": "navy blue",
-      "pattern": "solid",
-      "style": "preppy",
-      "occasions": ["casual", "business"],
-      "seasons": ["spring", "summer"],
-      "warmth_level": 2,
-      "formality_level": 3
-    },
-    {
       "id": "shirt003",
       "name": "Black T-Shirt",
       "category": "shirt",
-      "color_rgb": [20, 20, 20],
+      "color_rgb": [
+        20,
+        20,
+        20
+      ],
       "color_name": "black",
       "pattern": "solid",
       "style": "minimalist",
-      "occasions": ["casual", "party"],
-      "seasons": ["spring", "summer", "autumn"],
+      "occasions": [
+        "casual",
+        "party"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
       "warmth_level": 1,
-      "formality_level": 1
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shirt004",
       "name": "Red Flannel Shirt",
       "category": "shirt",
-      "color_rgb": [180, 30, 30],
+      "color_rgb": [
+        180,
+        30,
+        30
+      ],
       "color_name": "red",
       "pattern": "plaid",
       "style": "streetwear",
-      "occasions": ["casual", "outdoor"],
-      "seasons": ["autumn", "winter"],
+      "occasions": [
+        "casual",
+        "outdoor"
+      ],
+      "seasons": [
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 3,
-      "formality_level": 1
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shirt005",
       "name": "Light Blue Dress Shirt",
       "category": "shirt",
-      "color_rgb": [173, 216, 230],
+      "color_rgb": [
+        173,
+        216,
+        230
+      ],
       "color_name": "light blue",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "business"],
-      "seasons": ["spring", "summer", "autumn"],
+      "occasions": [
+        "formal",
+        "business"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
       "warmth_level": 2,
-      "formality_level": 5
+      "formality_level": 5,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shirt006",
       "name": "Grey Henley",
       "category": "shirt",
-      "color_rgb": [160, 160, 160],
+      "color_rgb": [
+        160,
+        160,
+        160
+      ],
       "color_name": "grey",
       "pattern": "solid",
       "style": "minimalist",
-      "occasions": ["casual"],
-      "seasons": ["spring", "autumn"],
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "spring",
+        "autumn"
+      ],
       "warmth_level": 2,
-      "formality_level": 2
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shirt007",
       "name": "Floral Summer Blouse",
       "category": "shirt",
-      "color_rgb": [255, 182, 193],
+      "color_rgb": [
+        255,
+        182,
+        193
+      ],
       "color_name": "pink",
       "pattern": "floral",
       "style": "bohemian",
-      "occasions": ["casual", "party"],
-      "seasons": ["spring", "summer"],
+      "occasions": [
+        "casual",
+        "party"
+      ],
+      "seasons": [
+        "spring",
+        "summer"
+      ],
       "warmth_level": 1,
-      "formality_level": 2
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "pants001",
       "name": "Dark Wash Jeans",
       "category": "pants",
-      "color_rgb": [25, 25, 112],
+      "color_rgb": [
+        25,
+        25,
+        112
+      ],
       "color_name": "dark blue",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["casual", "party"],
-      "seasons": ["spring", "summer", "autumn", "winter"],
+      "occasions": [
+        "casual",
+        "party"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 3,
-      "formality_level": 2
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "pants002",
       "name": "Charcoal Dress Pants",
       "category": "pants",
-      "color_rgb": [54, 69, 79],
+      "color_rgb": [
+        54,
+        69,
+        79
+      ],
       "color_name": "charcoal",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "business"],
-      "seasons": ["spring", "autumn", "winter"],
+      "occasions": [
+        "formal",
+        "business"
+      ],
+      "seasons": [
+        "spring",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 3,
-      "formality_level": 5
+      "formality_level": 5,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "pants003",
       "name": "Beige Chinos",
       "category": "pants",
-      "color_rgb": [210, 180, 140],
+      "color_rgb": [
+        210,
+        180,
+        140
+      ],
       "color_name": "beige",
       "pattern": "solid",
       "style": "preppy",
-      "occasions": ["casual", "business"],
-      "seasons": ["spring", "summer", "autumn"],
+      "occasions": [
+        "casual",
+        "business"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
       "warmth_level": 2,
-      "formality_level": 3
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "pants004",
       "name": "Black Slim Trousers",
       "category": "pants",
-      "color_rgb": [30, 30, 30],
+      "color_rgb": [
+        30,
+        30,
+        30
+      ],
       "color_name": "black",
       "pattern": "solid",
       "style": "minimalist",
-      "occasions": ["formal", "business", "party"],
-      "seasons": ["spring", "autumn", "winter"],
+      "occasions": [
+        "formal",
+        "business",
+        "party"
+      ],
+      "seasons": [
+        "spring",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 3,
-      "formality_level": 4
+      "formality_level": 4,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "pants005",
       "name": "Olive Cargo Pants",
       "category": "pants",
-      "color_rgb": [107, 142, 35],
+      "color_rgb": [
+        107,
+        142,
+        35
+      ],
       "color_name": "olive",
       "pattern": "solid",
       "style": "streetwear",
-      "occasions": ["casual", "outdoor"],
-      "seasons": ["spring", "autumn"],
+      "occasions": [
+        "casual",
+        "outdoor"
+      ],
+      "seasons": [
+        "spring",
+        "autumn"
+      ],
       "warmth_level": 3,
-      "formality_level": 1
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "short001",
       "name": "Khaki Shorts",
       "category": "shorts",
-      "color_rgb": [195, 176, 145],
+      "color_rgb": [
+        195,
+        176,
+        145
+      ],
       "color_name": "khaki",
       "pattern": "solid",
       "style": "preppy",
-      "occasions": ["casual", "outdoor"],
-      "seasons": ["summer"],
+      "occasions": [
+        "casual",
+        "outdoor"
+      ],
+      "seasons": [
+        "summer"
+      ],
       "warmth_level": 1,
-      "formality_level": 1
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "short002",
       "name": "Athletic Shorts",
       "category": "shorts",
-      "color_rgb": [50, 50, 50],
+      "color_rgb": [
+        50,
+        50,
+        50
+      ],
       "color_name": "dark grey",
       "pattern": "solid",
       "style": "athletic",
-      "occasions": ["sport", "casual"],
-      "seasons": ["summer", "spring"],
+      "occasions": [
+        "sport",
+        "casual"
+      ],
+      "seasons": [
+        "summer",
+        "spring"
+      ],
       "warmth_level": 1,
-      "formality_level": 1
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "skirt001",
       "name": "Black Pencil Skirt",
       "category": "skirt",
-      "color_rgb": [25, 25, 25],
+      "color_rgb": [
+        25,
+        25,
+        25
+      ],
       "color_name": "black",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "business", "party"],
-      "seasons": ["spring", "autumn", "winter"],
+      "occasions": [
+        "formal",
+        "business",
+        "party"
+      ],
+      "seasons": [
+        "spring",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 2,
-      "formality_level": 4
+      "formality_level": 4,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "skirt002",
       "name": "Floral Midi Skirt",
       "category": "skirt",
-      "color_rgb": [255, 228, 196],
+      "color_rgb": [
+        255,
+        228,
+        196
+      ],
       "color_name": "peach",
       "pattern": "floral",
       "style": "bohemian",
-      "occasions": ["casual", "party"],
-      "seasons": ["spring", "summer"],
+      "occasions": [
+        "casual",
+        "party"
+      ],
+      "seasons": [
+        "spring",
+        "summer"
+      ],
       "warmth_level": 1,
-      "formality_level": 2
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "dress001",
       "name": "Little Black Dress",
       "category": "dress",
-      "color_rgb": [15, 15, 15],
+      "color_rgb": [
+        15,
+        15,
+        15
+      ],
       "color_name": "black",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "party"],
-      "seasons": ["spring", "summer", "autumn", "winter"],
+      "occasions": [
+        "formal",
+        "party"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 2,
-      "formality_level": 5
+      "formality_level": 5,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "dress002",
       "name": "Emerald Cocktail Dress",
       "category": "dress",
-      "color_rgb": [0, 128, 0],
+      "color_rgb": [
+        0,
+        128,
+        0
+      ],
       "color_name": "emerald green",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "party"],
-      "seasons": ["autumn", "winter"],
+      "occasions": [
+        "formal",
+        "party"
+      ],
+      "seasons": [
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 2,
-      "formality_level": 4
+      "formality_level": 4,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "dress003",
       "name": "White Sundress",
       "category": "dress",
-      "color_rgb": [255, 250, 240],
+      "color_rgb": [
+        255,
+        250,
+        240
+      ],
       "color_name": "off-white",
       "pattern": "floral",
       "style": "bohemian",
-      "occasions": ["casual", "outdoor"],
-      "seasons": ["summer", "spring"],
+      "occasions": [
+        "casual",
+        "outdoor"
+      ],
+      "seasons": [
+        "summer",
+        "spring"
+      ],
       "warmth_level": 1,
-      "formality_level": 2
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shoes001",
       "name": "Black Oxford Shoes",
       "category": "shoes",
-      "color_rgb": [20, 20, 20],
+      "color_rgb": [
+        20,
+        20,
+        20
+      ],
       "color_name": "black",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "business"],
-      "seasons": ["spring", "summer", "autumn", "winter"],
+      "occasions": [
+        "formal",
+        "business"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 2,
-      "formality_level": 5
+      "formality_level": 5,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shoes002",
       "name": "White Sneakers",
       "category": "shoes",
-      "color_rgb": [245, 245, 245],
+      "color_rgb": [
+        245,
+        245,
+        245
+      ],
       "color_name": "white",
       "pattern": "solid",
       "style": "minimalist",
-      "occasions": ["casual", "sport"],
-      "seasons": ["spring", "summer", "autumn"],
+      "occasions": [
+        "casual",
+        "sport"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
       "warmth_level": 1,
-      "formality_level": 1
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shoes003",
       "name": "Brown Loafers",
       "category": "shoes",
-      "color_rgb": [139, 90, 43],
+      "color_rgb": [
+        139,
+        90,
+        43
+      ],
       "color_name": "brown",
       "pattern": "solid",
       "style": "preppy",
-      "occasions": ["casual", "business"],
-      "seasons": ["spring", "summer", "autumn"],
+      "occasions": [
+        "casual",
+        "business"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
       "warmth_level": 2,
-      "formality_level": 3
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shoes004",
       "name": "Black Heels",
       "category": "shoes",
-      "color_rgb": [10, 10, 10],
+      "color_rgb": [
+        10,
+        10,
+        10
+      ],
       "color_name": "black",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "party"],
-      "seasons": ["spring", "summer", "autumn", "winter"],
+      "occasions": [
+        "formal",
+        "party"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 1,
-      "formality_level": 5
+      "formality_level": 5,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shoes005",
       "name": "Running Shoes",
       "category": "shoes",
-      "color_rgb": [0, 150, 255],
+      "color_rgb": [
+        0,
+        150,
+        255
+      ],
       "color_name": "blue",
       "pattern": "graphic",
       "style": "athletic",
-      "occasions": ["sport", "casual"],
-      "seasons": ["spring", "summer", "autumn"],
+      "occasions": [
+        "sport",
+        "casual"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
       "warmth_level": 1,
-      "formality_level": 1
+      "formality_level": 1,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "shoes006",
       "name": "Tan Chelsea Boots",
       "category": "shoes",
-      "color_rgb": [210, 180, 140],
+      "color_rgb": [
+        210,
+        180,
+        140
+      ],
       "color_name": "tan",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["casual", "business"],
-      "seasons": ["autumn", "winter"],
+      "occasions": [
+        "casual",
+        "business"
+      ],
+      "seasons": [
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 3,
-      "formality_level": 3
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "jacket001",
       "name": "Navy Blazer",
       "category": "jacket",
-      "color_rgb": [0, 0, 80],
+      "color_rgb": [
+        0,
+        0,
+        80
+      ],
       "color_name": "navy",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "business"],
-      "seasons": ["spring", "autumn", "winter"],
+      "occasions": [
+        "formal",
+        "business"
+      ],
+      "seasons": [
+        "spring",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 3,
-      "formality_level": 5
+      "formality_level": 5,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "jacket002",
       "name": "Black Leather Jacket",
       "category": "jacket",
-      "color_rgb": [30, 30, 30],
+      "color_rgb": [
+        30,
+        30,
+        30
+      ],
       "color_name": "black",
       "pattern": "solid",
       "style": "streetwear",
-      "occasions": ["casual", "party"],
-      "seasons": ["autumn", "winter", "spring"],
+      "occasions": [
+        "casual",
+        "party"
+      ],
+      "seasons": [
+        "autumn",
+        "winter",
+        "spring"
+      ],
       "warmth_level": 3,
-      "formality_level": 2
-    },
-    {
-      "id": "jacket003",
-      "name": "Olive Puffer Jacket",
-      "category": "jacket",
-      "color_rgb": [85, 107, 47],
-      "color_name": "olive",
-      "pattern": "solid",
-      "style": "streetwear",
-      "occasions": ["casual", "outdoor"],
-      "seasons": ["autumn", "winter"],
-      "warmth_level": 5,
-      "formality_level": 1
-    },
-    {
-      "id": "jacket004",
-      "name": "Grey Hoodie",
-      "category": "jacket",
-      "color_rgb": [180, 180, 180],
-      "color_name": "grey",
-      "pattern": "solid",
-      "style": "athletic",
-      "occasions": ["casual", "sport"],
-      "seasons": ["spring", "autumn", "winter"],
-      "warmth_level": 3,
-      "formality_level": 1
+      "formality_level": 2,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "acc001",
       "name": "Silver Watch",
       "category": "accessory",
-      "color_rgb": [192, 192, 192],
+      "color_rgb": [
+        192,
+        192,
+        192
+      ],
       "color_name": "silver",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "business", "casual"],
-      "seasons": ["spring", "summer", "autumn", "winter"],
+      "occasions": [
+        "formal",
+        "business",
+        "casual"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 1,
-      "formality_level": 4
+      "formality_level": 4,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
       "id": "acc002",
       "name": "Black Belt",
       "category": "accessory",
-      "color_rgb": [25, 25, 25],
+      "color_rgb": [
+        25,
+        25,
+        25
+      ],
       "color_name": "black",
       "pattern": "solid",
       "style": "classic",
-      "occasions": ["formal", "business", "casual"],
-      "seasons": ["spring", "summer", "autumn", "winter"],
+      "occasions": [
+        "formal",
+        "business",
+        "casual"
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
       "warmth_level": 1,
-      "formality_level": 4
+      "formality_level": 4,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": null
     },
     {
-      "id": "acc003",
-      "name": "Bohemian Scarf",
+      "id": "f30e151a",
+      "name": "Black Backpacks",
       "category": "accessory",
-      "color_rgb": [210, 105, 30],
-      "color_name": "burnt orange",
-      "pattern": "abstract",
-      "style": "bohemian",
-      "occasions": ["casual", "outdoor"],
-      "seasons": ["autumn", "winter"],
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
       "warmth_level": 2,
-      "formality_level": 2
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\Bodycon Dress.jpg"
+    },
+    {
+      "id": "fb303981",
+      "name": "Black Track pants",
+      "category": "pants",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\download (4).jpg"
+    },
+    {
+      "id": "d39b05ed",
+      "name": "White Sports shoes",
+      "category": "shoes",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\download (15).jpg"
+    },
+    {
+      "id": "eda96cb7",
+      "name": "Black Handbags",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\@southcaste.jpg"
+    },
+    {
+      "id": "c2f30362",
+      "name": "Red Innerwear vests",
+      "category": "shirt",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\download (7).jpg"
+    },
+    {
+      "id": "da6e8be4",
+      "name": "Black Dresses",
+      "category": "dress",
+      "color_rgb": [
+        0,
+        0,
+        0
+      ],
+      "color_name": "black",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\Bodycon Dress.jpg"
+    },
+    {
+      "id": "5f5b0e43",
+      "name": "Red Dresses",
+      "category": "dress",
+      "color_rgb": [
+        255,
+        0,
+        0
+      ],
+      "color_name": "red",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\download (7).jpg"
+    },
+    {
+      "id": "ddf6109a",
+      "name": "Blue Duffel bag",
+      "category": "accessory",
+      "color_rgb": [
+        0,
+        0,
+        255
+      ],
+      "color_name": "blue",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "autumn"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\Chinelo Santa Lolla Logo Azul.jpg"
+    },
+    {
+      "id": "51b8ac86",
+      "name": "White Sports shoes",
+      "category": "shoes",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\download (15).jpg"
+    },
+    {
+      "id": "fa180de6",
+      "name": "White Dresses",
+      "category": "dress",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\Women's Contrast Color Splicing Front Button Decoration Casual Long Sleeve Jacket.jpg"
+    },
+    {
+      "id": "eb086009",
+      "name": "Brown Backpacks",
+      "category": "accessory",
+      "color_rgb": [
+        165,
+        42,
+        42
+      ],
+      "color_name": "brown",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\download (2).jpg"
+    },
+    {
+      "id": "18cea888",
+      "name": "White Skirts",
+      "category": "skirt",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\download (24).jpg"
+    },
+    {
+      "id": "ba8da616",
+      "name": "White Sweaters",
+      "category": "jacket",
+      "color_rgb": [
+        255,
+        255,
+        255
+      ],
+      "color_name": "white",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\download (1).jpg"
+    },
+    {
+      "id": "8bb5a5f4",
+      "name": "Beige Handbags",
+      "category": "accessory",
+      "color_rgb": [
+        245,
+        245,
+        220
+      ],
+      "color_name": "beige",
+      "pattern": "solid",
+      "style": "classic",
+      "occasions": [
+        "casual"
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "warmth_level": 2,
+      "formality_level": 3,
+      "gender": "unisex",
+      "image_features": null,
+      "image_path": "C:\\Users\\USER\\OneDrive - Egypt University of Informatics\\personal\\Desktop\\ML\\EntaNazelKeda\\data\\users\\guest\\images\\download (21).jpg"
     }
   ]
 }
